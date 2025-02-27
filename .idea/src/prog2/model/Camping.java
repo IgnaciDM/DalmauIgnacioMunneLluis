@@ -50,11 +50,14 @@ public class Camping implements InCamping {
     };
 
     @Override
-    public void afegirClient(String nom_, String dni_) throws ExcepcioReserva {//IMPLEMENTA LA CLASE CLIENT
-        Client client = new Client(nom_, dni_);
+    public void afegirClient(String nom_, String dni_) {
+        Client client = null;//IMPLEMENTA LA CLASE CLIENT
+        try {
+            client = new Client(nom_, dni_);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         llistaClients.add(client);
-
-
         System.out.println("Client afegit: " + nom_ + " amb DNI " + dni_);
     }
 
