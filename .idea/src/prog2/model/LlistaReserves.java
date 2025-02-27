@@ -70,8 +70,7 @@ public abstract class LlistaReserves implements InLlistaReserves{
             } else {
                 throw new NoSuchElementException("Reserva no disponible");
             }
-        } catch {
-
+        } catch (Exception e) {
         }
     }
 System.out.println("L’allotjament amb identificador " + ID + " no està disponible en la data demanada DATA pel client CLIENT amb DNI: DNI.");
