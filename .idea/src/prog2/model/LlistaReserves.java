@@ -22,7 +22,7 @@
 //canviaran en funció de l’execució. Un exemple és: “L’allotjament amb identificador
 //100P no està disponible en la data demanada 2025-02-20 pel client Lluís Plans amb
 //DNI: 789101A.”
-//9
+//9kkjj
 //Programació 2. Pràctica 1
 //Grau d’Enginyeria Informàtica. Facultat de Matemàtiques i Informàtica. UB
 //Curs 2024-2025.  - -
