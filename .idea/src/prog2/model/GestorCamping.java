@@ -168,7 +168,7 @@ public class GestorCamping {
         camping.afegirClient(nomClient, dni);
 
         nomClient = "Lluís Plans";
-        dni="78659101A";
+        dni="A";
         camping.afegirClient(nomClient, dni);
     }
     
