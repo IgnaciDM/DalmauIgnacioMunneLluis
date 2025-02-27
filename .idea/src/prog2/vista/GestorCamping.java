@@ -13,7 +13,7 @@ public class GestorCamping {
     public static void main(String[] args) throws ExcepcioReserva {
 
         Camping campingMar = new Camping("Camping del Mar");
-
+        System.out.println("hola?");
         omplirDadesModel(campingMar);
 
         ferReserves(campingMar);
@@ -168,7 +168,7 @@ public class GestorCamping {
         camping.afegirClient(nomClient, dni);
 
         nomClient = "Lluís Plans";
-        dni="A";
+        dni="78659101A";
         camping.afegirClient(nomClient, dni);
     }
     
