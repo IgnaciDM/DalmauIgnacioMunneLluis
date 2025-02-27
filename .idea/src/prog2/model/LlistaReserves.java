@@ -34,7 +34,7 @@
 //DATA, CLIENT i DNI canviaran en funció de l’execució.
 //En cas afirmatiu de les dues comprovacions, crea la reserva i l’afegeix a la llista de
 //reserves del càmping.
-
+package prog2.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -46,15 +46,14 @@ public abstract class LlistaReserves implements InLlistaReserves{
         this.LlistaReserves = new ArrayList();
     }
 
-    @Override
     public boolean allotjamentDisponible(Allotjament plaça, LocalDate Inici, LocalDate Final) {
         boolean disponible = true;
+        return disponible;
     }
 
-    @Override
     public boolean isEstadaMinima(Allotjament plaça, LocalDate Inici, LocalDate Final) {
         boolean estadaMinima = true;
-        int R;
+        int R, mínim = 0;
         R = Final - Inici;
         if (R < mínim) {
             estadaMinima = false;
@@ -65,44 +64,20 @@ public abstract class LlistaReserves implements InLlistaReserves{
     @Override
     public void afegirReserva(Allotjament plaça, Client primo, LocalDate Inici, LocalDate Final) {
         try {
-            if (allotjamentDisponible(plaça, Inici, Final) && isEstadaMinima(plaça, Inici, Final)) {
-                System.out.println("Reserva afegida");
-            } else {
+            if (!allotjamentDisponible(plaça, Inici, Final)) {
                 throw new NoSuchElementException("Reserva no disponible");
             }
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
+            System.err.println("L’allotjament amb identificador " + ID + " no està disponible en la data demanada " + DATA + " pel client " + CLIENT + " amb DNI: " + DNI); // Muestra el mensaje de error en la consola
         }
+        try {
+            if (!isEstadaMinima(plaça, Inici, Final)) {
+                throw new NoSuchElementException("Reserva no disponible");
+            }
+        } catch (NoSuchElementException e) {
+            System.err.println("Les dates sol·licitades pel client " + CLIENT + "amb DNI: " + DNI + " no compleixen l'estada mínima per l'allotjament amb identificador " + ID + "."); // Muestra el mensaje de error en la consola
+        }
+        Reserva reserva1 = Reserva(Allotjament plaça, Client primo, LocalDate Inici, LocalDate Final);
+        LlistaReserves.add(reserva1);
     }
-System.out.println("L’allotjament amb identificador " + ID + " no està disponible en la data demanada DATA pel client CLIENT amb DNI: DNI.");
-    @Override
-    public void setId(String id) {
-        this.id = id;
     }
-
-    @Override
-    public long getEstadaMinima(Temp temp) {
-        return (temp == Temp.ALTA) ? estadaMinimaAlta : estadaMinimaBaixa;
-    }
-
-    @Override
-    public void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_) {
-        this.estadaMinimaAlta = estadaMinimaALTA_;
-        this.estadaMinimaBaixa = estadaMinimaBAIXA_;
-    }
-
-    @Override
-    public boolean correcteFuncionament() {
-        // Com que és una classe abstracta, deixem que les subclasses implementin aquest mètode.
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Allotjament{" +
-                "nom='" + nom + '\'' +
-                ", id='" + id + '\'' +
-                ", estadaMinimaAlta=" + estadaMinimaAlta +
-                ", estadaMinimaBaixa=" + estadaMinimaBaixa +
-                '}';
-    }
-}
