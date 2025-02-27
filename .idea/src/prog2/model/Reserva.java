@@ -10,7 +10,7 @@ package prog2.model;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-ESTOS ES UNA PRUEBA
+
 public class Reserva {
     private LocalDate dataEntrada;
     private LocalDate dataSortida;
