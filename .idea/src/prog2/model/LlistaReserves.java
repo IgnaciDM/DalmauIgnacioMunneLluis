@@ -35,49 +35,54 @@
 //En cas afirmatiu de les dues comprovacions, crea la reserva i l’afegeix a la llista de
 //reserves del càmping.
 package prog2.model;
+
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
+import java.util.List;
 
-public abstract class LlistaReserves implements InLlistaReserves{
-    ArrayList<Reserva> LlistaReserves = new ArrayList();
+public class LlistaReserves implements InLlistaReserves {
+    private List<Reserva> reserves;
 
-    public LlistaReserves(String nom, String id, long estadaMinimaAlta, long estadaMinimaBaixa) {
-        this.LlistaReserves = new ArrayList();
+    public LlistaReserves() {
+        this.reserves = new ArrayList<>();
     }
 
     public boolean allotjamentDisponible(Allotjament plaça, LocalDate Inici, LocalDate Final) {
-        boolean disponible = true;
-        return disponible;
+        for (Reserva reserva : reserves) {
+            if (reserva.getAllotjament().equals(plaça)) {
+                LocalDate entrada = reserva.getDataEntrada();
+                LocalDate sortida = reserva.getDataSortida();
+
+                if (!(Final.isBefore(entrada) || Inici.isAfter(sortida))) {
+                    return false; // L’allotjament ja està reservat en aquest període
+                }
+            }
+        }
+        return true;
     }
 
     public boolean isEstadaMinima(Allotjament plaça, LocalDate Inici, LocalDate Final) {
-        boolean estadaMinima = true;
-        int R, mínim = 0;
-        R = Final - Inici;
-        if (R < mínim) {
-            estadaMinima = false;
-        }
-        return estadaMinima;
+        long dies = ChronoUnit.DAYS.between(Inici, Final);
+        int estadaMinima = plaça.getEstadaMinima(Inici); // Suponem que aquest mètode retorna la mínima per la temporada
+        return dies >= estadaMinima;
     }
 
     @Override
-    public void afegirReserva(Allotjament plaça, Client primo, LocalDate Inici, LocalDate Final) {
-        try {
-            if (!allotjamentDisponible(plaça, Inici, Final)) {
-                throw new NoSuchElementException("Reserva no disponible");
-            }
-        } catch (NoSuchElementException e) {
-            System.err.println("L’allotjament amb identificador " + ID + " no està disponible en la data demanada " + DATA + " pel client " + CLIENT + " amb DNI: " + DNI); // Muestra el mensaje de error en la consola
+    public void afegirReserva(Allotjament plaça, Client primo, LocalDate Inici, LocalDate Final) throws ExcepcioReserva {
+        if (!allotjamentDisponible(plaça, Inici, Final)) {
+            throw new ExcepcioReserva("L’allotjament amb identificador " + plaça.getId() +
+                    " no està disponible en la data demanada " + Inici + " pel client " +
+                    primo.getNom() + " amb DNI: " + primo.getDni() + ".");
         }
-        try {
-            if (!isEstadaMinima(plaça, Inici, Final)) {
-                throw new NoSuchElementException("Reserva no disponible");
-            }
-        } catch (NoSuchElementException e) {
-            System.err.println("Les dates sol·licitades pel client " + CLIENT + "amb DNI: " + DNI + " no compleixen l'estada mínima per l'allotjament amb identificador " + ID + "."); // Muestra el mensaje de error en la consola
+
+        if (!isEstadaMinima(plaça, Inici, Final)) {
+            throw new ExcepcioReserva("Les dates sol·licitades pel client " + primo.getNom() +
+                    " amb DNI: " + primo.getDni() +
+                    " no compleixen l'estada mínima per l'allotjament amb identificador " + plaça.getId() + ".");
         }
-        Reserva reserva1 = Reserva(Allotjament plaça, Client primo, LocalDate Inici, LocalDate Final);
-        LlistaReserves.add(reserva1);
+
+        Reserva reserva1 = new Reserva(plaça, primo, Inici, Final);
+        reserves.add(reserva1);
     }
-    }
+}
