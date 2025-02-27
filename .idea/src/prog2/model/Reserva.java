@@ -10,7 +10,7 @@ package prog2.model;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-
+ESTOS ES UNA PRUEBA
 public class Reserva {
     private LocalDate dataEntrada;
     private LocalDate dataSortida;
@@ -54,5 +54,4 @@ d’entrada (consultar següent secció).
 - Haureu de comparar dates i comprovar si les dates sol·licitades per la reserva d’un
 allotjament estan dins d’un interval d’una altra reserva del mateix allotjament
 (consultar següent secció).
-a
  */
