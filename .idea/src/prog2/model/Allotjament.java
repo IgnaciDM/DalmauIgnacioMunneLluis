@@ -1,4 +1,5 @@
 package prog2.model;
+import prog2.vista.*;
 
 public abstract class Allotjament implements InAllotjament {
     private String nom;

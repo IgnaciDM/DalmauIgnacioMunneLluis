@@ -1,17 +1,21 @@
 package prog2.model;
 
-
+import prog2.vista.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 
 public class Camping implements InCamping {
     private String nom;
-    private ArrayList<Allotjament> llistaAllotjaments = new ArrayList<Allotjament>();
-    private ArrayList<Client> llistaClients = new ArrayList<>();
+    private ArrayList<Allotjament> llistaAllotjaments;
+    private ArrayList<Client> llistaClients;
     private ArrayList<Reserves> llistaReserves = new ArrayList<>();
 
     public Camping(String campingDelMar) {
+        this.nom = "campingDelMar";
+        this.llistaAllotjaments = new ArrayList<Allotjament>();
+        this.llistaClients = new ArrayList<Client>();
+        this.llistaReserves = new ArrayList<Reserves>();
     }
 
     @Override
@@ -63,50 +67,46 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
-        ArrayList<Client> ParcelaN = new ArrayList<>();
-       //ParcelaN.add(new Parcela(nom_,idAllotjament_, metres, connexioElectrica));
-       // llistaAllotjaments.add(ParcelaN);
+        // Crear una nova instància de Parcela
+        Parcela novaParcela = new Parcela(nom_, idAllotjament_, metres, connexioElectrica);
+        // Afegir-la a la llista d'allotjaments
+        llistaAllotjaments.add(novaParcela);
         System.out.println("Parcela afegida: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
     @Override
     public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
-        ArrayList<Client> BungalowN = new ArrayList<>();
-        //BungalowN.add(new Bungalow(nom_,idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred));
-        //llistaAllotjaments.add(BungalowN);//
+        Bungalow nouBungalow = new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassa, tv, aireFred);
+        llistaAllotjaments.add(nouBungalow);
         System.out.println("Bungalow afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
     @Override
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
-        ArrayList<Client> BungalowPremiumN = new ArrayList<>();
-        //BungalowPremiumN.add(new BungalowPremium(nom_,idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi));
-        //llistaAllotjaments.add(BungalowPremiumN);
+        BungalowPremium nouBungalowPremium = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+        llistaAllotjaments.add(nouBungalowPremium);
         System.out.println("Bungalow Premium afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
     @Override
     public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
-        ArrayList<Glamping> GlampingN = new ArrayList<>();
-        GlampingN.add(new Glamping(nom_,idAllotjament_, mida, habitacions, placesPersones, material, casaMascota));
-        //llistaAllotjaments.add(GlampingN);
+        Glamping nouGlamping = new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota);
+        llistaAllotjaments.add(nouGlamping);
         System.out.println("Glamping afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
     @Override
     public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
-        ArrayList<Client> MobilHomeN = new ArrayList<>();
-        //MobilHomeN.add(new MobilHome(nom_,idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa));
-        //llistaAllotjaments.add(MobilHomeN);
-        System.out.println("MobilHome afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
+        MobilHome nouMobilHome = new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa);
+        llistaAllotjaments.add(nouMobilHome);
+        System.out.println("Mobilehome afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        ArrayList<Client> ReservaN = new ArrayList<>();
-        //ReservaN.add(new Reserva(id_, dni_, dataEntrada, dataSortida));
-        //llistaReserves.add(ReservaN);
-        System.out.println("Reserva afegida: ID Allotjament: " + id_ + ", DNI Client: " + dni_);
+        Reserva nouReserva = new Reserva(id_, dni_, dataEntrada, dataSortida);
+        llistaReserves.add(nouReserva);
+        System.out.println();
     }
 
     @Override
