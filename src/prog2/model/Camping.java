@@ -11,7 +11,7 @@ public class Camping implements InCamping {
     private ArrayList<Allotjament> llistaAllotjaments;
     private ArrayList<Client> llistaClients;
     private ArrayList<Reserves> llistaReserves = new ArrayList<>();
-
+    //TRABAJAAAAA IGNACIOOOOOO
     public Camping(String campingDelMar) {
         this.nom = "campingDelMar";
         this.llistaAllotjaments = new ArrayList<Allotjament>();
@@ -81,41 +81,41 @@ public class Camping implements InCamping {
         llistaAllotjaments.add(nouBungalow);
         System.out.println("Bungalow afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
-
+    //TRABAJAAAAA IGNACIOOOOOO
     @Override
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
         BungalowPremium nouBungalowPremium = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
         llistaAllotjaments.add(nouBungalowPremium);
         System.out.println("Bungalow Premium afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
-    }
-
+    }//TRABAJAAAAA IGNACIOOOOOO
+    //TRABAJAAAAA IGNACIOOOOOO
     @Override
     public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
         Glamping nouGlamping = new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota);
         llistaAllotjaments.add(nouGlamping);
         System.out.println("Glamping afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
-    }
-
+    }//TRABAJAAAAA IGNACIOOOOOO
+    //TRABAJAAAAA IGNACIOOOOOO
     @Override
     public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
         MobilHome nouMobilHome = new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa);
         llistaAllotjaments.add(nouMobilHome);
         System.out.println("Mobilehome afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
-    }
-
+    }//TRABAJAAAAA IGNACIOOOOOO
+    //TRABAJAAAAA IGNACIOOOOOO
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         Reserva nouReserva = new Reserva(id_, dni_, dataEntrada, dataSortida);
         llistaReserves.add(nouReserva);
         System.out.println();
-    }
-
+    }//TRABAJAAAAA IGNACIOOOOOO
+    //TRABAJAAAAA IGNACIOOOOOO
     @Override
     public float calculMidaTotalParceles() {
         System.out.println("Calculant mida total de parcel·les.");
         return 0; // Aquí simplemente se verifica el flujo, sin cálculos reales
-    }
-
+    }//TRABAJAAAAA IGNACIOOOOOO
+    //TRABAJAAAAA IGNACIOOOOOO
     @Override
     public int calculAllotjamentsOperatius() {
         System.out.println("Calculant allotjaments operatius.");
@@ -126,5 +126,6 @@ public class Camping implements InCamping {
     public Allotjament getAllotjamentEstadaMesCurta() {
         System.out.println("Obtenint allotjament amb estada més curta.");
         return null; // Retorna null ya que no se está implementando la lógica
-    }
-}
+    }//TRABAJAAAAA IGNACIOOOOOO
+}//TRABAJAAAAA IGNACIOOOOOO
+//TRABAJA//TRABAJAAAAA IGNACIOOOOOOAAAA IGNACIOOOOOO//TRABAJAAAAA IGNACIOOOOOO//TRABAJAAAAA IGNACIOOOOOO
