@@ -15,7 +15,6 @@ public class GestorCamping {
     public static void main(String[] args) throws ExcepcioReserva {
 
         Camping campingMar = new Camping("Camping del Mar");
-        System.out.println("hola?");
         omplirDadesModel(campingMar);
 
         ferReserves(campingMar);

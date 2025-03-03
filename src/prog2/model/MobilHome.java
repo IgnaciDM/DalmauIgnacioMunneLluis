@@ -11,8 +11,8 @@ public class MobilHome extends Allotjament{
 
 
     // Constructor para inicializar los atributos
-    public MobilHome(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa, long estadaMinimaAlta, long estadaMinimaBaixa) {
-        super(nom, idAllotjament, estadaMinimaAlta, estadaMinimaBaixa);
+    public MobilHome(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
+        super(nom, idAllotjament,mida);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;

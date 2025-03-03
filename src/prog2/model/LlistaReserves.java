@@ -42,7 +42,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class LlistaReserves implements InLlistaReserves {
+public class LlistaReserves implements InLlistaReserves {
     private List<Reserva> reserves;
 
     public LlistaReserves() {
@@ -85,5 +85,10 @@ public abstract class LlistaReserves implements InLlistaReserves {
 
         Reserva reserva1 = new Reserva(plaça, primo, Inici, Final);
         reserves.add(reserva1);
+    }
+
+    @Override
+    public int getNumReserves() {
+        return 0;
     }
 }
