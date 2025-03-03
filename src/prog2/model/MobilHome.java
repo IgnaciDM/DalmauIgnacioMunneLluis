@@ -1,6 +1,6 @@
 package prog2.model;
 
-public class MobilHome {
+public class MobilHome extends Allotjament{
     // Atributos de la clase Bungalow
     private String nom;
     private String idAllotjament;
@@ -11,7 +11,8 @@ public class MobilHome {
 
 
     // Constructor para inicializar los atributos
-    public MobilHome(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
+    public MobilHome(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa, long estadaMinimaAlta, long estadaMinimaBaixa) {
+        super(nom, idAllotjament, estadaMinimaAlta, estadaMinimaBaixa);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;

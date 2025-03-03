@@ -1,6 +1,6 @@
 package prog2.model;
 
-public class Parcela {
+public class Parcela extends Allotjament {
     // Atributos de la clase Bungalow
     private String nom;
     private String idAllotjament;
@@ -8,7 +8,8 @@ public class Parcela {
     private boolean connexioElectrica;
 
     // Constructor para inicializar los atributos
-    public Parcela(String nom, String idAllotjament, float metres, boolean connexioElectrica) {
+    public Parcela(String nom, String idAllotjament, float metres, boolean connexioElectrica, long estadaMinimaAlta, long estadaMinimaBaixa) {
+        super(nom, idAllotjament, estadaMinimaAlta, estadaMinimaBaixa);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.metres = metres;
