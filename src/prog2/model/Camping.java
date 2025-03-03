@@ -9,13 +9,13 @@ public class Camping implements InCamping {
     private String nom;
     private ArrayList<Allotjament> llistaAllotjaments;
     private ArrayList<Client> llistaClients;
-    private ArrayList<Reserves> llistaReserves = new ArrayList<>();
+    private ArrayList<Reserva> llistaReserves = new ArrayList<>();
 
     public Camping(String campingDelMar) {
         this.nom = "campingDelMar";
         this.llistaAllotjaments = new ArrayList<Allotjament>();
         this.llistaClients = new ArrayList<Client>();
-        this.llistaReserves = new ArrayList<Reserves>();
+        this.llistaReserves = new ArrayList<Reserva>();
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Camping implements InCamping {
         return nom;
     }
 
-    public ArrayList<Reserves> getLlistaReserves() {
+    public ArrayList<Reserva> getLlistaReserves() {
         return llistaReserves;
     }
 

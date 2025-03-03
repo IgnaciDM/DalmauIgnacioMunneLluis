@@ -21,7 +21,7 @@ public interface InCamping {
      *
      * @return
      */
-    ArrayList<Reserves> getLlistaReserves();
+    ArrayList<Reserva> getLlistaReserves();
 
     /**
      * Retorna la llista d'allotjaments del camping.
