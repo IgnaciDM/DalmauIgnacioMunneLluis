@@ -72,7 +72,7 @@ public class Camping implements InCamping {
         Parcela novaParcela = new Parcela(nom_, idAllotjament_, metres, connexioElectrica);
         // Afegir-la a la llista d'allotjaments
         llistaAllotjaments.add(novaParcela);
-        System.out.println("Parcela afegida: " + nom_ + ", ID Allotjament: " + idAllotjament_);
+        System.out.println("Parcela afegida: " + nom_ + ", ID Allotj2ament: " + idAllotjament_);
     }
 
     @Override
