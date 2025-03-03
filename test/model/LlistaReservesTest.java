@@ -1,8 +1,13 @@
 
-package prog2.model;
+package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import prog2.model.Allotjament;
+import prog2.model.Client;
+import prog2.model.LlistaReserves;
+import prog2.model.Parcela;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;

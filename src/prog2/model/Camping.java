@@ -1,6 +1,7 @@
 package prog2.model;
 
-import prog2.vista.*;
+import prog2.vista.ExcepcioReserva;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 

@@ -1,6 +1,8 @@
-package prog2.model;
+package model;
 
 import org.junit.jupiter.api.Test;
+import prog2.model.Client;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 

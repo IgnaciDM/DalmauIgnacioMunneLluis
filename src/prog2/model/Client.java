@@ -1,5 +1,6 @@
 package prog2.model;
-import prog2.vista.*;
+
+import prog2.vista.ExcepcioReserva;
 /*
 Classe Client
 La classe Client tindrà dos atributs de tipus String, el nom i el DNI i el seu constructor ha
