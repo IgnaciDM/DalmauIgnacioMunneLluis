@@ -1,6 +1,8 @@
 package prog2.model;
 
-public class Bungalow {
+import java.time.LocalDate;
+
+public class Bungalow extends Allotjament {
     // Atributos de la clase Bungalow
     private String nom;
     private String idAllotjament;
@@ -13,7 +15,8 @@ public class Bungalow {
     private boolean aireFred;
 
     // Constructor para inicializar los atributos
-    public Bungalow(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
+    public Bungalow(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, long estadaMinimaAlta, long estadaMinimaBaixa) {
+        super(nom, idAllotjament, estadaMinimaAlta, estadaMinimaBaixa);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;

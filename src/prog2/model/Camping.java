@@ -107,7 +107,7 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        Reserva nouReserva = new Reserva(id_, dni_, dataEntrada, dataSortida);
+        Reserves nouReserva = new Reserves(id_, dni_, dataEntrada, dataSortida);
         llistaReserves.add(nouReserva);
         System.out.println();
     }
