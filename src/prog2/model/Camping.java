@@ -68,7 +68,6 @@ public class Camping implements InCamping {
         System.out.println("Client afegit: " + nom_ + " amb DNI " + dni_);
     }
 
-    @Override
     public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica, long estadaMinimaAlta, long estadaMinimaBaixa) {
         // Crear una nova instància de Parcela
         Parcela novaParcela = new Parcela(nom_, idAllotjament_, metres, connexioElectrica, estadaMinimaAlta, estadaMinimaBaixa);
@@ -77,28 +76,24 @@ public class Camping implements InCamping {
         System.out.println("Parcela afegida: " + nom_ + ", ID Allotj2ament: " + idAllotjament_);
     }
 
-    @Override
     public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, long estadaMinimaAlta, long estadaMinimaBaixa) {
         Bungalow nouBungalow = new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, estadaMinimaAlta, estadaMinimaBaixa);
         llistaAllotjaments.add(nouBungalow);
         System.out.println("Bungalow afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
-    @Override
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi, long estadaMinimaAlta, long estadaMinimaBaixa) {
         BungalowPremium nouBungalowPremium = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi, estadaMinimaAlta, estadaMinimaBaixa);
         llistaAllotjaments.add(nouBungalowPremium);
         System.out.println("Bungalow Premium afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
-    @Override
     public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota, long estadaMinimaAlta, long estadaMinimaBaixa) {
         Glamping nouGlamping = new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota, estadaMinimaAlta, estadaMinimaBaixa);
         llistaAllotjaments.add(nouGlamping);
         System.out.println("Glamping afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
-    @Override
     public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa, long estadaMinimaAlta, long estadaMinimaBaixa) {
         MobilHome nouMobilHome = new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa, estadaMinimaAlta, estadaMinimaBaixa);
         llistaAllotjaments.add(nouMobilHome);
