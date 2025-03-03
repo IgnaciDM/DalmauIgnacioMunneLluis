@@ -20,7 +20,7 @@ public class Camping implements InCamping {
 
     @Override
     public String getNom() {
-        System.out.println("Nom del camping: " + nom);
+        System.out.println("Nom del campin: " + nom);
         return nom;
     }
     public ArrayList<Reserves> getLlistaReserves(){
