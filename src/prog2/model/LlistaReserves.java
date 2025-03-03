@@ -35,13 +35,14 @@
 //En cas afirmatiu de les dues comprovacions, crea la reserva i l’afegeix a la llista de
 //reserves del càmping.
 package prog2.model;
+import prog2.vista.ExcepcioReserva;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LlistaReserves implements InLlistaReserves {
+public abstract class LlistaReserves implements InLlistaReserves {
     private List<Reserva> reserves;
 
     public LlistaReserves() {

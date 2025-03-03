@@ -2,6 +2,7 @@ package model;
 
 import org.junit.jupiter.api.Test;
 import prog2.model.Client;
+import prog2.vista.ExcepcioReserva;
 
 import static org.junit.jupiter.api.Assertions.*;
 

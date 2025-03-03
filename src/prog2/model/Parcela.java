@@ -8,7 +8,7 @@ public class Parcela extends Allotjament {
     private boolean connexioElectrica;
 
     // Constructor para inicializar los atributos
-    public Parcela(String nom, String idAllotjament, float metres, boolean connexioElectrica, long estadaMinimaAlta, long estadaMinimaBaixa) {
+    public Parcela(String nom, String idAllotjament, float metres, boolean connexioElectrica) {
         super(nom, idAllotjament, estadaMinimaAlta, estadaMinimaBaixa);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
@@ -33,19 +33,19 @@ public class Parcela extends Allotjament {
         this.idAllotjament = idAllotjament;
     }
 
-    public float getmetres() {
+    public float getMida() {
         return metres;
     }
 
-    public void setmetres(float metres) {
+    public void setMida(float metres) {
         this.metres = metres;
     }
 
-    public boolean getHabitacions() {
+    public boolean isConnexioElectrica() {
         return connexioElectrica;
     }
 
-    public void setHabitacions(boolean connexioElectrica) {
+    public void setConnexioElectrica(boolean connexioElectrica) {
         this.connexioElectrica = connexioElectrica;
     }
 

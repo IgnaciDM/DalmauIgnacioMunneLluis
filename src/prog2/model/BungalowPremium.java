@@ -15,8 +15,8 @@ public class BungalowPremium extends Allotjament {
     private String codiWifi;
 
     // Constructor para inicializar los atributos
-    public BungalowPremium(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi, long estadaMinimaAlta, long estadaMinimaBaixa) {
-        super(nom, idAllotjament, estadaMinimaAlta, estadaMinimaBaixa);
+    public BungalowPremium(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
+        super(nom, idAllotjament,mida,codiWifi);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;
@@ -111,7 +111,7 @@ public class BungalowPremium extends Allotjament {
         this.serveisExtra = serveisExtra;
     }
 
-    public String getcodiWifi() {
+    public String getCodiWifi() {
         return codiWifi;
     }
 
