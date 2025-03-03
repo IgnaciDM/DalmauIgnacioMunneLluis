@@ -7,7 +7,7 @@ import prog2.model.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
-
+//
 public class CampingTest {
 
     private Camping camping;
