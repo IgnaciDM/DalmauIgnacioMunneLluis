@@ -12,17 +12,17 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class Reserva {
-    private String id;
-    private String dni;
+    private String Allotjament;
+    private String Client;
     private LocalDate dataEntrada;
     private LocalDate dataSortida;
 
     // Constructor que rep les dates d'entrada i sortida
-    public Reserva(String id,String dni,LocalDate dataEntrada, LocalDate dataSortida) {
+    public Reserva(String Allotjament,String Client,LocalDate dataEntrada, LocalDate dataSortida) {
         this.dataEntrada = dataEntrada;
         this.dataSortida = dataSortida;
-        this.id = id;
-        this.dni = dni;
+        this.Allotjament = Allotjament;
+        this.Client = Client;
     }
 
     // Mètode per calcular el nombre de dies d'estada
@@ -37,24 +37,6 @@ public class Reserva {
 
     public LocalDate getDataSortida() {
         return dataSortida;
-    }
-
-
-    // Getters y setters (si es necesario)
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
     }
 
     public void setDataEntrada(LocalDate dataEntrada) {

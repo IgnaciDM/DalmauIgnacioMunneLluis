@@ -1,7 +1,6 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioReserva;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -127,4 +126,5 @@ public abstract class Camping implements InCamping {
         System.out.println("Obtenint allotjament amb estada més curta.");
         return null; // Retorna null ya que no se está implementando la lógica
     }
+
 }
