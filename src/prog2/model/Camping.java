@@ -4,8 +4,8 @@ import prog2.vista.ExcepcioReserva;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-
+//TRABAJAAAAA IGNACIOOOOOO
+//TRABAJAAAAA IGNACIOOOOOO
 public class Camping implements InCamping {
     private String nom;
     private ArrayList<Allotjament> llistaAllotjaments;
