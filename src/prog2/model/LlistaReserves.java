@@ -42,6 +42,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class LlistaReserves implements InLlistaReserves {
     private List<Reserva> reserves;
 
@@ -65,7 +66,7 @@ public class LlistaReserves implements InLlistaReserves {
 
     public boolean isEstadaMinima(Allotjament plaça, LocalDate Inici, LocalDate Final) {
         long dies = ChronoUnit.DAYS.between(Inici, Final);
-        int estadaMinima = plaça.getEstadaMinima(Inici); // Suponem que aquest mètode retorna la mínima per la temporada
+        long estadaMinima = plaça.getEstadaMinima(plaça.determinarTemporada(Inici));
         return dies >= estadaMinima;
     }
 

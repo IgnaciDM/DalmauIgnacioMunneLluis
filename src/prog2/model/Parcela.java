@@ -9,6 +9,7 @@ public class Parcela extends Allotjament {
 
     // Constructor para inicializar los atributos
     public Parcela(String nom, String idAllotjament, float metres, boolean connexioElectrica) {
+        super(nom,idAllotjament,0,0);//FALLA
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.metres = metres;

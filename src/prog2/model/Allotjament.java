@@ -1,5 +1,7 @@
 package prog2.model;
 
+import java.time.LocalDate;
+
 public abstract class Allotjament implements InAllotjament {
     private String nom;
     private String id;
@@ -60,4 +62,9 @@ public abstract class Allotjament implements InAllotjament {
                 ", estadaMinimaBaixa=" + estadaMinimaBaixa +
                 '}';
     }
+    public Temp determinarTemporada(LocalDate data) {
+        int mes = data.getMonthValue();
+        return (mes >= 6 && mes <= 8) ? Temp.ALTA : Temp.BAIXA; // Exemple: juny-agost és temporada alta
+    }
+
 }
