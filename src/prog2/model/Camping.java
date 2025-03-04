@@ -10,8 +10,8 @@ public class Camping implements InCamping {
     private ArrayList<Client> llistaClients;
     private ArrayList<Reserva> llistaReserves = new ArrayList<>();
 
-    public Camping(String campingDelMar) {
-        this.nom = "campingDelMar";
+    public Camping(String nom) {
+        this.nom = nom;
         this.llistaAllotjaments = new ArrayList<Allotjament>();
         this.llistaClients = new ArrayList<Client>();
         this.llistaReserves = new ArrayList<Reserva>();
@@ -63,7 +63,7 @@ public class Camping implements InCamping {
 
     @Override
     public int getNumReserves() {
-        return 0;
+        return llistaReserves.size();
     }
 
     @Override
@@ -121,7 +121,7 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        // Buscar l'allotjament per ID
+        // Buscar l'allotjament
         Allotjament allotjament = null;
         for (Allotjament a : llistaAllotjaments) {
             if (a.getId().equals(id_)) {
@@ -130,12 +130,11 @@ public class Camping implements InCamping {
             }
         }
 
-        // Si no es troba l'allotjament, llançar excepció
         if (allotjament == null) {
             throw new ExcepcioReserva("L'allotjament amb ID " + id_ + " no existeix.");
         }
 
-        // Buscar el client per DNI
+        // Buscar el client
         Client client = null;
         for (Client c : llistaClients) {
             if (c.getDni().equals(dni_)) {
@@ -144,12 +143,17 @@ public class Camping implements InCamping {
             }
         }
 
-        // Si no es troba el client, llançar excepció
         if (client == null) {
             throw new ExcepcioReserva("El client amb DNI " + dni_ + " no existeix.");
         }
 
-        // Crear la reserva i afegir-la a la llista
+        // Comprovar si les dates es solapen amb alguna reserva existent
+        for (Reserva r : llistaReserves) {
+            if (r.getAllotjament().getId().equals(id_) && !(dataSortida.isBefore(r.getDataEntrada()) || dataEntrada.isAfter(r.getDataSortida()))) {
+                throw new ExcepcioReserva("L'allotjament ja està reservat en aquestes dates.");
+            }
+        }
+        // Afegir la reserva
         Reserva reserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
         llistaReserves.add(reserva);
         System.out.println("Reserva afegida per al client " + dni_ + " a l'allotjament " + id_);
@@ -158,14 +162,23 @@ public class Camping implements InCamping {
 
     @Override
     public float calculMidaTotalParceles() {
-        System.out.println("Calculant mida total de parcel·les.");
-        return 0; // Aquí simplemente se verifica el flujo, sin cálculos reales
+        float midaTotal = 0;
+        for (Allotjament allotjament : llistaAllotjaments) {
+            if (allotjament instanceof Parcela) { // Comprovar si és una Parcel·la
+                midaTotal += ((Parcela) allotjament).getMida();
+            }
+        }
+        return midaTotal;
     }
 
     @Override
     public int calculAllotjamentsOperatius() {
+        int allotjamentsOp=0;
         System.out.println("Calculant allotjaments operatius.");
-        return 0; // Aquí también solo se verifica el flujo
+        for (Allotjament allotjament : llistaAllotjaments) {
+            allotjamentsOp++;
+        }
+        return allotjamentsOp; // Aquí también solo se verifica el flujo
     }
 
     @Override
