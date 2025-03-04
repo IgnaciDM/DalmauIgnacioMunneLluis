@@ -33,11 +33,11 @@ public class Parcela extends Allotjament {
         this.idAllotjament = idAllotjament;
     }
 
-    public float getMida() {
+    public float getmetres() {
         return metres;
     }
 
-    public void setMida(float metres) {
+    public void setmetres(float metres) {
         this.metres = metres;
     }
 
