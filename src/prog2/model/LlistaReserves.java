@@ -90,6 +90,6 @@ public class LlistaReserves implements InLlistaReserves {
 
     @Override
     public int getNumReserves() {
-        return 0;
+        return reserves.size();
     }
 }
