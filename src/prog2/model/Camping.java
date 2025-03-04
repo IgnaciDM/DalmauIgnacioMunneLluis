@@ -17,9 +17,23 @@ public class Camping implements InCamping {
         this.llistaReserves = new ArrayList<Reserva>();
     }
 
-    public static InAllotjament.Temp getTemporada(LocalDate of ) {
-        return ;
+    public static InAllotjament.Temp getTemporada(LocalDate data) {
+        int mes = data.getMonthValue();
+        int dia = data.getDayOfMonth();
+
+        // Temporada baixa: Gener - Març i Octubre - Desembre (excepte dates especials)
+        if ((mes >= 1 && mes <= 3) || (mes >= 10 && mes <= 12)) {
+            // Temporada alta per Setmana Santa (exemple: 21 de març a 31 de març)
+            if (mes == 3 && dia >= 21) {
+                return InAllotjament.Temp.ALTA;
+            }
+            return InAllotjament.Temp.BAIXA;
+        }
+
+        // Temporada alta: Abril - Setembre
+        return InAllotjament.Temp.ALTA;
     }
+
 
 
     @Override
@@ -106,15 +120,41 @@ public class Camping implements InCamping {
     }
 
     @Override
-    public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        Reserva nouReserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
+    public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
+        // Buscar l'allotjament per ID
+        Allotjament allotjament = null;
+        for (Allotjament a : llistaAllotjaments) {
+            if (a.getId().equals(id_)) {
+                allotjament = a;
+                break;
+            }
+        }
 
-        llistaReserves.add(nouReserva);
-        System.out.println();
+        // Si no es troba l'allotjament, llançar excepció
+        if (allotjament == null) {
+            throw new ExcepcioReserva("L'allotjament amb ID " + id_ + " no existeix.");
+        }
+
+        // Buscar el client per DNI
+        Client client = null;
+        for (Client c : llistaClients) {
+            if (c.getDni().equals(dni_)) {
+                client = c;
+                break;
+            }
+        }
+
+        // Si no es troba el client, llançar excepció
+        if (client == null) {
+            throw new ExcepcioReserva("El client amb DNI " + dni_ + " no existeix.");
+        }
+
+        // Crear la reserva i afegir-la a la llista
+        Reserva reserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
+        llistaReserves.add(reserva);
+        System.out.println("Reserva afegida per al client " + dni_ + " a l'allotjament " + id_);
     }
-    @Override
-    public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva, ExcepcioReserva {
-    }//AFEGIR RESERVA SON LO MATEIX PERO AQUEST ES COM HO DEMANA EL PUBLIC CLASS CAMPING PER NO SER UN ABSTRACT
+
 
     @Override
     public float calculMidaTotalParceles() {
