@@ -13,9 +13,6 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaBaixa = estadaMinimaBaixa;
     }
 
-    protected Allotjament() {
-    }
-
     @Override
     public String getNom() {
         System.out.println("NOM Allotjament");
