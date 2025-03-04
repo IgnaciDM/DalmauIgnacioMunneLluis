@@ -55,12 +55,7 @@ public abstract class Allotjament implements InAllotjament {
 
     @Override
     public String toString() {
-        return "Allotjament{" +
-                "nom='" + nom + '\'' +
-                ", id='" + id + '\'' +
-                ", estadaMinimaAlta=" + estadaMinimaAlta +
-                ", estadaMinimaBaixa=" + estadaMinimaBaixa +
-                '}';
+        return "Nom="+nom+", Id="+id+", estada mínima en temp ALTA: "+estadaMinimaAlta+", estada mínima en temp BAIXA: "+estadaMinimaBaixa+".";
     }
     public Temp determinarTemporada(LocalDate data) {
         int mes = data.getMonthValue();
