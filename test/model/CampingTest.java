@@ -39,7 +39,7 @@ public class CampingTest {
         // Creem 2 allotjaments i els afegim al camping
         parcela = new Parcela("Parcela 1", "P001", 100, true);  // Suponiendo que Parcela tiene este constructor
         bungalow = new Bungalow("Bungalow 1", "B001", "Mitjà", 2, 4, 1, true, true, true);
-        camping.afegirParcela(parcela.getNom(), parcela.getId(), parcela.getMida(), parcela.isConnexioElectrica());
+        camping.afegirParcela(parcela.getNom(), parcela.getId(), parcela.getmetres(), parcela.isConnexioElectrica());
         camping.afegirBungalow(bungalow.getNom(), bungalow.getId(), bungalow.getMida(), bungalow.getHabitacions(), bungalow.getPlacesPersones(), bungalow.getPlacesParquing(), bungalow.isTerrassa(), bungalow.isTv(), bungalow.isAireFred());
 
         // Dates de reserva
