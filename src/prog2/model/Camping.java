@@ -1,7 +1,6 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioReserva;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -17,6 +16,11 @@ public class Camping implements InCamping {
         this.llistaClients = new ArrayList<Client>();
         this.llistaReserves = new ArrayList<Reserva>();
     }
+
+    public static InAllotjament.Temp getTemporada(LocalDate of ) {
+        return ;
+    }
+
 
     @Override
     public String getNom() {
@@ -54,10 +58,8 @@ public class Camping implements InCamping {
         return llistaClients.size();
     }
 
-    ;
-
     @Override
-    public void afegirClient(String nom_, String dni_) {
+    public void afegirClient(String nom_, String dni_)throws ExcepcioReserva{
         Client client = null;//IMPLEMENTA LA CLASE CLIENT
         try {
             client = new Client(nom_, dni_);
@@ -68,44 +70,51 @@ public class Camping implements InCamping {
         System.out.println("Client afegit: " + nom_ + " amb DNI " + dni_);
     }
 
-    public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica, long estadaMinimaAlta, long estadaMinimaBaixa) {
+    public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
         // Crear una nova instància de Parcela
-        Parcela novaParcela = new Parcela(nom_, idAllotjament_, metres, connexioElectrica, estadaMinimaAlta, estadaMinimaBaixa);
+        Parcela novaParcela = new Parcela(nom_, idAllotjament_, metres, connexioElectrica);
         // Afegir-la a la llista d'allotjaments
         llistaAllotjaments.add(novaParcela);
         System.out.println("Parcela afegida: " + nom_ + ", ID Allotj2ament: " + idAllotjament_);
     }
 
-    public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, long estadaMinimaAlta, long estadaMinimaBaixa) {
-        Bungalow nouBungalow = new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, estadaMinimaAlta, estadaMinimaBaixa);
+
+    public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
+        Bungalow nouBungalow = new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
         llistaAllotjaments.add(nouBungalow);
         System.out.println("Bungalow afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
-    public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi, long estadaMinimaAlta, long estadaMinimaBaixa) {
-        BungalowPremium nouBungalowPremium = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi, estadaMinimaAlta, estadaMinimaBaixa);
+
+    public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
+        BungalowPremium nouBungalowPremium = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
         llistaAllotjaments.add(nouBungalowPremium);
         System.out.println("Bungalow Premium afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
-    public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota, long estadaMinimaAlta, long estadaMinimaBaixa) {
-        Glamping nouGlamping = new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota, estadaMinimaAlta, estadaMinimaBaixa);
+    public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
+        Glamping nouGlamping = new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota);
         llistaAllotjaments.add(nouGlamping);
         System.out.println("Glamping afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
-    public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa, long estadaMinimaAlta, long estadaMinimaBaixa) {
-        MobilHome nouMobilHome = new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa, estadaMinimaAlta, estadaMinimaBaixa);
+
+    public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
+        MobilHome nouMobilHome = new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa);
         llistaAllotjaments.add(nouMobilHome);
         System.out.println("Mobilehome afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
     @Override
-    public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        Reserva nouReserva = new Reserva(id_, dni_, dataEntrada, dataSortida);
+    public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
+        Reserva nouReserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
+
         llistaReserves.add(nouReserva);
         System.out.println();
     }
+    @Override
+    public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva, ExcepcioReserva {
+    }//AFEGIR RESERVA SON LO MATEIX PERO AQUEST ES COM HO DEMANA EL PUBLIC CLASS CAMPING PER NO SER UN ABSTRACT
 
     @Override
     public float calculMidaTotalParceles() {
@@ -124,4 +133,5 @@ public class Camping implements InCamping {
         System.out.println("Obtenint allotjament amb estada més curta.");
         return null; // Retorna null ya que no se está implementando la lógica
     }
+
 }

@@ -3,6 +3,8 @@ package prog2.model;
 
 
 
+import prog2.vista.ExcepcioReserva;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -125,7 +127,7 @@ public interface InCamping {
      * @param dataSortida la data de sortida.
      * @throws ExcepcioReserva si no es pot realitzar la reserva.
      */
-    void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva;
+    void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva, ExcepcioReserva;
 
 
     /**

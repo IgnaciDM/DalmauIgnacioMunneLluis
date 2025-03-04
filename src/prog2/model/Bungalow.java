@@ -15,8 +15,8 @@ public class Bungalow extends Allotjament {
     private boolean aireFred;
 
     // Constructor para inicializar los atributos
-    public Bungalow(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, long estadaMinimaAlta, long estadaMinimaBaixa) {
-        super(nom, idAllotjament, estadaMinimaAlta, estadaMinimaBaixa);
+    public Bungalow(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
+        super(nom, idAllotjament,habitacions,placesPersones);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;

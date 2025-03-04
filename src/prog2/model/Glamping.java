@@ -11,8 +11,8 @@ public class Glamping extends Allotjament {
     private boolean casamascota;
 
     // Constructor para inicializar los atributos
-    public Glamping(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, String material, boolean casamascota, long estadaMinimaAlta, long estadaMinimaBaixa) {
-        super(nom, idAllotjament, estadaMinimaAlta, estadaMinimaBaixa);
+    public Glamping(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, String material, boolean casamascota) {
+        super(nom, idAllotjament, Long.parseLong(mida),habitacions);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;

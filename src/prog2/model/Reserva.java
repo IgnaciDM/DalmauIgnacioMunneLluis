@@ -1,28 +1,24 @@
-/*
-4.4 Classe Reserva
-La classe Reserva guardarà els atributs que s’han descrit a l’enunciat. Dos dels atributs
-seran la data d’entrada i data de sortida de la reserva, fent servir el tipus LocalDate
-(consultar la secció 5.4.1).
-El seu constructor ha de rebre els paràmetres en el mateix ordre que els rep el mètode
-afegirReserva de la classe LlistaReserves.
- */
 package prog2.model;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import prog2.vista.ExcepcioReserva;
 
 public class Reserva {
-    private String id;
-    private String dni;
+    private Allotjament allotjament;
+    private Client client;
     private LocalDate dataEntrada;
     private LocalDate dataSortida;
 
-    // Constructor que rep les dates d'entrada i sortida
-    public Reserva(String id,String dni,LocalDate dataEntrada, LocalDate dataSortida) {
+    // Constructor amb validació de dates
+    public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
+        if (dataSortida.isBefore(dataEntrada)) {
+            throw new ExcepcioReserva("La data de sortida no pot ser anterior a la data d'entrada.");
+        }
+        this.allotjament = allotjament;
+        this.client = client;
         this.dataEntrada = dataEntrada;
         this.dataSortida = dataSortida;
-        this.id = id;
-        this.dni = dni;
     }
 
     // Mètode per calcular el nombre de dies d'estada
@@ -30,7 +26,7 @@ public class Reserva {
         return ChronoUnit.DAYS.between(dataEntrada, dataSortida);
     }
 
-    // Getters per obtenir les dates (opcional)
+    // Getters
     public LocalDate getDataEntrada() {
         return dataEntrada;
     }
@@ -39,24 +35,15 @@ public class Reserva {
         return dataSortida;
     }
 
-
-    // Getters y setters (si es necesario)
-    public String getId() {
-        return id;
+    public Allotjament getAllotjament() {
+        return allotjament;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Client getClient() {
+        return client;
     }
 
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
+    // Setters
     public void setDataEntrada(LocalDate dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
@@ -65,7 +52,16 @@ public class Reserva {
         this.dataSortida = dataSortida;
     }
 
+    public void setAllotjament_(Allotjament nouAllotjament) {
+        this.allotjament = nouAllotjament;
+    }
+
+    public void setClient(Client nouClient) {
+        this.client = nouClient;
+    }
+
 }
+
 /*
 4.4.1 Classe LocalDate
 La classe LocalDate és una classe de la llibreria de Java que permet treballar amb dates.
