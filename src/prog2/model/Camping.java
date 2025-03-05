@@ -175,7 +175,6 @@ public class Camping implements InCamping {
                 allotjamentsOp++;
             }
         }
-
         return allotjamentsOp;
     }
 
