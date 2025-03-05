@@ -35,7 +35,6 @@ public class Camping implements InCamping {
     }
 
 
-
     @Override
     public String getNom() {
         System.out.println("Nom del camping: " + nom);
@@ -73,7 +72,7 @@ public class Camping implements InCamping {
     }
 
     @Override
-    public void afegirClient(String nom_, String dni_)throws ExcepcioReserva{
+    public void afegirClient(String nom_, String dni_) throws ExcepcioReserva {
         Client client = null;//IMPLEMENTA LA CLASE CLIENT
         try {
             client = new Client(nom_, dni_);
@@ -168,17 +167,33 @@ public class Camping implements InCamping {
 
     @Override
     public int calculAllotjamentsOperatius() {
-        int allotjamentsOp=0;
+        int allotjamentsOp = 0;
         System.out.println("Calculant allotjaments operatius.");
+
         for (Allotjament allotjament : llistaAllotjaments) {
-            allotjamentsOp++;
+            if (allotjament.esOperatiu()) { // Suposant que hi ha un mètode esOperatiu()
+                allotjamentsOp++;
+            }
         }
-        return allotjamentsOp; // Aquí también solo se verifica el flujo
+
+        return allotjamentsOp;
     }
 
     @Override
     public Allotjament getAllotjamentEstadaMesCurta() {
         System.out.println("Obtenint allotjament amb estada més curta.");
-        return null; // Retorna null ya que no se está implementando la lógica
+
+        if (llistaAllotjaments.isEmpty()) {
+            return null; // Retorna null si no hi ha allotjaments
+        }
+
+        Allotjament estadaMesCurta = llistaAllotjaments.get(0);
+
+        for (Allotjament allotjament : llistaAllotjaments) {
+            if (allotjament.getDiesEstada() < estadaMesCurta.getDiesEstada()) {
+                estadaMesCurta = allotjament;
+            }
+        }
+        return estadaMesCurta;
     }
 }

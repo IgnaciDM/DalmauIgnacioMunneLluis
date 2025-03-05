@@ -25,7 +25,7 @@ public class GestorCamping {
         // Calcular la mida total de les parcel·les (en M^2) del Càmping i mostrar un missatge de la següent manera:
         // >> La mida total de les parcel·les del Càmping del Mar és de X m^2)
         //--------------------------------------------------------------------------------------------------------------------
-        System.out.println("La mida total de les parcel·les del Càmping del Mar és de " + campingMar.calcularMidaTotalParceles() + " m^2");
+        System.out.println("La mida total de les parcel·les del Càmping del Mar és de " + campingMar.calculMidaTotalParceles() + " m^2");
 
         // Mostrar el número total d'allotjaments del Càmping i el número d'allotjaments que estan operatius amb el següent missatge:
         // >> El número total d'allotjaments del Càmping és X dels quals X allotjaments estan operatius.
@@ -198,7 +198,7 @@ public class GestorCamping {
             camping.afegirReserva(id_, dni_, entrada, sortida);
         } catch (ExcepcioReserva e) {
             System.err.println("Error en la reserva 1: " + e.getMessage());
-        }
+        }//AQUESTA RESERVA NO HA DE DONAR CAP ERROR
 
 
         // 2. Afegeix una reserva pel client amb DNI "78659101A" de l'allotjament amb identificador "100P"
@@ -215,7 +215,7 @@ public class GestorCamping {
             camping.afegirReserva(id_, dni_, entrada, sortida);
         } catch (ExcepcioReserva e) {
             System.err.println("Error en la reserva 2: " + e.getMessage());
-        }
+    }//LA RESERVA 2 HAURA DE DONAR L'ERROR DE QUE AQUEST ALLOTJAMENT JA ESTA RESERVAT (coincideix amb la reserva 1)
 
 
         // 3. Afegeix una reserva pel client amb DNI "789101A" de l'allotjament amb identificador "300S"
@@ -232,6 +232,6 @@ public class GestorCamping {
             camping.afegirReserva(id_, dni_, entrada, sortida);
         } catch (ExcepcioReserva e) {
             System.err.println("Error en la reserva 3: " + e.getMessage());
-        }
+        }//LA RESERVA 3 HAURA DE DONAR L'ERROR DE ID 300S no existeix
     }
 }

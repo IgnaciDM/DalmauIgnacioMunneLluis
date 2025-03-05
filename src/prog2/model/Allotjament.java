@@ -46,6 +46,12 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaBaixa = estadaMinimaBAIXA_;
     }
 
+    public long getDiesEstada() {
+        LocalDate avui = LocalDate.now(); //Data actual
+        Temp temporada = determinarTemporada(avui); // Temporada actual
+        return getEstadaMinima(temporada); // Retornem l'estada mínima segons la temporada
+    }
+
     @Override
     public boolean correcteFuncionament() {
         return true;
@@ -60,4 +66,7 @@ public abstract class Allotjament implements InAllotjament {
         return (mes >= 6 && mes <= 8) ? Temp.ALTA : Temp.BAIXA; // Exemple: juny-agost és temporada alta
     }
 
+    public boolean esOperatiu() {
+        return correcteFuncionament();
+    }
 }
