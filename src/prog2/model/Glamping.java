@@ -1,7 +1,6 @@
 package prog2.model;
 
 public class Glamping extends Allotjament {
-    // Atributos de la clase Bungalow
     private String nom;
     private String idAllotjament;
     private String mida;
@@ -12,7 +11,7 @@ public class Glamping extends Allotjament {
 
     // Constructor para inicializar los atributos
     public Glamping(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, String material, boolean casamascota) {
-        super(nom, idAllotjament, 0,0);//FALLA
+        super(nom, idAllotjament, 5,3);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;

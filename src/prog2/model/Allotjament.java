@@ -48,7 +48,6 @@ public abstract class Allotjament implements InAllotjament {
 
     @Override
     public boolean correcteFuncionament() {
-        // Com que és una classe abstracta, deixem que les subclasses implementin aquest mètode.
         return true;
     }
 

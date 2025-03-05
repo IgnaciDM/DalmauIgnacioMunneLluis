@@ -19,7 +19,7 @@ public class Client {//CLIENT FET
 
     public Client(String nom, String dni) throws ExcepcioReserva {
         this.nom = nom;
-        setDni(dni); // Utilitzem el setter per validar el DNI
+        setDni(dni); // Validar el DNI
     }
 
     public String getNom() {

@@ -85,7 +85,6 @@ public class Camping implements InCamping {
     }
 
     public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
-        // Crear una nova instància de Parcela
         Parcela novaParcela = new Parcela(nom_, idAllotjament_, metres, connexioElectrica);
         // Afegir-la a la llista d'allotjaments
         llistaAllotjaments.add(novaParcela);
@@ -121,7 +120,6 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        // Buscar l'allotjament
         Allotjament allotjament = null;
         for (Allotjament a : llistaAllotjaments) {
             if (a.getId().equals(id_)) {
@@ -134,7 +132,6 @@ public class Camping implements InCamping {
             throw new ExcepcioReserva("L'allotjament amb ID " + id_ + " no existeix.");
         }
 
-        // Buscar el client
         Client client = null;
         for (Client c : llistaClients) {
             if (c.getDni().equals(dni_)) {
@@ -142,11 +139,9 @@ public class Camping implements InCamping {
                 break;
             }
         }
-
         if (client == null) {
             throw new ExcepcioReserva("El client amb DNI " + dni_ + " no existeix.");
         }
-
         // Comprovar si les dates es solapen amb alguna reserva existent
         for (Reserva r : llistaReserves) {
             if (r.getAllotjament().getId().equals(id_) && !(dataSortida.isBefore(r.getDataEntrada()) || dataEntrada.isAfter(r.getDataSortida()))) {
@@ -186,16 +181,4 @@ public class Camping implements InCamping {
         System.out.println("Obtenint allotjament amb estada més curta.");
         return null; // Retorna null ya que no se está implementando la lógica
     }
-
-    public float calcularMidaTotalParceles() {
-        float total = 0;
-        for (Allotjament a : llistaAllotjaments) {  // Recorrem tots els allotjaments
-            if (a instanceof Parcela) {  // Comprovem si l'allotjament és una parcel·la
-                total += ((Parcela) a).getMida();  // Sumem la seva mida
-            }
-        }
-        return total;
-    }
-
-
 }
