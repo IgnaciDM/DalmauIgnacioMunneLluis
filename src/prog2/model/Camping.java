@@ -187,4 +187,15 @@ public class Camping implements InCamping {
         return null; // Retorna null ya que no se está implementando la lógica
     }
 
+    public float calcularMidaTotalParceles() {
+        float total = 0;
+        for (Allotjament a : llistaAllotjaments) {  // Recorrem tots els allotjaments
+            if (a instanceof Parcela) {  // Comprovem si l'allotjament és una parcel·la
+                total += ((Parcela) a).getMida();  // Sumem la seva mida
+            }
+        }
+        return total;
+    }
+
+
 }

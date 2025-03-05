@@ -1,4 +1,3 @@
-
 package prog2.vista;
 
 import prog2.model.Camping;
@@ -29,7 +28,7 @@ public class GestorCamping {
         // >> La mida total de les parcel·les del Càmping del Mar és de X m^2)
         //--------------------------------------------------------------------------------------------------------------------
         // Per completar
-        System.out.println("mida total de les parcel·les del Càmping del Mar és de " + Parcela.getMida() + " m^2");
+        System.out.println("La mida total de les parcel·les del Càmping del Mar és de " + campingMar.calcularMidaTotalParceles() + " m^2");
         // Mostrar el número total d'allotjaments del Càmping i el número d'allotjaments que estan operatius amb el següent missatge:
         // >> El número total d'allotjaments del Càmping és X dels quals X allotjaments estan operatius.
         //--------------------------------------------------------------------------------------------------
@@ -188,8 +187,6 @@ public class GestorCamping {
         // 1. Afegeix una reserva pel client amb DNI "12345678X" de l'allotjament amb identificador "100P"
         // amb la data d'entrada 20 de Febrer del 2025 i data de sortida 28 de febrer del 2025.
 
-        camping.afegirReserva("100P", "12345678X",LocalDate.of(2025, 2, 20), LocalDate.of(2025, 2, 28));
-
         // Declarar les variables de tipus String idAllotjament i dni.
         // Per completar
         String id_;
@@ -207,7 +204,11 @@ public class GestorCamping {
 
         // Intentar afegir la reserva amb la informació indicada i si no és possible mostrar el missatge d'error.
         // Per completar
-        camping.afegirReserva("100P", "12345678X",LocalDate.of(2025, 2, 20), LocalDate.of(2025, 2, 28));
+        try {
+            camping.afegirReserva(id_, dni_, entrada, sortida);
+        } catch (ExcepcioReserva e) {
+            System.err.println("Error en la reserva 1: " + e.getMessage());
+        }
 
         // 2. Afegeix una reserva pel client amb DNI "78659101A" de l'allotjament amb identificador "100P"
         // amb la data d'entrada 25 de Febrer del 2025 i data de sortida 28 de febrer del 2025.
@@ -221,7 +222,11 @@ public class GestorCamping {
 
         // Intentar afegir la reserva amb la informació indicada i si no és possible mostrar el missatge d'error.
         // Per completar
-        camping.afegirReserva("100P", "12345678X",LocalDate.of(2025, 2, 20), LocalDate.of(2025, 2, 28));
+        try {
+            camping.afegirReserva(id_, dni_, entrada, sortida);
+        } catch (ExcepcioReserva e) {
+            System.err.println("Error en la reserva 2: " + e.getMessage());
+        }
 
         // 3. Afegeix una reserva pel client amb DNI "789101A" de l'allotjament amb identificador "300S"
         // amb la data d'entrada 25 de Febrer del 2025 i data de sortida 28 de febrer del 2025.
@@ -235,9 +240,14 @@ public class GestorCamping {
 
         // Intentar afegir la reserva amb la informació indicada i si no és possible mostrar el missatge d'error.
         // Per completar
-        camping.afegirReserva("100P", "12345678X",LocalDate.of(2025, 2, 20), LocalDate.of(2025, 2, 28));
+        try {
+            camping.afegirReserva(id_, dni_, entrada, sortida);
+        } catch (ExcepcioReserva e) {
+            System.err.println("Error en la reserva 3: " + e.getMessage());
+        }
         
     }
+
 
 
 }
