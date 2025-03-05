@@ -29,6 +29,9 @@ public class Parcela extends Allotjament {
         this.connexioElectrica = connexioElectrica;
     }
 
+    public boolean esOperatiu() {
+        return connexioElectrica;
+    }
     // Método toString para imprimir el objeto en formato legible
     @Override
     public String toString() {

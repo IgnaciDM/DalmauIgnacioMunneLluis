@@ -78,6 +78,10 @@ public class Glamping extends Allotjament {
         this.casamascota = casamascota;
     }
 
+    public boolean esOperatiu() {
+        return casamascota;
+    }
+
     // Método toString para imprimir el objeto en formato legible
     @Override
     public String toString() {
