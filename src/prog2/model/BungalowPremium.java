@@ -119,6 +119,12 @@ public class BungalowPremium extends Allotjament {
         this.codiWifi = codiWifi;
     }
 
+    public boolean esOperatiu() {
+        if (aireFred && codiWifi.length() >= 8 && codiWifi.length() <= 16) {
+            return true;
+        }
+        return false;
+    }
     // Método toString para imprimir el objeto en formato legible
     @Override
     public String toString() {

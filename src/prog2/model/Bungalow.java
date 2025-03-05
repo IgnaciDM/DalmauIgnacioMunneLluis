@@ -101,6 +101,10 @@ public class Bungalow extends Allotjament {
         this.aireFred = aireFred;
     }
 
+    public boolean esOperatiu() {
+        return aireFred;
+    }
+
     // Método toString para imprimir el objeto en formato legible
     @Override
     public String toString() {

@@ -70,6 +70,9 @@ public class MobilHome extends Allotjament{
         this.terrassaBarbacoa = terrassaBarbacoa;
     }
 
+    public boolean esOperatiu() {
+        return terrassaBarbacoa;
+    }
     // Método toString para imprimir el objeto en formato legible
     @Override
     public String toString() {
