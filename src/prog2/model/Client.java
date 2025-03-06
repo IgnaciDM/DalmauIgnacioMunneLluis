@@ -1,39 +1,56 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioReserva;
-/*
-Classe Client
-La classe Client tindrà dos atributs de tipus String, el nom i el DNI i el seu constructor ha
-de rebre els paràmetres en el mateix ordre que els rep el mètode afegirClient de la classe
-Camping.(Primer client despres dni)
-El mètode setter del DNI ha de comprovar que el DNI té 9 caràctersi llançar una excepció
-de tipus ExcepcioReserva si no es compleix. És important que el constructor cridi a
-aquest mètode setter per assignar el valor a l’atribut DNI.
-A part, haurà d’implementar el mètode toString per donar el format desitjat a les
-impressions per pantalla amb la informació de la classe.
+
+/**
+ * Classe Client
+ * Representa un client amb nom i DNI.
+ * Comprova que el DNI tingui exactament 9 caràcters.
  */
+public class Client {
+    private String nom; // Nom del client
+    private String dni; // DNI del client
 
-public class Client {//CLIENT FET
-    private String nom;//HOLA
-    private String dni;
-
+    /**
+     * Constructor de la classe Client.
+     * @param nom Nom del client
+     * @param dni DNI del client (ha de tenir 9 caràcters)
+     * @throws ExcepcioReserva Si el DNI no té 9 caràcters
+     */
     public Client(String nom, String dni) throws ExcepcioReserva {
         this.nom = nom;
-        setDni(dni); // Validar el DNI
+        setDni(dni); // Validar i assignar el DNI
     }
 
+    /**
+     * Retorna el nom del client.
+     * @return Nom del client
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * Modifica el nom del client.
+     * @param nom Nou nom del client
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     * Retorna el DNI del client.
+     * @return DNI del client
+     */
     public String getDni() {
         return dni;
-    }//
+    }
 
+    /**
+     * Modifica el DNI del client, verificant que tingui 9 caràcters.
+     * @param dni Nou DNI del client
+     * @throws ExcepcioReserva Si el DNI no té exactament 9 caràcters
+     */
     public void setDni(String dni) throws ExcepcioReserva {
         if (dni == null || dni.length() != 9) {
             throw new ExcepcioReserva("El DNI ha de tenir 9 caràcters.");
@@ -41,6 +58,10 @@ public class Client {//CLIENT FET
         this.dni = dni;
     }
 
+    /**
+     * Retorna una representació en format String de l'objecte Client.
+     * @return Cadena de text amb la informació del client
+     */
     @Override
     public String toString() {
         return "Client{" +
