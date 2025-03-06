@@ -46,7 +46,7 @@ public class Camping implements InCamping {
 
     @Override
     public ArrayList<Allotjament> getLlistaAllotjaments() {
-        return null;  // No implementat: retornaria la llista d'allotjaments
+        return llistaAllotjaments;  //Retorna la llista d'allotjaments
     }
 
     public ArrayList<Client> getLlistaClients() {
