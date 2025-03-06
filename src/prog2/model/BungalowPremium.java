@@ -1,7 +1,9 @@
 package prog2.model;
 
+// Classe que representa un Bungalow Premium, que és un tipus d'allotjament
 public class BungalowPremium extends Allotjament {
-    // Atributos de la clase Bungalow
+
+    // Atributs propis del Bungalow Premium
     private String nom;
     private String idAllotjament;
     private String mida;
@@ -14,9 +16,10 @@ public class BungalowPremium extends Allotjament {
     private boolean serveisExtra;
     private String codiWifi;
 
-    // Constructor para inicializar los atributos
+    // Constructor per inicialitzar els atributs del Bungalow Premium
     public BungalowPremium(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
-        super(nom,idAllotjament, 7,4);
+        // Crida al constructor de la classe pare amb valors fixos per defecte
+        super(nom, idAllotjament, 7, 4);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;
@@ -30,7 +33,7 @@ public class BungalowPremium extends Allotjament {
         this.codiWifi = codiWifi;
     }
 
-    // Getters y setters
+    // Mètodes getters i setters per accedir i modificar els atributs
     public String getNom() {
         return nom;
     }
@@ -119,13 +122,13 @@ public class BungalowPremium extends Allotjament {
         this.codiWifi = codiWifi;
     }
 
+    // Mètode per determinar si el bungalow és operatiu
     public boolean esOperatiu() {
-        if (aireFred && codiWifi.length() >= 8 && codiWifi.length() <= 16) {
-            return true;
-        }
-        return false;
+        // El bungalow es considera operatiu si té aire condicionat i un codi wifi vàlid (entre 8 i 16 caràcters)
+        return aireFred && codiWifi.length() >= 8 && codiWifi.length() <= 16;
     }
-    // Método toString para imprimir el objeto en formato legible
+
+    // Mètode toString per representar l'objecte en format text
     @Override
     public String toString() {
         return "Bungalow [nom=" + nom + ", idAllotjament=" + idAllotjament + ", mida=" + mida + ", habitacions="

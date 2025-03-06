@@ -5,11 +5,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Camping implements InCamping {
-    private String nom;
-    private ArrayList<Allotjament> llistaAllotjaments;
-    private ArrayList<Client> llistaClients;
-    private ArrayList<Reserva> llistaReserves = new ArrayList<>();
+    private String nom;  // Nom del camping
+    private ArrayList<Allotjament> llistaAllotjaments;  // Llista d'allotjaments disponibles
+    private ArrayList<Client> llistaClients;  // Llista de clients registrats
+    private ArrayList<Reserva> llistaReserves = new ArrayList<>();  // Llista de reserves
 
+    // Constructor que inicialitza el camping amb el seu nom
     public Camping(String nom) {
         this.nom = nom;
         this.llistaAllotjaments = new ArrayList<Allotjament>();
@@ -17,104 +18,90 @@ public class Camping implements InCamping {
         this.llistaReserves = new ArrayList<Reserva>();
     }
 
+    // Retorna la temporada en funció de la data proporcionada
     public static InAllotjament.Temp getTemporada(LocalDate data) {
         int mes = data.getMonthValue();
         int dia = data.getDayOfMonth();
 
-        // Temporada baixa: Gener - Març i Octubre - Desembre (excepte dates especials)
+        // Temporada baixa de gener a març i octubre a desembre
         if ((mes >= 1 && mes <= 3) || (mes >= 10 && mes <= 12)) {
-            // Temporada alta per Setmana Santa (exemple: 21 de març a 31 de març)
+            // Temporada alta per Setmana Santa
             if (mes == 3 && dia >= 21) {
                 return InAllotjament.Temp.ALTA;
             }
             return InAllotjament.Temp.BAIXA;
         }
-
-        // Temporada alta: Abril - Setembre
+        // Temporada alta de abril a setembre
         return InAllotjament.Temp.ALTA;
     }
 
-
     @Override
     public String getNom() {
-        System.out.println("Nom del camping: " + nom);
-        return nom;
+        return nom;  // Retorna el nom del camping
     }
 
     public ArrayList<Reserva> getLlistaReserves() {
-        return llistaReserves;
+        return llistaReserves;  // Retorna la llista de reserves
     }
 
     @Override
     public ArrayList<Allotjament> getLlistaAllotjaments() {
-        return null;
+        return null;  // No implementat: retornaria la llista d'allotjaments
     }
 
     public ArrayList<Client> getLlistaClients() {
-        return llistaClients;
+        return llistaClients;  // Retorna la llista de clients
     }
 
     @Override
     public int getNumAllotjaments() {
-        System.out.println("Número d'allotjaments: " + llistaAllotjaments.size());
-        return llistaAllotjaments.size();
+        return llistaAllotjaments.size();  // Retorna el nombre d'allotjaments
     }
 
     @Override
     public int getNumReserves() {
-        return llistaReserves.size();
+        return llistaReserves.size();  // Retorna el nombre de reserves
     }
 
     @Override
     public int getNumClients() {
-        System.out.println("Número de clients: " + llistaClients.size());
-        return llistaClients.size();
+        return llistaClients.size();  // Retorna el nombre de clients
     }
 
     @Override
     public void afegirClient(String nom_, String dni_) throws ExcepcioReserva {
-        Client client = null;//IMPLEMENTA LA CLASE CLIENT
-        try {
-            client = new Client(nom_, dni_);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        llistaClients.add(client);
-        System.out.println("Client afegit: " + nom_ + " amb DNI " + dni_);
+        Client client = new Client(nom_, dni_);  // Crea un nou client
+        llistaClients.add(client);  // Afegeix el client a la llista
     }
 
+    // Afegeix una nova parcel·la a la llista d'allotjaments
     public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
         Parcela novaParcela = new Parcela(nom_, idAllotjament_, metres, connexioElectrica);
-        // Afegir-la a la llista d'allotjaments
         llistaAllotjaments.add(novaParcela);
-        System.out.println("Parcela afegida: " + nom_ + ", ID Allotj2ament: " + idAllotjament_);
     }
 
-
+    // Afegeix un nou bungalow a la llista d'allotjaments
     public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
         Bungalow nouBungalow = new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
         llistaAllotjaments.add(nouBungalow);
-        System.out.println("Bungalow afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
-
+    // Afegeix un nou bungalow premium a la llista d'allotjaments
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
         BungalowPremium nouBungalowPremium = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
         llistaAllotjaments.add(nouBungalowPremium);
-        System.out.println("Bungalow Premium afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
+    // Afegeix un nou glamping a la llista d'allotjaments
     public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
         Glamping nouGlamping = new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota);
         llistaAllotjaments.add(nouGlamping);
-        System.out.println("Glamping afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
-
+    // Afegeix un nou mobil home a la llista d'allotjaments
     public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
         MobilHome nouMobilHome = new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa);
         llistaAllotjaments.add(nouMobilHome);
-        System.out.println("Mobilehome afegit: " + nom_ + ", ID Allotjament: " + idAllotjament_);
     }
 
     @Override
@@ -141,24 +128,25 @@ public class Camping implements InCamping {
         if (client == null) {
             throw new ExcepcioReserva("El client amb DNI " + dni_ + " no existeix.");
         }
-        // Comprovar si les dates es solapen amb alguna reserva existent
+
+        // Comprova si ja hi ha una reserva per les mateixes dates
         for (Reserva r : llistaReserves) {
             if (r.getAllotjament().getId().equals(id_) && !(dataSortida.isBefore(r.getDataEntrada()) || dataEntrada.isAfter(r.getDataSortida()))) {
                 throw new ExcepcioReserva("L'allotjament ja està reservat en aquestes dates.");
             }
         }
-        // Afegir la reserva
+
+        // Afegir la nova reserva
         Reserva reserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
         llistaReserves.add(reserva);
-        System.out.println("Reserva afegida per al client " + dni_ + " a l'allotjament " + id_);
     }
-
 
     @Override
     public float calculMidaTotalParceles() {
         float midaTotal = 0;
+        // Calcula la mida total de totes les parcel·les
         for (Allotjament allotjament : llistaAllotjaments) {
-            if (allotjament instanceof Parcela) { // Comprovar si és una Parcel·la
+            if (allotjament instanceof Parcela) {
                 midaTotal += ((Parcela) allotjament).getMida();
             }
         }
@@ -168,10 +156,9 @@ public class Camping implements InCamping {
     @Override
     public int calculAllotjamentsOperatius() {
         int allotjamentsOp = 0;
-        System.out.println("Calculant allotjaments operatius.");
-
+        // Compta els allotjaments operatius
         for (Allotjament allotjament : llistaAllotjaments) {
-            if (allotjament.esOperatiu()) { // Suposant que hi ha un mètode esOperatiu()
+            if (allotjament.esOperatiu()) {
                 allotjamentsOp++;
             }
         }
@@ -180,10 +167,9 @@ public class Camping implements InCamping {
 
     @Override
     public Allotjament getAllotjamentEstadaMesCurta() {
-        System.out.println("Obtenint allotjament amb estada més curta.");
-
+        // Obté l'allotjament amb l'estada més curta
         if (llistaAllotjaments.isEmpty()) {
-            return null; // Retorna null si no hi ha allotjaments
+            return null;
         }
 
         Allotjament estadaMesCurta = llistaAllotjaments.get(0);

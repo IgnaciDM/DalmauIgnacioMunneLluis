@@ -5,14 +5,17 @@ import java.time.temporal.ChronoUnit;
 import prog2.vista.ExcepcioReserva;
 
 public class Reserva {
+    // Atributs de la classe Reserva.
     private Allotjament allotjament;
     private Client client;
     private LocalDate dataEntrada;
     private LocalDate dataSortida;
 
-    // Constructor amb validació de dates
+    // Constructor que inicialitza la reserva amb l'allotjament, el client i les dates d'entrada i sortida.
+    // Si la data de sortida és anterior a la data d'entrada, llança una excepció.
     public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        if (dataSortida.isBefore(dataEntrada)) {
+        if (dataSortida.isBefore(dataEntrada)) {  // Comprova si la data de sortida és anterior a la de entrada.
+            // Llança una excepció amb un missatge d'error si la data de sortida és incorrecta.
             throw new ExcepcioReserva("La data de sortida no pot ser anterior a la data d'entrada.");
         }
         this.allotjament = allotjament;
@@ -20,37 +23,40 @@ public class Reserva {
         this.dataEntrada = dataEntrada;
         this.dataSortida = dataSortida;
     }
-    // Getters
+
+    // Mètodes getters per obtenir els valors dels atributs de la classe Reserva.
+
     public LocalDate getDataEntrada() {
-        return dataEntrada;
+        return dataEntrada;  // Retorna la data d'entrada de la reserva.
     }
 
     public LocalDate getDataSortida() {
-        return dataSortida;
+        return dataSortida;  // Retorna la data de sortida de la reserva.
     }
 
     public Allotjament getAllotjament() {
-        return allotjament;
+        return allotjament;  // Retorna l'allotjament de la reserva.
     }
 
     public Client getClient() {
-        return client;
+        return client;  // Retorna el client que ha fet la reserva.
     }
 
-    // Setters
+    // Mètodes setters per modificar els valors dels atributs de la classe Reserva.
+
     public void setDataEntrada(LocalDate dataEntrada) {
-        this.dataEntrada = dataEntrada;
+        this.dataEntrada = dataEntrada;  // Modifica la data d'entrada de la reserva.
     }
 
     public void setDataSortida(LocalDate dataSortida) {
-        this.dataSortida = dataSortida;
+        this.dataSortida = dataSortida;  // Modifica la data de sortida de la reserva.
     }
 
     public void setAllotjament_(Allotjament nouAllotjament) {
-        this.allotjament = nouAllotjament;
+        this.allotjament = nouAllotjament;  // Modifica l'allotjament associat a la reserva.
     }
 
     public void setClient(Client nouClient) {
-        this.client = nouClient;
+        this.client = nouClient;  // Modifica el client associat a la reserva.
     }
 }
