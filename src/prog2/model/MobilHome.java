@@ -1,7 +1,7 @@
 package prog2.model;
 
 // La classe MobilHome és una subclasse de Allotjament que representa un tipus d'allotjament amb característiques particulars.
-public class MobilHome extends Allotjament {
+public class MobilHome extends Casa {
 
     // Atributs de la classe MobilHome, que defineixen les característiques específiques d'un MobilHome.
     private String nom;
@@ -14,7 +14,7 @@ public class MobilHome extends Allotjament {
     // Constructor que inicialitza els atributs de la classe MobilHome.
     // Es crida el constructor de la classe pare Allotjament per establir alguns valors per defecte (nom, idAllotjament, 5, 3).
     public MobilHome(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
-        super(nom, idAllotjament, 5, 3);  // Crida al constructor de la classe pare (Allotjament).
+        super(nom, idAllotjament, mida, habitacions, placesPersones);  // Crida al constructor de la classe pare (Allotjament).
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;

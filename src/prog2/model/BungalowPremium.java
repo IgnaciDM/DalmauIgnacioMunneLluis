@@ -1,7 +1,7 @@
 package prog2.model;
 
 // Classe que representa un Bungalow Premium, que és un tipus d'allotjament
-public class BungalowPremium extends Allotjament {
+public class BungalowPremium extends Bungalow {
 
     // Atributs propis del Bungalow Premium
     private String nom;
@@ -19,7 +19,7 @@ public class BungalowPremium extends Allotjament {
     // Constructor per inicialitzar els atributs del Bungalow Premium
     public BungalowPremium(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
         // Crida al constructor de la classe pare amb valors fixos per defecte
-        super(nom, idAllotjament, 7, 4);
+        super(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;

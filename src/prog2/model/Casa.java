@@ -1,24 +1,21 @@
 package prog2.model;
 
-public class Glamping extends Casa {
+public class Casa extends Allotjament {
+    // Atributos de la clase Casa
     private String nom;
     private String idAllotjament;
     private String mida;
     private int habitacions;
     private int placesPersones;
-    private String material;
-    private boolean casamascota;
 
     // Constructor para inicializar los atributos
-    public Glamping(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, String material, boolean casamascota) {
-        super(nom, idAllotjament, mida, habitacions, placesPersones);
+    public Casa(String nom, String idAllotjament, String mida, int habitacions, int placesPersones) {
+        super(nom, idAllotjament,7,4);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;
         this.habitacions = habitacions;
         this.placesPersones = placesPersones;
-        this.material = material;
-        this.casamascota = casamascota;
     }
 
     // Getters y setters
@@ -62,31 +59,10 @@ public class Glamping extends Casa {
         this.placesPersones = placesPersones;
     }
 
-    public String getmaterial() {
-        return material;
-    }
-
-    public void setmaterial(String material) {
-        this.material = material;
-    }
-
-    public boolean iscasamascota() {
-        return casamascota;
-    }
-
-    public void setCasamascota(boolean casamascota) {
-        this.casamascota = casamascota;
-    }
-
-    public boolean esOperatiu() {
-        return casamascota;
-    }
-
     // Método toString para imprimir el objeto en formato legible
     @Override
     public String toString() {
-        return "Glamping [nom=" + nom + ", idAllotjament=" + idAllotjament + ", mida=" + mida + ", habitacions="
-                + habitacions + ", placesPersones=" + placesPersones + ", material=" + material
-                + ", casmascota=" + casamascota + "]";
+        return "Bungalow [nom=" + nom + ", idAllotjament=" + idAllotjament + ", mida=" + mida + ", habitacions="
+                + habitacions + ", placesPersones=" + placesPersones + "]";
     }
 }
