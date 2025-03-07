@@ -9,7 +9,7 @@ public class Glamping extends Casa {
         super(nom, idAllotjament, mida, habitacions, placesPersones);
         this.material = material;
         this.casamascota = casamascota;
-    }
+    }//
 
     public String getmaterial() {
         return material;
