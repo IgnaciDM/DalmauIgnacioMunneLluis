@@ -1,6 +1,7 @@
 package prog2.vista;
 
 import prog2.model.Camping;
+import prog2.model.Glamping;
 import prog2.model.Parcela;
 
 import java.time.LocalDate;
@@ -20,6 +21,7 @@ public class GestorCamping {
         omplirDadesModel(campingMar);
 
         ferReserves(campingMar);
+
 
 
         // Calcular la mida total de les parcel·les (en M^2) del Càmping i mostrar un missatge de la següent manera:
