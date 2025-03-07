@@ -2,7 +2,7 @@ package prog2.model;
 
 import java.time.LocalDate;
 
-public class Bungalow extends Allotjament {
+public class Bungalow extends Casa {
     // Atributos de la clase Bungalow
     private String nom;
     private String idAllotjament;
@@ -16,7 +16,7 @@ public class Bungalow extends Allotjament {
 
     // Constructor para inicializar los atributos
     public Bungalow(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
-        super(nom, idAllotjament,7,4);
+        super(nom, idAllotjament, mida, habitacions, placesPersones);
         this.nom = nom;
         this.idAllotjament = idAllotjament;
         this.mida = mida;
