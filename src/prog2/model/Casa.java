@@ -2,8 +2,6 @@ package prog2.model;
 
 public class Casa extends Allotjament {
     // Atributos de la clase Casa
-    private String nom;
-    private String idAllotjament;
     private String mida;
     private int habitacions;
     private int placesPersones;
@@ -11,29 +9,12 @@ public class Casa extends Allotjament {
     // Constructor para inicializar los atributos
     public Casa(String nom, String idAllotjament, String mida, int habitacions, int placesPersones) {
         super(nom, idAllotjament,7,4);
-        this.nom = nom;
-        this.idAllotjament = idAllotjament;
         this.mida = mida;
         this.habitacions = habitacions;
         this.placesPersones = placesPersones;
     }
 
     // Getters y setters
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getIdAllotjament() {
-        return idAllotjament;
-    }
-
-    public void setIdAllotjament(String idAllotjament) {
-        this.idAllotjament = idAllotjament;
-    }
 
     public String getMida() {
         return mida;
@@ -62,7 +43,7 @@ public class Casa extends Allotjament {
     // Método toString para imprimir el objeto en formato legible
     @Override
     public String toString() {
-        return "Bungalow [nom=" + nom + ", idAllotjament=" + idAllotjament + ", mida=" + mida + ", habitacions="
+        return super.toString()  + ", mida=" + mida + ", habitacions="
                 + habitacions + ", placesPersones=" + placesPersones + "]";
     }
 }
