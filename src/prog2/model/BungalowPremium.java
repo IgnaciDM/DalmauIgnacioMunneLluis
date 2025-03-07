@@ -4,15 +4,6 @@ package prog2.model;
 public class BungalowPremium extends Bungalow {
 
     // Atributs propis del Bungalow Premium
-    private String nom;
-    private String idAllotjament;
-    private String mida;
-    private int habitacions;
-    private int placesPersones;
-    private int placesParquing;
-    private boolean terrassa;
-    private boolean tv;
-    private boolean aireFred;
     private boolean serveisExtra;
     private String codiWifi;
 
@@ -20,86 +11,9 @@ public class BungalowPremium extends Bungalow {
     public BungalowPremium(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
         // Crida al constructor de la classe pare amb valors fixos per defecte
         super(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
-        this.nom = nom;
-        this.idAllotjament = idAllotjament;
-        this.mida = mida;
-        this.habitacions = habitacions;
-        this.placesPersones = placesPersones;
-        this.placesParquing = placesParquing;
-        this.terrassa = terrassa;
-        this.tv = tv;
-        this.aireFred = aireFred;
         this.serveisExtra = serveisExtra;
         this.codiWifi = codiWifi;
     }
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getIdAllotjament() {
-        return idAllotjament;
-    }
-
-    public void setIdAllotjament(String idAllotjament) {
-        this.idAllotjament = idAllotjament;
-    }
-
-    public String getMida() {
-        return mida;
-    }
-
-    public void setMida(String mida) {
-        this.mida = mida;
-    }
-
-    public int getHabitacions() {
-        return habitacions;
-    }
-
-    public void setHabitacions(int habitacions) {
-        this.habitacions = habitacions;
-    }
-
-    public int getPlacesPersones() {
-        return placesPersones;
-    }
-
-    public void setPlacesPersones(int placesPersones) {
-        this.placesPersones = placesPersones;
-    }
-
-    public int getPlacesParquing() {
-        return placesParquing;
-    }
-
-    public void setPlacesParquing(int placesParquing) {
-        this.placesParquing = placesParquing;
-    }
-
-    public boolean isTerrassa() {
-        return terrassa;
-    }
-
-    public void setTerrassa(boolean terrassa) {
-        this.terrassa = terrassa;
-    }
-
-    public boolean isTv() {
-        return tv;
-    }
-
-    public void setTv(boolean tv) {
-        this.tv = tv;
-    }
-
-    public boolean isAireFred() {
-        return aireFred;
-    }
-
-    public void setAireFred(boolean aireFred) {
-        this.aireFred = aireFred;
-    }
-
     public boolean isServeisExtra() {
         return serveisExtra;
     }
@@ -115,15 +29,13 @@ public class BungalowPremium extends Bungalow {
     // Mètode per determinar si el bungalow és operatiu
     public boolean esOperatiu() {
         // El bungalow es considera operatiu si té aire condicionat i un codi wifi vàlid (entre 8 i 16 caràcters)
-        return aireFred && codiWifi.length() >= 8 && codiWifi.length() <= 16;
+        return super.esOperatiu() && codiWifi.length() >= 8 && codiWifi.length() <= 16;
     }
 
     // Mètode toString per representar l'objecte en format text
     @Override
     public String toString() {
-        return "Bungalow [nom=" + nom + ", idAllotjament=" + idAllotjament + ", mida=" + mida + ", habitacions="
-                + habitacions + ", placesPersones=" + placesPersones + ", placesParquing=" + placesParquing
-                + ", terrassa=" + terrassa + ", tv=" + tv + ", aireFred=" + aireFred + "]";
+        return super.toString()  + serveisExtra + ", codiWifi=" + codiWifi + "]";
     }
 
     public String getCodiWifi() {
