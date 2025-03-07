@@ -32,12 +32,6 @@ public class BungalowPremium extends Bungalow {
         this.serveisExtra = serveisExtra;
         this.codiWifi = codiWifi;
     }
-
-    // Mètodes getters i setters per accedir i modificar els atributs
-    public String getNom() {
-        return nom;
-    }
-
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -112,10 +106,6 @@ public class BungalowPremium extends Bungalow {
 
     public void setServeisExtra(boolean serveisExtra) {
         this.serveisExtra = serveisExtra;
-    }
-
-    public String getCodiWifi() {
-        return codiWifi;
     }
 
     public void setCodiWifi(String codiWifi) {
