@@ -125,4 +125,8 @@ public class BungalowPremium extends Bungalow {
                 + habitacions + ", placesPersones=" + placesPersones + ", placesParquing=" + placesParquing
                 + ", terrassa=" + terrassa + ", tv=" + tv + ", aireFred=" + aireFred + "]";
     }
+
+    public String getCodiWifi() {
+        return codiWifi;
+    }
 }
