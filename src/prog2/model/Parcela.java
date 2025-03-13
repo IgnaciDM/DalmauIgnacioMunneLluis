@@ -9,8 +9,8 @@ public class Parcela extends Allotjament {
 
     // Constructor per inicialitzar els atributs de la classe Parcela.
     // Crida al constructor de la classe pare (Allotjament) per establir alguns valors predeterminats (4 i 2).
-    public Parcela(String nom, String idAllotjament, float metres, boolean connexioElectrica) {
-        super(nom, idAllotjament, 4, 2);
+    public Parcela(String nom, String idAllotjament, float metres, boolean connexioElectrica, boolean estat, String iluminacio) {
+        super(nom, idAllotjament, 4, 2, estat, iluminacio);
         this.metres = metres;
         this.connexioElectrica = connexioElectrica;
     }

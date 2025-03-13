@@ -7,8 +7,8 @@ public class Casa extends Allotjament {
     private int placesPersones;
 
     // Constructor para inicializar los atributos
-    public Casa(String nom, String idAllotjament, String mida, int habitacions, int placesPersones) {
-        super(nom, idAllotjament,7,4);
+    public Casa(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, boolean estat, String iluminacio) {
+        super(nom, idAllotjament,7,4, estat, iluminacio);
         this.mida = mida;
         this.habitacions = habitacions;
         this.placesPersones = placesPersones;
