@@ -1,2 +1,0 @@
-# DalmauIgnacioMunneLluis
-TRABAJA LLUIS
