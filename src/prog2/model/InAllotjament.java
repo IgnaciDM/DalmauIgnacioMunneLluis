@@ -3,7 +3,6 @@ package prog2.model;
 
 /**
  * Interfície que defineix les operacions bàsiques per als allotjaments.
- * @author lauraigual
  */
 public interface InAllotjament {
 
@@ -46,17 +45,21 @@ public interface InAllotjament {
     void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_);
 
     /**
-     * Comprova si l'allotjament funciona correctament.
-     * La implementació dependrà dels criteris específics de cada tipus d'allotjament.
-     * @return true si l'allotjament funciona correctament, false altrament.
-     */
-    boolean correcteFuncionament();
-
-    /**
      * Enumeració que representa les diferents temporades possibles.
      */
-     enum Temp {
+    public enum Temp {
         ALTA,
         BAIXA
     }
+
+    /**
+     * Modifica l'estat de l'allotjament a No Operatiu i la il·luminació depenent de la incidència rebuda com a paràmetre
+     * @param in Objecte de tipus Incidencia.
+     */
+    public void tancarAllotjament(Incidencia in);
+
+    /**
+     * Modifica l'estat de l'allotjament a Operatiu i la il·luminació al 100%
+     */
+    public void obrirAllotjament();
 }
