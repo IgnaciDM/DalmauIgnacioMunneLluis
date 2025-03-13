@@ -8,7 +8,7 @@ public abstract class Acces implements InAcces {
     private boolean estat;
     private ArrayList<Allotjament> acces_a_Allotjaments;
 
-    public Acces(String nom, String Tipus, String caracteristiques, boolean accesibilitat, boolean estat, ArrayList<Allotjament> acces_a_Allotjaments) {
+    public Acces(String nom, boolean accesibilitat, boolean estat, ArrayList<Allotjament> acces_a_Allotjaments) {
         this.nom = nom;
         this.accesibilitat = accesibilitat;
         this.estat = estat;
