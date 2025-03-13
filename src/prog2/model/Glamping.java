@@ -5,8 +5,8 @@ public class Glamping extends Casa {
     private boolean casamascota;
 
     // Constructor para inicializar los atributos
-    public Glamping(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, String material, boolean casamascota) {
-        super(nom, idAllotjament, mida, habitacions, placesPersones);
+    public Glamping(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, String material, boolean casamascota, boolean estat, String iluminacio) {
+        super(nom, idAllotjament, mida, habitacions, placesPersones, estat, iluminacio);
         this.material = material;
         this.casamascota = casamascota;
     }

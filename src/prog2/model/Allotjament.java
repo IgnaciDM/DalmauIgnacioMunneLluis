@@ -7,12 +7,16 @@ public abstract class Allotjament implements InAllotjament {
     private String id;
     private long estadaMinimaAlta;
     private long estadaMinimaBaixa;
+    private boolean estat;
+    private String iluminacio;
 
     // Constructor que inicialitza els atributs i les estades mínimes per temporada
-    public Allotjament(String nom, String id, long estadaMinimaAlta, long estadaMinimaBaixa) {
+    public Allotjament(String nom, String id, long estadaMinimaAlta, long estadaMinimaBaixa, boolean estat, String iluminacio) {
         this.nom = nom;
         this.id = id;
         setEstadaMinima(estadaMinimaAlta, estadaMinimaBaixa);
+        this.estat = estat;
+        this.iluminacio = iluminacio;
     }
 
     @Override
@@ -48,6 +52,20 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaBaixa = estadaMinimaBAIXA_;
     }
 
+    public boolean getestat() {return estat;  // Retorna l'estat de l'allotjament
+    }
+
+    public void setestat(boolean estat) {
+        this.estat = estat;
+    }
+
+    public String getIluminacio() {
+        return iluminacio;  // Retorna l'identificador de l'allotjament
+    }
+
+    public void setIluminacio(String iluminacio) {
+        this.iluminacio = iluminacio;
+    }
     // Retorna els dies mínims d'estada segons la temporada actual
     public long getDiesEstada() {
         LocalDate avui = LocalDate.now();  // Data actual
@@ -56,7 +74,6 @@ public abstract class Allotjament implements InAllotjament {
     }
 
     // Sempre retorna true, indicant que l'allotjament funciona correctament
-    @Override
     public boolean correcteFuncionament() {
         return true;
     }
