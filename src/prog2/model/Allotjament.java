@@ -66,6 +66,7 @@ public abstract class Allotjament implements InAllotjament {
     public void setIluminacio(String iluminacio) {
         this.iluminacio = iluminacio;
     }
+
     // Retorna els dies mínims d'estada segons la temporada actual
     public long getDiesEstada() {
         LocalDate avui = LocalDate.now();  // Data actual
