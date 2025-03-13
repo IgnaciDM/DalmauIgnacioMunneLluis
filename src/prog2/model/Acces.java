@@ -62,7 +62,7 @@ public class Acces {
         return acces_a_Allotjaments;
     }
 
-    public void setAcces_a_Allotjaments(ArrayList<Allotjament> acces_a_Allotjaments) {
+    public void setacces_a_Allotjaments(ArrayList<Allotjament> acces_a_Allotjaments) {
         this.acces_a_Allotjaments = acces_a_Allotjaments;
     }
 
