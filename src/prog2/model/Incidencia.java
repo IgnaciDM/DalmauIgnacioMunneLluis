@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class Incidencia {
     private String idIncidencia;
-    private String idAllotjament;
+    private String Allotjament;
     private String Tipus;
     private LocalDate data;
 
-    public Incidencia(String idIncidencia, String idAllotjament, String Tipus, LocalDate data) {
+    public Incidencia(String idIncidencia, String Allotjament, String Tipus, LocalDate data) {
         this.idIncidencia = idIncidencia;
-        this.idAllotjament = idAllotjament;
+        this.Allotjament = Allotjament;
         this.Tipus = Tipus;
         this.data = data;
     }
@@ -24,12 +24,12 @@ public class Incidencia {
         this.idIncidencia = idIncidencia;
     }
 
-    public String getidAllotjament() {
-        return idAllotjament;
+    public String getAllotjament() {
+        return Allotjament;
     }
 
-    public void setidAllotjament(String idAllotjament) {
-        this.idAllotjament = idAllotjament;
+    public void setAllotjament(String idAllotjament) {
+        this.Allotjament = idAllotjament;
     }
 
     public String getTipus() {
@@ -46,5 +46,15 @@ public class Incidencia {
 
     public void setdata(LocalDate data) {
         this.data = data;
+    }
+
+    public static enum TipusIncidencia {Reparacio, Neteja, Tancament}
+
+    public String getIluminacioAllotjament() {
+
+    }
+
+    public String toString() {
+        return "Id=" + idIncidencia + ", Allotjament=" + Allotjament + ", Tipus= " + Tipus + ", data= " + data + ", tipus de Incidencia= " + TipusIncidencia + ".";
     }
 }

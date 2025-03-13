@@ -2,18 +2,14 @@ package prog2.model;
 
 import java.util.ArrayList;
 
-public class Acces {
+public abstract class Acces implements InAcces {
     private String nom;
-    private String Tipus;
-    private String caracteristiques;
     private boolean accesibilitat;
     private boolean estat;
     private ArrayList<Allotjament> acces_a_Allotjaments;
 
     public Acces(String nom, String Tipus, String caracteristiques, boolean accesibilitat, boolean estat, ArrayList<Allotjament> acces_a_Allotjaments) {
         this.nom = nom;
-        this.Tipus = Tipus;
-        this.caracteristiques = caracteristiques;
         this.accesibilitat = accesibilitat;
         this.estat = estat;
         this.acces_a_Allotjaments = acces_a_Allotjaments;
@@ -25,22 +21,6 @@ public class Acces {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getTipus() {
-        return Tipus;
-    }
-
-    public void setTipus(String Tipus) {
-        this.Tipus = Tipus;
-    }
-
-    public String getcaracteristiques() {
-        return caracteristiques;
-    }
-
-    public void setcaracteristiques(String caracteristiques) {
-        this.caracteristiques = caracteristiques;
     }
 
     public boolean getaccesibilitat() {
@@ -69,6 +49,9 @@ public class Acces {
     public void afegirAllotjament(Allotjament allotjament) {
     }
 
+    public String toString() {
+        return "Nom=" + nom + ", accesibilitat=" + accesibilitat + ", estat= " + estat + ", acces als Allotjaments= " + acces_a_Allotjaments + ".";
+    }
     /**
      * Canvia l'estat de l'accés a tancat
      */
