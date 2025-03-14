@@ -1,5 +1,6 @@
 package prog2.model;
 //CAMPUS DE MERDAAAAAAAAAAA
+import prog2.vista.ExcepcioCamping;
 import prog2.vista.ExcepcioReserva;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,16 +36,60 @@ public class Camping implements InCamping {
         return InAllotjament.Temp.ALTA;
     }
 
-    @Override
-    public String getNom() {
+
+    public String getNomCamping() {
         return nom;  // Retorna el nom del camping
+    }
+
+    @Override
+    public String llistarAllotjaments(String estat) throws ExcepcioCamping {
+        return "";
+    }
+
+    @Override
+    public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
+        return "";
+    }
+
+    @Override
+    public String llistarIncidencies() throws ExcepcioCamping {
+        return "";
+    }
+
+    @Override
+    public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
+
+    }
+
+    @Override
+    public void eliminarIncidencia(int num) throws ExcepcioCamping {
+
+    }
+
+    @Override
+    public int calculaAccessosAccessibles() {
+        return 0;
+    }
+
+    @Override
+    public float calculaMetresQuadratsAsfalt() {
+        return 0;
+    }
+
+    @Override
+    public void save(String camiDesti) throws ExcepcioCamping {
+
+    }
+
+    @Override
+    public void inicialitzaDadesCamping() {
+
     }
 
     public ArrayList<Reserva> getLlistaReserves() {
         return llistaReserves;  // Retorna la llista de reserves
     }
 
-    @Override
     public ArrayList<Allotjament> getLlistaAllotjaments() {
         return llistaAllotjaments;  //Retorna la llista d'allotjaments
     }
@@ -53,22 +98,18 @@ public class Camping implements InCamping {
         return llistaClients;  // Retorna la llista de clients
     }
 
-    @Override
     public int getNumAllotjaments() {
         return llistaAllotjaments.size();  // Retorna el nombre d'allotjaments
     }
 
-    @Override
     public int getNumReserves() {
         return llistaReserves.size();  // Retorna el nombre de reserves
     }
 
-    @Override
     public int getNumClients() {
         return llistaClients.size();  // Retorna el nombre de clients
     }
 
-    @Override
     public void afegirClient(String nom_, String dni_) throws ExcepcioReserva {
         Client client = new Client(nom_, dni_);  // Crea un nou client
         llistaClients.add(client);  // Afegeix el client a la llista
@@ -104,7 +145,6 @@ public class Camping implements InCamping {
         llistaAllotjaments.add(nouMobilHome);
     }
 
-    @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         Allotjament allotjament = null;
         for (Allotjament a : llistaAllotjaments) {
@@ -141,7 +181,7 @@ public class Camping implements InCamping {
         llistaReserves.add(reserva);
     }
 
-    @Override
+
     public float calculMidaTotalParceles() {
         float midaTotal = 0;
         // Calcula la mida total de totes les parcel·les
@@ -153,7 +193,7 @@ public class Camping implements InCamping {
         return midaTotal;
     }
 
-    @Override
+
     public int calculAllotjamentsOperatius() {
         int allotjamentsOp = 0;
         // Compta els allotjaments operatius
@@ -165,7 +205,6 @@ public class Camping implements InCamping {
         return allotjamentsOp;
     }
 
-    @Override
     public Allotjament getAllotjamentEstadaMesCurta() {
         // Obté l'allotjament amb l'estada més curta
         if (llistaAllotjaments.isEmpty()) {

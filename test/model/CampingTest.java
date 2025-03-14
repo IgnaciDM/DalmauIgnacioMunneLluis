@@ -139,7 +139,7 @@ public class CampingTest {
     @Test
     public void testGetNom() {
         // Comprovem el nom del camping
-        assertEquals("Camping La Playa", camping.getNom());
+        assertEquals("Camping La Playa", camping.getNomCamping());
     }
 
     /**
