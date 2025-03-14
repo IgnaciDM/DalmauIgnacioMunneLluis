@@ -52,5 +52,15 @@ public class Parcela extends Allotjament {
     public boolean correcteFuncionament() {
         return connexioElectrica;  // Retorna si la parcel·la té connexió elèctrica per considerar-se operativa.
     }
+
+    @Override
+    public void tancarAllotjament(Incidencia in) {
+
+    }
+
+    @Override
+    public void obrirAllotjament() {
+
+    }
 }
 

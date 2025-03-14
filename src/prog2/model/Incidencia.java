@@ -51,7 +51,7 @@ public class Incidencia {
     public static enum TipusIncidencia {Reparacio, Neteja, Tancament}
 
     public String getIluminacioAllotjament() {
-
+        return"";//MODIFICAR
     }
 
     public String toString() {
