@@ -18,6 +18,8 @@ public class Bungalow extends Casa {
         this.aireFred = aireFred;
     }
 
+
+
     // Getters y setters
 
 

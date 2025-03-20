@@ -14,6 +14,7 @@ public class MobilHome extends Casa {
         this.terrassaBarbacoa = terrassaBarbacoa;
     }
 
+
     // Mètodes getters i setters per accedir i modificar els atributs de la classe MobilHome.
 
 

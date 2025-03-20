@@ -26,6 +26,7 @@ public class LlistaAccessos {
      *
      */
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
+        return null;
     }
 
     /**

@@ -1,8 +1,7 @@
+
 package prog2.vista;
 
 import prog2.model.Camping;
-import prog2.model.Glamping;
-import prog2.model.Parcela;
 
 import java.time.LocalDate;
 
@@ -54,13 +53,15 @@ public class GestorCamping {
         String idAllotjament = "100P";
         float metres = 64.0f;
         boolean connexioElectrica = true;
+        Boolean estat=true;//MODIFICABLE
+        String iluminacio="100";//MODIFICABLE
 
-        camping.afegirParcela(nom, idAllotjament, metres, connexioElectrica);
+        camping.afegirParcela(nom, idAllotjament, metres, connexioElectrica, estat,iluminacio);
 
         nom = "Parcel·la Sud";
         idAllotjament = "101P";
         
-        camping.afegirParcela(nom, idAllotjament, metres, connexioElectrica);
+        camping.afegirParcela(nom, idAllotjament, metres, connexioElectrica, estat, iluminacio);
 
 
         // Afegir bungalows:

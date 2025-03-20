@@ -1,5 +1,4 @@
 package prog2.model;
-//CAMPUS DE MERDAAAAAAAAAAA
 import prog2.vista.ExcepcioCamping;
 import prog2.vista.ExcepcioReserva;
 import java.time.LocalDate;
@@ -116,32 +115,32 @@ public class Camping implements InCamping {
     }
 
     // Afegeix una nova parcel·la a la llista d'allotjaments
-    public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
-        Parcela novaParcela = new Parcela(nom_, idAllotjament_, metres, connexioElectrica);
+    public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica, boolean estat,String iluminacio) {
+        Parcela novaParcela = new Parcela(nom_, idAllotjament_, metres, connexioElectrica, estat, iluminacio);
         llistaAllotjaments.add(novaParcela);
     }
 
     // Afegeix un nou bungalow a la llista d'allotjaments
-    public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
-        Bungalow nouBungalow = new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
+    public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean estat, String iluminacio) {
+        Bungalow nouBungalow = new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred,estat,iluminacio);
         llistaAllotjaments.add(nouBungalow);
     }
 
     // Afegeix un nou bungalow premium a la llista d'allotjaments
-    public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
-        BungalowPremium nouBungalowPremium = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+    public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi, boolean estat, String iluminacio) {
+        BungalowPremium nouBungalowPremium = new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi,estat,iluminacio);
         llistaAllotjaments.add(nouBungalowPremium);
     }
 
     // Afegeix un nou glamping a la llista d'allotjaments
-    public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
-        Glamping nouGlamping = new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota);
+    public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casamascota, boolean estat, String iluminacio) {
+        Glamping nouGlamping = new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casamascota,estat,iluminacio);
         llistaAllotjaments.add(nouGlamping);
     }
 
     // Afegeix un nou mobil home a la llista d'allotjaments
-    public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
-        MobilHome nouMobilHome = new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa);
+    public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa,boolean estat, String iluminacio) {
+        MobilHome nouMobilHome = new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa,estat, iluminacio);
         llistaAllotjaments.add(nouMobilHome);
     }
 

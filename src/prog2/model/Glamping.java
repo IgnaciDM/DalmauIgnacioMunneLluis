@@ -11,6 +11,7 @@ public class Glamping extends Casa {
         this.casamascota = casamascota;
     }
 
+
     public String getmaterial() {
         return material;
     }

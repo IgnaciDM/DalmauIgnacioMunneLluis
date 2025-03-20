@@ -14,6 +14,8 @@ public class BungalowPremium extends Bungalow {
         this.serveisExtra = serveisExtra;
         this.codiWifi = codiWifi;
     }
+
+
     public boolean isServeisExtra() {
         return serveisExtra;
     }

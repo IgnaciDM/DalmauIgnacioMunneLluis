@@ -46,4 +46,14 @@ public class Casa extends Allotjament {
         return super.toString()  + ", mida=" + mida + ", habitacions="
                 + habitacions + ", placesPersones=" + placesPersones + "]";
     }
+
+    @Override
+    public void tancarAllotjament(Incidencia in) {
+
+    }
+
+    @Override
+    public void obrirAllotjament() {
+
+    }
 }
