@@ -63,7 +63,7 @@ public class Camping implements InCamping {
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
         for(int i = 0; i < llistaAllotjaments.size(); i++){
             if (llistaAllotjaments.get(i).getId() == idAllotjament) {
-                llistaincidencias.afegirIncidencia(num,tipus,idAllotjament,data);
+                llistaincidencias.afegirIncidencia(num,tipus,llistaAllotjaments.getAllotjament(idAllotjament),data);
                 llistaAccessos.actualitzaEstatAccessos();
             }
         }
@@ -71,12 +71,8 @@ public class Camping implements InCamping {
 
     @Override
     public void eliminarIncidencia(int num) throws ExcepcioCamping {
-        for(int i = 0; i < llistaAllotjaments.size(); i++){
-            if (llistaAllotjaments.get(i).getId() == idAllotjament) {
-                llistaincidencias.eliminarIncidencia(llistaAllotjaments.get(i));
-                llistaAccessos.actualitzaEstatAccessos();
-            }
-        }
+        llistaincidencias.eliminarIncidencia(llistaincidencias.getIncidencia(num));
+        llistaAccessos.actualitzaEstatAccessos();
     }
 
     @Override

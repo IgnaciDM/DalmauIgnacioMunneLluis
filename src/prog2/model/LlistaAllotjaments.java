@@ -32,8 +32,14 @@ public class LlistaAllotjaments {
      */
     public String llistarAllotjaments(String estat) throws ExcepcioCamping{
         String llista = "";
+        boolean estatB;
+        if (estat == "Operatiu") {
+            estatB = true;
+        } if (estat == "no Operatiu") {
+            estatB = false;
+        }
         for (int i = 0; i < llistaAllotjament.size(); i++) {
-            if (llistaAllotjament.get(i).getestat() == estat) {
+            if(llistaAllotjament.get(i).esOperatiu() == estatB || estat.equals("Tots")) {
                 llista += llistaAllotjament.get(i).toString();
             }
         }
@@ -73,13 +79,13 @@ public class LlistaAllotjaments {
 
     /**
      * Busca l'allotjament amb el nom rebut per paràmetre i el retorna. En cas que no existeixi llança una excepció.
-     * @param nom String amb el nom de l'allotjament
+     * @param id String amb el nom de l'allotjament
      * @return  Objecte de tipus Allotjament
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
-    public Allotjament getAllotjament(String nom) throws ExcepcioCamping{
+    public Allotjament getAllotjament(String id) throws ExcepcioCamping{
         for (int i = 0; i < llistaAllotjament.size(); i++) {
-            if (llistaAllotjament.get(i).getNom() == nom) {
+            if (llistaAllotjament.get(i).getNom() == id) {
                 return llistaAllotjament.get(i);
             }
         }
