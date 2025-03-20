@@ -3,6 +3,8 @@ package prog2.model;
 import prog2.vista.ExcepcioCamping;
 
 public class LlistaAllotjaments {
+
+
     /**
      * Afegeix un allotjament rebut per paràmetre a la llista d'allotjaments.
      * @param allotjament Objecte de tipus Allotjament
@@ -26,7 +28,7 @@ public class LlistaAllotjaments {
      * @return String
      * @throws prog2.vista.ExcepcioCamping Aquest mètode llança una excepció en cas que no hi hagi allotjaments en l'estat passat com a paràmetre.
      */
-    public String llistarAllotjaments(String estat) throws ExcepcioCamping{
+    public static String llistarAllotjaments(boolean estat) throws ExcepcioCamping{
         return null;//MODIFICAR
     }
 

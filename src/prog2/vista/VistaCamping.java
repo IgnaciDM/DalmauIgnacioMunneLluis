@@ -1,5 +1,7 @@
 package prog2.vista;
 
+import prog2.model.*;
+
 import java.util.Scanner;
 
 public class VistaCamping {
@@ -48,7 +50,7 @@ public class VistaCamping {
         this.nomCamping = nomCamping;
     }
 
-    public void gestioCamping() {
+    public void gestioCamping() throws ExcepcioCamping {
         Scanner sc = new Scanner(System.in);
 
         Menu<OpcionsMenu> menu = new Menu(nomCamping + "-MENU", OpcionsMenu.values());//L'enum <OpcionsMenu>
@@ -82,7 +84,7 @@ public class VistaCamping {
             }
         } while (op != OpcionsMenu.Sortir);
     }
-    private void gestioMenuSecundari(Scanner sc) {
+    private void gestioMenuSecundari(Scanner sc) throws ExcepcioCamping {
 
         // Creem l'objecte per al menú. Li passem com a primer parÃ metre el nom del menú
         Menu<VistaCamping.OpcionsSubmenu1> menu=new Menu<VistaCamping.OpcionsSubmenu1>("Menu Secundari", VistaCamping.OpcionsSubmenu1.values());
@@ -103,16 +105,22 @@ public class VistaCamping {
             // Fem les accions necessàries
             switch(opcio) {
                 case Allotjaments:
+                    LlistaAllotjaments.llistarAllotjaments(true && false);//MODIFICABLE
                     break;
                 case AllotjamentsOperatius:
+                    LlistaAllotjaments.llistarAllotjaments(true);
                     break;
                 case AllotjamentsNoOperatius:
+                    LlistaAllotjaments.llistarAllotjaments(false);
                     break;
                 case AccessosOberts:
+                    LlistaAccessos.llistarAccessos(true);
                     break;
                 case AccessosTancats:
+                    LlistaAccessos.llistarAccessos(false);
                     break;
                 case IncidenciesActuals:
+                    LlistaIncidencies.llistarIncidencies();
                     break;
                 case SortirLlistat:
                     System.out.println("Fins aviat!");

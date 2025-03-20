@@ -32,7 +32,7 @@ public class LlistaIncidencies {
      * @return String
      * @throws ExcepcioCamping
      */
-    public String llistarIncidencies() throws ExcepcioCamping{
+    public static String llistarIncidencies() throws ExcepcioCamping{
         return null;//MODIFICAR
     }
 
