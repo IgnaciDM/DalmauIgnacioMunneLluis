@@ -4,31 +4,31 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Incidencia {
-    private String idIncidencia;
-    private String Allotjament;
+    private int idIncidencia;
     private String Tipus;
-    private LocalDate data;
+    private Allotjament Allotjament;
+    private String data;
 
-    public Incidencia(String idIncidencia, String Allotjament, String Tipus, LocalDate data) {
+    public Incidencia(int idIncidencia, String Tipus, Allotjament Allotjament, String data) {
         this.idIncidencia = idIncidencia;
         this.Allotjament = Allotjament;
         this.Tipus = Tipus;
         this.data = data;
     }
 
-    public String getidIncidencia() {
+    public int getidIncidencia() {
         return idIncidencia;
     }
 
-    public void setidIncidencia(String idIncidencia) {
+    public void setidIncidencia(int idIncidencia) {
         this.idIncidencia = idIncidencia;
     }
 
-    public String getAllotjament() {
+    public Allotjament getAllotjament() {
         return Allotjament;
     }
 
-    public void setAllotjament(String idAllotjament) {
+    public void setAllotjament(Allotjament idAllotjament) {
         this.Allotjament = idAllotjament;
     }
 
@@ -40,11 +40,11 @@ public class Incidencia {
         this.Tipus = Tipus;
     }
 
-    public LocalDate getdata() {
+    public String getdata() {
         return data;
     }
 
-    public void setdata(LocalDate data) {
+    public void setdata(String data) {
         this.data = data;
     }
 

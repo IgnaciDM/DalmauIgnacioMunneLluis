@@ -25,7 +25,7 @@ public class LlistaAccessos {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode llança una excepció en cas que no hi hagi accessos en l'estat passat com a parametre.
      *
      */
-    public static String llistarAccessos(boolean estat) throws ExcepcioCamping {
+    public String llistarAccessos(boolean estat) throws ExcepcioCamping {
         return null;
     }
 

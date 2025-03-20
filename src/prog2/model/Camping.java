@@ -8,7 +8,9 @@ public class Camping implements InCamping {
     private String nom;  // Nom del camping
     private ArrayList<Allotjament> llistaAllotjaments;  // Llista d'allotjaments disponibles
     private ArrayList<Client> llistaClients;  // Llista de clients registrats
-    private ArrayList<Reserva> llistaReserves = new ArrayList<>();  // Llista de reserves
+    private ArrayList<Reserva> llistaReserves = new ArrayList<>();// Llista de reserves
+    private LlistaAccessos llistaAccessos;
+    private LlistaIncidencies llistaincidencias;
 
     // Constructor que inicialitza el camping amb el seu nom
     public Camping(String nom) {
@@ -16,6 +18,8 @@ public class Camping implements InCamping {
         this.llistaAllotjaments = new ArrayList<Allotjament>();
         this.llistaClients = new ArrayList<Client>();
         this.llistaReserves = new ArrayList<Reserva>();
+        this.llistaAccessos = new LlistaAccessos();
+        this.llistaincidencias = new LlistaIncidencies();
     }
 
     // Retorna la temporada en funció de la data proporcionada
@@ -57,12 +61,22 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
-
+        for(int i = 0; i < llistaAllotjaments.size(); i++){
+            if (llistaAllotjaments.get(i).getId() == idAllotjament) {
+                llistaincidencias.afegirIncidencia(num,tipus,idAllotjament,data);
+                llistaAccessos.actualitzaEstatAccessos();
+            }
+        }
     }
 
     @Override
     public void eliminarIncidencia(int num) throws ExcepcioCamping {
-
+        for(int i = 0; i < llistaAllotjaments.size(); i++){
+            if (llistaAllotjaments.get(i).getId() == idAllotjament) {
+                llistaincidencias.eliminarIncidencia(llistaAllotjaments.get(i));
+                llistaAccessos.actualitzaEstatAccessos();
+            }
+        }
     }
 
     @Override

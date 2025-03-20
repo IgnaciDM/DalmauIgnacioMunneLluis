@@ -70,7 +70,7 @@ public abstract class Acces implements InAcces {
      * @return
      */
     public boolean isAccessibilitat() {
-        return false;//MODIFICAR
+        return accesibilitat;
     }
 }
 
