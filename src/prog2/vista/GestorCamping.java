@@ -45,7 +45,8 @@ public class GestorCamping {
      * @param camping L'objecte de tipus Camping que anem a omplir
      */
     private static void omplirDadesModel(Camping camping) throws ExcepcioReserva {
-        
+        Boolean estat=true;//MODIFICABLE
+        String iluminacio="100";//MODIFICABLE
         
         // Afegir parcel·les:
         //------------------------------
@@ -53,8 +54,7 @@ public class GestorCamping {
         String idAllotjament = "100P";
         float metres = 64.0f;
         boolean connexioElectrica = true;
-        Boolean estat=true;//MODIFICABLE
-        String iluminacio="100";//MODIFICABLE
+
 
         camping.afegirParcela(nom, idAllotjament, metres, connexioElectrica, estat,iluminacio);
 
@@ -76,7 +76,7 @@ public class GestorCamping {
         boolean tv= true;
         boolean aireFred = true;
 
-        camping.afegirBungalow(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
+        camping.afegirBungalow(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred,estat,iluminacio);
 
         nom = "Bungalow Oest";
         idAllotjament = "103B";
@@ -88,7 +88,7 @@ public class GestorCamping {
         tv= false;
         aireFred = false;
 
-        camping.afegirBungalow(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
+        camping.afegirBungalow(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred,estat,iluminacio);
 
         // Afegir bungalows premium:
         //------------------------------
@@ -104,7 +104,7 @@ public class GestorCamping {
         boolean serveisExtra = true;
         String codiWifi = "CampingDelMarBP1";
         
-        camping.afegirBungalowPremium(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+        camping.afegirBungalowPremium(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi,estat,iluminacio);
 
         nom = "Bungallow Sud";
         idAllotjament = "105BP";
@@ -118,7 +118,7 @@ public class GestorCamping {
         serveisExtra = true;
         codiWifi = "CampingDelMarBP2";
 
-        camping.afegirBungalowPremium(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+        camping.afegirBungalowPremium(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi,estat,iluminacio);
 
         // Afegir Glamping:
         //------------------------------
@@ -131,7 +131,7 @@ public class GestorCamping {
         String material = "Tela";
         boolean casaMascota = true;
 
-        camping.afegirGlamping(nom, idAllotjament, mida, habitacions, placesPersones, material, casaMascota);
+        camping.afegirGlamping(nom, idAllotjament, mida, habitacions, placesPersones, material, casaMascota,estat,iluminacio);
 
         nom = "Glamping Sud";
         idAllotjament = "107G";
@@ -141,7 +141,7 @@ public class GestorCamping {
         material = "Tela";
         casaMascota = false;
 
-        camping.afegirGlamping(nom, idAllotjament, mida, habitacions, placesPersones, material, casaMascota);
+        camping.afegirGlamping(nom, idAllotjament, mida, habitacions, placesPersones, material, casaMascota,estat,iluminacio);
 
         // Afegir Mobil-Home:
         //------------------------------
@@ -152,7 +152,7 @@ public class GestorCamping {
         placesPersones = 2;
         boolean terrassaBarbacoa = true;
 
-        camping.afegirMobilHome(nom, idAllotjament, mida, habitacions, placesPersones, terrassaBarbacoa);
+        camping.afegirMobilHome(nom, idAllotjament, mida, habitacions, placesPersones, terrassaBarbacoa,estat,iluminacio);
 
         nom = "Mobil-Home Sud";
         idAllotjament = "109MH";
@@ -161,7 +161,7 @@ public class GestorCamping {
         placesPersones = 4;
         terrassaBarbacoa = false;
 
-        camping.afegirMobilHome(nom, idAllotjament, mida, habitacions, placesPersones, terrassaBarbacoa);
+        camping.afegirMobilHome(nom, idAllotjament, mida, habitacions, placesPersones, terrassaBarbacoa,estat,iluminacio);
 
 
         // Afegir clients:
