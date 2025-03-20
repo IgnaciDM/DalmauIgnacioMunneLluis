@@ -5,7 +5,7 @@ import prog2.vista.ExcepcioCamping;
 import java.util.ArrayList;
 
 public class LlistaAllotjaments {
-    private ArrayList<Allotjament> llistaAllotjament;
+    private static ArrayList<Allotjament> llistaAllotjament;
     /**
      * Afegeix un allotjament rebut per paràmetre a la llista d'allotjaments.
      * @param allotjament Objecte de tipus Allotjament
@@ -30,16 +30,10 @@ public class LlistaAllotjaments {
      * @return String
      * @throws prog2.vista.ExcepcioCamping Aquest mètode llança una excepció en cas que no hi hagi allotjaments en l'estat passat com a paràmetre.
      */
-    public String llistarAllotjaments(String estat) throws ExcepcioCamping{
+    public static String llistarAllotjaments(boolean estat) throws ExcepcioCamping{
         String llista = "";
-        boolean estatB;
-        if (estat == "Operatiu") {
-            estatB = true;
-        } if (estat == "no Operatiu") {
-            estatB = false;
-        }
         for (int i = 0; i < llistaAllotjament.size(); i++) {
-            if(llistaAllotjament.get(i).esOperatiu() == estatB || estat.equals("Tots")) {
+            if(llistaAllotjament.get(i).esOperatiu() == estat) {//Eliminat estat.equals(TOTS)
                 llista += llistaAllotjament.get(i).toString();
             }
         }
