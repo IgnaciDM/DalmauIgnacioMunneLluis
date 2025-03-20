@@ -2,25 +2,19 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
-import java.util.ArrayList;
-
 public class LlistaAccessos {
-    private ArrayList<Acces> llistaAccessos;
-    private ArrayList<AccesAsfalt> llistaAccessosAsfalt;
     /**
      * Afegeix un accés rebut per paràmetre a la llista d'accessos.
      * @param acc Objecte de tipus Acces.
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
-        llistaAccessos.add(acc);
     }
 
     /**
      * Buida la llista d'accessos
      */
     public void buidar() {
-        llistaAccessos = new ArrayList<>();
     }
 
     /**
@@ -32,16 +26,7 @@ public class LlistaAccessos {
      *
      */
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
-        String llista = "";
-        for (int i = 0; i < llistaAccessos.size(); i++) {
-            if (llistaAccessos.get(i).getestat() == estat) {
-                llista += llistaAccessos.get(i).toString();
-            }
-        }
-        if (llista.equals("")) {
-            throw new ExcepcioCamping("No hi ha cap allotjament amb aquest estat");
-        }
-        return llista;
+        return null;
     }
 
     /**
@@ -49,19 +34,6 @@ public class LlistaAccessos {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public void actualitzaEstatAccessos() throws ExcepcioCamping {
-        for (int i = 0; i < llistaAccessos.size(); i++) {
-            for (int j = 0; j < llistaAccessos.get(i).getacces_a_Allotjaments().size(); j++) {
-                if (llistaAccessos.get(i).getacces_a_Allotjaments().get(j).getestat() == "correcte") {
-                    llistaAccessos.get(i).setAccesibilitat(true);
-                }
-            }
-            if (!llistaAccessos.get(i).getaccesibilitat() == true) {
-                llistaAccessos.get(i).setAccesibilitat(false);
-            }
-        }
-        if (llistaAccessos.size() == 0) {
-            throw new ExcepcioCamping("No hi ha cap Accessos");
-        }
     }
 
     /**
@@ -70,15 +42,7 @@ public class LlistaAccessos {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public int calculaAccessosAccessibles() throws ExcepcioCamping{
-        int accessos = 0;
-        for (int i = 0; i < llistaAccessos.size(); i++) {
-            for (int j = 0; j < llistaAccessos.get(i).getacces_a_Allotjaments().size(); j++) {
-                if (llistaAccessos.get(i).getacces_a_Allotjaments().get(j).getestat() == "correcte") {
-                    accessos += 1;
-                }
-            }
-        }
-        return accessos;
+        return 0;//MODIFICAR
     }
 
     /**
@@ -87,10 +51,6 @@ public class LlistaAccessos {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public float calculaMetresQuadratsAsfalt() throws ExcepcioCamping {
-        float mcuadrats = 0;
-        for (int i = 0; i < llistaAccessosAsfalt.size(); i++) {
-            mcuadrats += llistaAccessosAsfalt.get(i).getmcuadrats();
-        }
-        return mcuadrats;
+        return 0;//MODIFICAR
     }
 }
