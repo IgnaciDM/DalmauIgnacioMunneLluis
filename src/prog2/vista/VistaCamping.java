@@ -14,7 +14,35 @@ public class VistaCamping {
         RecuperarCamping,
         Sortir};
 
-    private enum OpcionsSubmenu1 {Allotjaments, AllotjamentsOperatius, AllotjamentsNoOperatius, AccessosOberts, AccessosTancats, IncidenciesActuals, SortirLlistat};
+    private enum OpcionsSubmenu1 {
+        Allotjaments,
+        AllotjamentsOperatius,
+        AllotjamentsNoOperatius,
+        AccessosOberts,
+        AccessosTancats,
+        IncidenciesActuals,
+        SortirLlistat};
+
+    // Declarem descripcions personalitzades per a les opcions del menú principal
+    static private String[] descMenuPrincipal={"Llistar la informacio",
+            "Afegir una incidencia",
+            "Eliminar una incidencia",
+            "Calcular i mostrar el número total d’accessos que proporcionen accessibilitat amb cotxe",
+            "Calcular i mostrar el número total de metres quadrats d’asfalt dels accessos asfaltats",
+            "Guarda les dades del càmping en un fitxer.",
+            "Carrega d’un fitxer les dades del càmping prèviament guardades.",
+            "Sortir de l’aplicació"
+    };
+
+    // Declarem descripcions personalitzades per a les opcions del menú secundari
+    static private String[] descMenu2={". Llistar la informació de tots els allotjaments",
+            "Llistar la informació dels allotjaments operatius",
+            "Llistar la informació dels allotjaments no operatius",
+            "Llistar la informació dels accessos oberts",
+            "Llistar la informació dels accessos tancats",
+            "Llistar la informació de les incidències actuals",
+    };
+
 
     public VistaCamping(String nomCamping) {
         this.nomCamping = nomCamping;
@@ -24,6 +52,9 @@ public class VistaCamping {
         Scanner sc = new Scanner(System.in);
 
         Menu<OpcionsMenu> menu = new Menu(nomCamping + "-MENU", OpcionsMenu.values());//L'enum <OpcionsMenu>
+
+        // Assignem la descripció de les opcions
+        menu.setDescripcions(descMenuPrincipal);
 
         OpcionsMenu op = null;
 
@@ -54,13 +85,13 @@ public class VistaCamping {
     private void gestioMenuSecundari(Scanner sc) {
 
         // Creem l'objecte per al menú. Li passem com a primer parÃ metre el nom del menú
-        Menu<ExempleMenu.OpcionsSubmenu1> menu=new Menu<ExempleMenu.OpcionsSubmenu1>("Menu Secundari", ExempleMenu.OpcionsSubmenu1.values());
+        Menu<VistaCamping.OpcionsSubmenu1> menu=new Menu<VistaCamping.OpcionsSubmenu1>("Menu Secundari", VistaCamping.OpcionsSubmenu1.values());
 
         // Assignem la descripció de les opcions
-        //menu.setDescripcions(descMenu2);
+        menu.setDescripcions(descMenu2);
 
         // Obtenim una opció des del menú i fem les accions pertinents
-        ExempleMenu.OpcionsSubmenu1 opcio = null;
+        VistaCamping.OpcionsSubmenu1 opcio = null;
         do {
             // Mostrem les opcions del menú
             menu.mostrarMenu();
@@ -68,18 +99,14 @@ public class VistaCamping {
             // Demanem una opcio
             opcio=menu.getOpcio(sc);
 
+
             // Fem les accions necessàries
             switch(opcio) {
                 case Allotjaments:
-                    // Mostrem un missatge indicant que s'ha triat aquesta opció
-                    System.out.println("Has triat la opciÃ³ 1");
                     break;
                 case AllotjamentsOperatius:
-                    // Mostrem un missatge indicant que s'ha triat aquesta opció
-                    System.out.println("Has triat la opciÃ³ 2");
                     break;
                 case AllotjamentsNoOperatius:
-                    System.out.println("Fins aviat!");
                     break;
                 case AccessosOberts:
                     break;
@@ -88,9 +115,10 @@ public class VistaCamping {
                 case IncidenciesActuals:
                     break;
                 case SortirLlistat:
+                    System.out.println("Fins aviat!");
                     break;
             }
 
-        } while(opcio!= ExempleMenu.OpcionsSubmenu1.SortirLlistat);
+        } while(opcio!= VistaCamping.OpcionsSubmenu1.SortirLlistat);
     }
 }

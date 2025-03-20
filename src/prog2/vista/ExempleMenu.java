@@ -19,7 +19,7 @@ public class ExempleMenu {
                                                "Sortir de l'aplicació"};
 
     // Declarem descripcions personalitzades per a les opcions del menú secundari
-    static private String[] descMenu2={"Primera Opció del menú secundari",
+    static private String[] descMenu2={"Primera Opció del menú se+cundari",
                                                 "Segona Opció del menú secundari",
                                                 "Menú anterior"};
 
