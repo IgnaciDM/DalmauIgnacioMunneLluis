@@ -57,7 +57,11 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
+        for(int i = 0; i < llistaAllotjaments.size(); i++){
+            if (llistaAllotjaments[i].getIdAllotjament = idAllotjament) {
 
+            }
+        }
     }
 
     @Override
