@@ -10,7 +10,7 @@ public class ExempleMenu {
 
     // Declarem les opcions per a referir-se a les opcions del menú.
     static private enum OpcionsMenuPrincipal {MENU_PRINCIPAL_OPCIO1,MENU_PRINCIPAL_OPCIO2,MENU_PRINCIPAL_SUBMENU1,MENU_PRINCIPAL_SORTIR};
-    static private enum OpcionsSubmenu1 {MENU_S1_OPCIO1,MENU_S1_OPCIO2,MENU_S1_SORTIR};
+    static enum OpcionsSubmenu1 {MENU_S1_OPCIO1,MENU_S1_OPCIO2,MENU_S1_SORTIR};
     
     // Declarem descripcions personalitzades per a les opcions del menú principal
     static private String[] descMenuPrincipal={"Primera opció del menú principal",
