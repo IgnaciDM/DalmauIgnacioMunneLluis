@@ -7,11 +7,11 @@ public abstract class Allotjament implements InAllotjament {
     private String id;
     private long estadaMinimaAlta;
     private long estadaMinimaBaixa;
-    private String estat;
+    private boolean estat;
     private String iluminacio;
 
     // Constructor que inicialitza els atributs i les estades mínimes per temporada
-    public Allotjament(String nom, String id, long estadaMinimaAlta, long estadaMinimaBaixa, String estat, String iluminacio) {
+    public Allotjament(String nom, String id, long estadaMinimaAlta, long estadaMinimaBaixa, boolean estat, String iluminacio) {
         this.nom = nom;
         this.id = id;
         setEstadaMinima(estadaMinimaAlta, estadaMinimaBaixa);
@@ -52,10 +52,10 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaBaixa = estadaMinimaBAIXA_;
     }
 
-    public String getestat() {return estat;  // Retorna l'estat de l'allotjament
+    public boolean getestat() {return estat;  // Retorna l'estat de l'allotjament
     }
 
-    public void setestat(String estat) {
+    public void setestat(boolean estat) {
         this.estat = estat;
     }
 

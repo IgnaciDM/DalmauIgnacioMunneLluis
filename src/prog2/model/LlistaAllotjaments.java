@@ -49,7 +49,7 @@ public class LlistaAllotjaments {
      */
     public boolean containsAllotjamentOperatiu(){
         for (int i = 0; i < llistaAllotjament.size(); i++) {
-            if (llistaAllotjament.get(i).getestat() == "operatiu") {
+            if (llistaAllotjament.get(i).getestat() == true) {
                 return true;
             }
         }
