@@ -68,12 +68,14 @@ public class VistaCamping {
                     gestioMenuSecundari(sc);
                     break;
                 case AfegirIncidencia:
+                    /*
                     //afegirIncidencia(int num, String tipus, String idAllotjament, String data)
                     try {
                         Camping.afegirIncidencia("num", "tipus", "allotjament", "data");
                     } catch (ExcepcioCamping e) {
                         System.out.println("Error: No s'ha trobat l'allotjament amb ID " + "allotjament");
                     }
+                    */
                     break;
                 case EliminarIncidencia:
                     break;
