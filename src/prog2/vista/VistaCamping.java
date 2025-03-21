@@ -68,6 +68,12 @@ public class VistaCamping {
                     gestioMenuSecundari(sc);
                     break;
                 case AfegirIncidencia:
+                    //afegirIncidencia(int num, String tipus, String idAllotjament, String data)
+                    try {
+                        Camping.afegirIncidencia("num", "tipus", "allotjament", "data");
+                    } catch (ExcepcioCamping e) {
+                        System.out.println("Error: No s'ha trobat l'allotjament amb ID " + "allotjament");
+                    }
                     break;
                 case EliminarIncidencia:
                     break;
@@ -87,13 +93,13 @@ public class VistaCamping {
     private void gestioMenuSecundari(Scanner sc) throws ExcepcioCamping {
 
         // Creem l'objecte per al menú. Li passem com a primer parÃ metre el nom del menú
-        Menu<VistaCamping.OpcionsSubmenu1> menu=new Menu<VistaCamping.OpcionsSubmenu1>("Menu Secundari", VistaCamping.OpcionsSubmenu1.values());
+        Menu<OpcionsSubmenu1> menu=new Menu<OpcionsSubmenu1>("Menu Secundari", OpcionsSubmenu1.values());
 
         // Assignem la descripció de les opcions
         menu.setDescripcions(descMenu2);
 
         // Obtenim una opció des del menú i fem les accions pertinents
-        VistaCamping.OpcionsSubmenu1 opcio = null;
+        OpcionsSubmenu1 opcio = null;
         do {
             // Mostrem les opcions del menú
             menu.mostrarMenu();
@@ -127,6 +133,6 @@ public class VistaCamping {
                     break;
             }
 
-        } while(opcio!= VistaCamping.OpcionsSubmenu1.SortirLlistat);
+        } while(opcio!= OpcionsSubmenu1.SortirLlistat);
     }
 }
