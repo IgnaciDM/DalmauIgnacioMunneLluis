@@ -77,9 +77,9 @@ public class LlistaAllotjaments {
      * @return  Objecte de tipus Allotjament
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
-    public Allotjament getAllotjament(String id) throws ExcepcioCamping{
+    public static Allotjament getAllotjament(String id) throws ExcepcioCamping{
         for (int i = 0; i < llistaAllotjament.size(); i++) {
-            if (llistaAllotjament.get(i).getNom() == id) {
+            if (llistaAllotjament.get(i).getNom().equals(id)) {
                 return llistaAllotjament.get(i);
             }
         }

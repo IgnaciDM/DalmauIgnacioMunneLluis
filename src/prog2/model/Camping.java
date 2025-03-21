@@ -63,7 +63,7 @@ public class Camping implements InCamping {
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
         for(int i = 0; i < llistaAllotjaments.size(); i++){
             if (llistaAllotjaments.get(i).getId() == idAllotjament) {
-                llistaincidencias.afegirIncidencia(num,tipus,llistaAllotjaments.getAllotjament(idAllotjament),data);
+                llistaincidencias.afegirIncidencia(num,tipus,LlistaAllotjaments.getAllotjament(idAllotjament),data);
                 llistaAccessos.actualitzaEstatAccessos();
             }
         }
