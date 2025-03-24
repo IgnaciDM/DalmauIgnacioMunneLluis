@@ -13,6 +13,7 @@ public class Camping implements InCamping {
     private ArrayList<Reserva> llistaReserves = new ArrayList<>();// Llista de reserves
     private LlistaAccessos llistaAccessos;
     private LlistaIncidencies llistaIncidencies;
+    private LlistaAllotjaments llistarAllotjament;
 
     // Constructor que inicialitza el camping amb el seu nom
     public Camping(String nom) {
@@ -22,6 +23,7 @@ public class Camping implements InCamping {
         this.llistaReserves = new ArrayList<Reserva>();
         this.llistaAccessos = new LlistaAccessos();
         this.llistaIncidencies = new LlistaIncidencies();
+        this.llistarAllotjament = new LlistaAllotjaments();
     }
 
     // Retorna la temporada en funció de la data proporcionada
@@ -49,7 +51,7 @@ public class Camping implements InCamping {
 
 
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
-        return "this.llistaAllotjaments.llistarAllotjaments(estat)";//MODIFICAARRRRRRRRRRRRRRRRRRRRRR
+        return llistarAllotjament.llistarAllotjaments(estat);
     }
 
 

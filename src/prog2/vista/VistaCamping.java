@@ -40,7 +40,7 @@ public class VistaCamping {
     };
 
     // Declarem descripcions personalitzades per a les opcions del menú secundari
-    static private String[] descMenu2={". Llistar la informació de tots els allotjaments",
+    static private String[] descMenu2={"Llistar la informació de tots els allotjaments",
             "Llistar la informació dels allotjaments operatius",
             "Llistar la informació dels allotjaments no operatius",
             "Llistar la informació dels accessos oberts",
@@ -145,10 +145,10 @@ public class VistaCamping {
                     //camping.getLlistaAllotjaments().llistarAllotjaments("NoOperatiu");
                     break;
                 case AccessosOberts:
-                    camping.llistarAccessos("Oberts");
+                    camping.llistarAccessos("Obert");
                     break;
                 case AccessosTancats:
-                    camping.llistarAccessos("Tancats");
+                    camping.llistarAccessos("Tancat");
                     break;
                 case IncidenciesActuals:
                     try {
