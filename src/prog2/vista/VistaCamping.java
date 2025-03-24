@@ -2,6 +2,7 @@ package prog2.vista;
 
 import prog2.model.*;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class VistaCamping {
@@ -80,15 +81,32 @@ public class VistaCamping {
                 case EliminarIncidencia:
                     break;
                 case AccessibilitatCotxe:
+                    
                     break;
                 case AccessosAsfaltats:
                     break;
                 case GuardarCamping:
+                    Camping camping = new Camping(nomCamping);
+                    System.out.println("Introdueix el nom del fitxer:");
+                    String nomFitxer = sc.nextLine();
+                    camping.guardar(nomFitxer);
                     break;
                 case RecuperarCamping:
+                    System.out.println("Introdueix el nom del fitxer:");
+                    nomFitxer = sc.nextLine();
+                    Camping campingCarregat = Camping.carregar(nomFitxer);
+                    if (campingCarregat != null) {
+                        camping = campingCarregat; // Reemplaza la instancia actual
+                        System.out.println("Dades carregades correctament: " + camping);
+                    } else{
+                        System.out.println("No s'ha carregat correctament el fitxer");
+                    }
                     break;
                 case Sortir:
+                    System.out.println("Fins aviat!");
                     break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + op);
             }
         } while (op != OpcionsMenu.Sortir);
     }
@@ -131,7 +149,6 @@ public class VistaCamping {
                     LlistaIncidencies.llistarIncidencies();
                     break;
                 case SortirLlistat:
-                    System.out.println("Fins aviat!");
                     break;
             }
 

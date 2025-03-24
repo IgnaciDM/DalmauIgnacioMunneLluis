@@ -22,7 +22,6 @@ public class GestorCamping {
         ferReserves(campingMar);
 
 
-
         // Calcular la mida total de les parcel·les (en M^2) del Càmping i mostrar un missatge de la següent manera:
         // >> La mida total de les parcel·les del Càmping del Mar és de X m^2)
         //--------------------------------------------------------------------------------------------------------------------
@@ -236,5 +235,7 @@ public class GestorCamping {
         } catch (ExcepcioReserva e) {
             System.err.println("Error en la reserva 3: " + e.getMessage());
         }//LA RESERVA 3 HAURA DE DONAR L'ERROR DE ID 300S no existeix
+
+
     }
 }

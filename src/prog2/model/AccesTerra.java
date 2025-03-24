@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class AccesTerra extends Acces{
     private int longitud;
 
-
-    public AccesTerra(String nom, boolean accesibilitat, boolean estat,ArrayList<Allotjament> acces_a_Allotjaments, int longitud) {
+    public AccesTerra(String nom, boolean accesibilitat, boolean estat, ArrayList<Allotjament> acces_a_Allotjaments, int longitud) {
         super(nom, accesibilitat, estat, acces_a_Allotjaments);
         this.longitud = longitud;
     }
