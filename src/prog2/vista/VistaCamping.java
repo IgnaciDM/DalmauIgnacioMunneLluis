@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class VistaCamping {
     private final String nomCamping;
+    private Camping camping;
+
     private enum OpcionsMenu {
         Llistes,
         AfegirIncidencia,
@@ -44,11 +46,14 @@ public class VistaCamping {
             "Llistar la informació dels accessos oberts",
             "Llistar la informació dels accessos tancats",
             "Llistar la informació de les incidències actuals",
+
     };
 
 
     public VistaCamping(String nomCamping) {
         this.nomCamping = nomCamping;
+        this.camping = new Camping(nomCamping);
+
     }
 
     public void gestioCamping() throws ExcepcioCamping {
@@ -60,7 +65,7 @@ public class VistaCamping {
         menu.setDescripcions(descMenuPrincipal);
 
         OpcionsMenu op = null;
-        Camping camping = new Camping(nomCamping);
+
 
         do {
             menu.mostrarMenu();//MOstrem el menu
@@ -73,15 +78,15 @@ public class VistaCamping {
 
                     //afegirIncidencia(int num, String tipus, String idAllotjament, String data)
                     try {
-                        camping.afegirIncidencia(0, "tipus", "allotjament", "data");
+                        System.out.println("Introdueix la idIncidencia, el tipus, idAllotjament,la data");
+                        camping.afegirIncidencia(sc.nextInt(), sc.next(), sc.next(), sc.next());
                     } catch (ExcepcioCamping e) {
-                        System.out.println("Error: No s'ha trobat l'allotjament amb ID " + "allotjament");
+                        System.out.println("Error: No s'ha trobat l'allotjament");
                     }
                     break;
                 case EliminarIncidencia:
                     break;
                 case AccessibilitatCotxe:
-                    
                     break;
                 case AccessosAsfaltats:
                     break;
@@ -145,8 +150,11 @@ public class VistaCamping {
                     LlistaAccessos.llistarAccessos(false);
                     break;
                 case IncidenciesActuals:
-                    LlistaIncidencies llistarIncidencies= new LlistaIncidencies();
-                    llistarIncidencies.llistarIncidencies();
+                    try {
+                        camping.llistarIncidencies();
+                    } catch (ExcepcioCamping e) {
+                        System.out.println("Error: No s'ha trobat l'allotjament amb ID " + "allotjament");
+                    }
                     break;
                 case SortirLlistat:
                     break;
