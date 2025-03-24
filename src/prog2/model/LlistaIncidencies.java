@@ -17,7 +17,7 @@ public class LlistaIncidencies {
      * @param data Data quan es produeix la incidència.
      * @throws ExcepcioCamping Per comprovar i avisar si l'allotjament ja té una incidència o si el tipus d’incidència que es vol afegir no existeix.
      */
-    public void afegirIncidencia(int num, String tipus, Allotjament allotjament, String data) throws ExcepcioCamping{
+    public void afegirIncidencia(int num,  String tipus, Allotjament allotjament, String data) throws ExcepcioCamping{
         llistaincidencias.add(new Incidencia(num, tipus, allotjament, data));
     }
     /**

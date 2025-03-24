@@ -1,19 +1,31 @@
 package prog2.model;
 
+import prog2.vista.ExcepcioCamping;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Incidencia {
     private int idIncidencia;
-    private String Tipus;
+    private TipusIncidencia Tipus;
     private Allotjament Allotjament;
     private String data;
 
     public Incidencia(int idIncidencia, String Tipus, Allotjament Allotjament, String data) {
         this.idIncidencia = idIncidencia;
         this.Allotjament = Allotjament;
-        this.Tipus = Tipus;
         this.data = data;
+        switch (Tipus) {
+            case "Reparacio":
+                this.Tipus = TipusIncidencia.Reparacio;
+                break;
+            case "Neteja":
+                this.Tipus = TipusIncidencia.Neteja;
+                break;
+            case "Tancament":
+                this.Tipus = TipusIncidencia.Tancament;
+                break;
+        }
     }
 
     public int getidIncidencia() {
@@ -32,11 +44,11 @@ public class Incidencia {
         this.Allotjament = idAllotjament;
     }
 
-    public String getTipus() {
+    public TipusIncidencia getTipus() {
         return Tipus;
     }
 
-    public void setTipus(String Tipus) {
+    public void setTipus(TipusIncidencia Tipus) {
         this.Tipus = Tipus;
     }
 
@@ -51,7 +63,15 @@ public class Incidencia {
     public static enum TipusIncidencia {Reparacio, Neteja, Tancament}
 
     public String getIluminacioAllotjament() {
-        return"";//MODIFICAR
+        switch (Tipus) {
+            case Reparacio:
+                return "100%";
+            case Neteja:
+                return "50%";
+            case Tancament:
+                return "0%";
+        }
+        return null;
     }
 
     public String toString() {
