@@ -46,6 +46,7 @@ public class VistaCamping {
             "Llistar la informació dels accessos oberts",
             "Llistar la informació dels accessos tancats",
             "Llistar la informació de les incidències actuals",
+            "Sortir del llistat"
 
     };
 
@@ -135,19 +136,19 @@ public class VistaCamping {
             // Fem les accions necessàries
             switch(opcio) {
                 case Allotjaments:
-                    LlistaAllotjaments.llistarAllotjaments("Operatiu");//MODIFICABLE
+                    camping.getLlistaAllotjaments().llistarAllotjaments("Tots");
                     break;
                 case AllotjamentsOperatius:
-                    LlistaAllotjaments.llistarAllotjaments("Operatiu");
+                    camping.getLlistaAllotjaments().llistarAllotjaments("Operatiu");
                     break;
                 case AllotjamentsNoOperatius:
-                    LlistaAllotjaments.llistarAllotjaments("NoOperatiu");
+                    camping.getLlistaAllotjaments().llistarAllotjaments("NoOperatiu");
                     break;
                 case AccessosOberts:
-                    //LlistaAccessos.llistarAccessos(true);
+                    camping.llistarAccessos("Oberts");
                     break;
                 case AccessosTancats:
-                    //LlistaAccessos.llistarAccessos(false);
+                    camping.llistarAccessos("Tancats");
                     break;
                 case IncidenciesActuals:
                     try {
