@@ -2,7 +2,10 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.util.ArrayList;
+
 public class LlistaIncidencies {
+    private ArrayList<Incidencia> llistaincidencias;
     /**
      * Aquest mètode crea una incidència amb la informació passada com a paràmetres
      * (número d'identificador, tipus, l'allotjament on s'ha produït i la data) i l'afegeix a la llista.
@@ -15,7 +18,7 @@ public class LlistaIncidencies {
      * @throws ExcepcioCamping Per comprovar i avisar si l'allotjament ja té una incidència o si el tipus d’incidència que es vol afegir no existeix.
      */
     public void afegirIncidencia(int num, String tipus, Allotjament allotjament, String data) throws ExcepcioCamping{
-
+        llistaincidencias.add(new Incidencia(num, tipus, allotjament, data));
     }
     /**
      * Aquest mètode elimina una incidència de la llista i actualitza l'estat de l'allotjament mitjançant el mètode obrirAllotjament de la classe Allotjament.
@@ -23,7 +26,7 @@ public class LlistaIncidencies {
      * @throws ExcepcioCamping
      */
     public void eliminarIncidencia(Incidencia in) throws ExcepcioCamping{
-
+        llistaincidencias.remove(in);
     }
 
     /**
@@ -32,8 +35,15 @@ public class LlistaIncidencies {
      * @return String
      * @throws ExcepcioCamping
      */
-    public static String llistarIncidencies() throws ExcepcioCamping{
-        return null;//MODIFICAR
+    public String llistarIncidencies() throws ExcepcioCamping{
+        String llista = "";
+        for (int i = 0; i < llistaincidencias.size(); i++) {
+            llista += llistaincidencias.get(i).toString();
+        }
+        if (llista.equals("")) {
+            throw new ExcepcioCamping("No hi ha cap incidencia");
+        }
+        return llista;
     }
 
     /**
@@ -44,6 +54,11 @@ public class LlistaIncidencies {
      * @throws ExcepcioCamping Aquest mètode llança una excepció si no existeix cap incidència amb el número passat per paràmetre.
      */
     public Incidencia getIncidencia(int num) throws ExcepcioCamping{
-        return null;//MODIFICAR
+        for (int i = 0; i < llistaincidencias.size(); i++) {
+            if(llistaincidencias.get(i).getidIncidencia() == num) {//Eliminat estat.equals(TOTS)
+                return llistaincidencias.get(i);
+            }
+        }
+        throw new ExcepcioCamping("No hi ha cap allotjament amb aquest estat");
     }
 }
