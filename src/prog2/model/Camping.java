@@ -48,18 +48,17 @@ public class Camping implements InCamping {
 
     @Override
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
-
-        return "";
+        return LlistaAllotjaments.llistarAllotjaments(estat);
     }
 
     @Override
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
-        return "";
+        return LlistaAccessos.llistarAccessos(infoEstat);
     }
 
     @Override
     public String llistarIncidencies() throws ExcepcioCamping {
-        return "";
+        return LlistaIncidencies.llistarIncidencies();
     }
 
     @Override
@@ -84,13 +83,13 @@ public class Camping implements InCamping {
     }
 
     @Override
-    public int calculaAccessosAccessibles() {
-        return 0;
+    public int calculaAccessosAccessibles() throws ExcepcioCamping {
+        return llistaAccessos.calculaAccessosAccessibles();
     }
 
     @Override
-    public float calculaMetresQuadratsAsfalt() {
-        return 0;
+    public float calculaMetresQuadratsAsfalt() throws ExcepcioCamping {
+        return llistaAccessos.calculaMetresQuadratsAsfalt();
     }
 
     @Override
@@ -100,7 +99,7 @@ public class Camping implements InCamping {
 
     @Override
     public void inicialitzaDadesCamping() {
-
+        new Camping("");
     }
 
     public ArrayList<Reserva> getLlistaReserves() {
