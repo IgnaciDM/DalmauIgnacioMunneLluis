@@ -1,56 +1,56 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LlistaAllotjaments implements InLlistaAllotjaments{
-    private static ArrayList<Allotjament> llistaAllotjament;
-    /**
-     * Afegeix un allotjament rebut per paràmetre a la llista d'allotjaments.
-     * @param allotjament Objecte de tipus Allotjament
-     * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
-     */
-    public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
-        llistaAllotjament.add(allotjament);
+public class LlistaAllotjaments implements InLlistaAllotjaments {
+    private ArrayList<Allotjament> llistaAllotjament;
+
+    // Constructor
+    public LlistaAllotjaments() {
+        this.llistaAllotjament = new ArrayList<>();
     }
 
+    /**
+     * Afegeix un allotjament rebut per paràmetre a la llista d'allotjaments.
+     */
+    public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
+        if (allotjament == null) {
+            throw new ExcepcioCamping("L'allotjament no pot ser null.");
+        }
+        llistaAllotjament.add(allotjament);
+    }
 
     /**
      * Buida la llista d'allotjaments.
      */
-    public void buidar(){
-        llistaAllotjament = new ArrayList<>();
+    public void buidar() {
+        llistaAllotjament.clear();
     }
 
     /**
-     * Itera sobre la llista d'allotjaments i retorna un String amb la informació de tots els allotjaments amb l'estat rebut per paràmetre.
-     * En cas que no hi hagi allotjaments en l'estat passat com a paràmetre llança una excepció.
-     * @param estat
-     * @return String
-     * @throws prog2.vista.ExcepcioCamping Aquest mètode llança una excepció en cas que no hi hagi allotjaments en l'estat passat com a paràmetre.
+     * Retorna una llista amb els allotjaments que coincideixen amb l'estat donat.
      */
-    public String llistarAllotjaments(String estat) throws ExcepcioCamping{
-        String llista = "";
-        for (int i = 0; i < llistaAllotjament.size(); i++) {
-            if((llistaAllotjament.get(i).esOperatiu()).equals(estat)) {
-                llista += llistaAllotjament.get(i).toString();
+    public String llistarAllotjaments(String estat) throws ExcepcioCamping {
+        StringBuilder llista = new StringBuilder();
+        for (Allotjament allotjament : llistaAllotjament) {
+            if (estat.equals("Tots") || allotjament.getEstat()==estat.equals("Obert")) {
+                llista.append(allotjament.toString()).append("\n");
             }
         }
-        if (llista.equals("")) {
-            throw new ExcepcioCamping("No hi ha cap allotjament amb aquest estat");
+        if (llista.length() == 0) {
+            throw new ExcepcioCamping("No hi ha cap allotjament amb aquest estat.");
         }
-        return llista;
+        return llista.toString();
     }
 
     /**
-     * Mira si la llista d'allotjaments conté algun allotjament operatiu.
-     * @return boolean
+     * Retorna si hi ha algun allotjament operatiu.
      */
-    public boolean containsAllotjamentOperatiu(){
-        for (int i = 0; i < llistaAllotjament.size(); i++) {
-            if (llistaAllotjament.get(i).getestat() == true) {
+    public boolean containsAllotjamentOperatiu() {
+        for (Allotjament allotjament : llistaAllotjament) {
+            if (allotjament.getEstat()==true) {
                 return true;
             }
         }
@@ -58,32 +58,21 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
     }
 
     /**
-     * Mira si la llista d'allotjaments conté l'allotjament rebut per paràmetre i retorna un booleà amb la informació.
-     * @param allotjament
-     * @return boolean
+     * Verifica si un allotjament específic està a la llista.
      */
-
-    public boolean contains(Allotjament allotjament){
-        for (int i = 0; i < llistaAllotjament.size(); i++) {
-            if (llistaAllotjament.get(i) == allotjament) {
-                return true;
-            }
-        }
-        return false;
+    public boolean contains(Allotjament allotjament) {
+        return llistaAllotjament.contains(allotjament);
     }
 
     /**
-     * Busca l'allotjament amb el nom rebut per paràmetre i el retorna. En cas que no existeixi llança una excepció.
-     * @param id String amb el nom de l'allotjament
-     * @return  Objecte de tipus Allotjament
-     * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
+     * Retorna un allotjament pel seu ID. Llança una excepció si no existeix.
      */
-    public Allotjament getAllotjament(String id) throws ExcepcioCamping{
-        for (int i = 0; i < llistaAllotjament.size(); i++) {
-            if (llistaAllotjament.get(i).getNom().equals(id)) {
-                return llistaAllotjament.get(i);
+    public Allotjament getAllotjament(String id) throws ExcepcioCamping {
+        for (Allotjament allotjament : llistaAllotjament) {
+            if (allotjament.getNom().equalsIgnoreCase(id)) {
+                return allotjament;
             }
         }
-        throw new ExcepcioCamping("No hi ha cap allotjament amb aquest nom");
+        throw new ExcepcioCamping("No hi ha cap allotjament amb aquest nom.");
     }
 }

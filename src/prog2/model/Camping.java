@@ -49,13 +49,12 @@ public class Camping implements InCamping {
 
 
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
-        return LlistaAllotjaments.llistarAllotjaments(estat);
+        return "this.llistaAllotjaments.llistarAllotjaments(estat)";//MODIFICAARRRRRRRRRRRRRRRRRRRRRR
     }
 
 
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
-
-        return llistaAccessos.llistarAccessos(infoEstat);
+        return llistaAccessos.llistarAccessos(infoEstat.equals("Oberts"));//Comproba si es igual a oberts si es aixi envia a LlistaAccesos un true
     }
 
     @Override
@@ -68,11 +67,20 @@ public class Camping implements InCamping {
 
         for(int i = 0; i < llistaAllotjaments.size(); i++){
             if (llistaAllotjaments.get(i).getId().equals(idAllotjament)) {
-                llistaIncidencies.afegirIncidencia(num,tipus,LlistaAllotjaments.getAllotjament(idAllotjament),data);
+                llistaIncidencies.afegirIncidencia(num, tipus, this.getAllotjament(idAllotjament), data);
                 llistaAccessos.actualitzaEstatAccessos();
             }
         }
     }
+    public Allotjament getAllotjament(String id) throws ExcepcioCamping {
+        for (Allotjament allotjament : llistaAllotjaments) {
+            if (allotjament.getId().equals(id)) {
+                return allotjament;
+            }
+        }
+        throw new ExcepcioCamping("No s'ha trobat l'allotjament amb ID: " + id);
+    }
+
 
     @Override
     public void eliminarIncidencia(int num) throws ExcepcioCamping {
@@ -103,10 +111,19 @@ public class Camping implements InCamping {
 
     }
 
+    static Camping load(String camiOrigen) throws ExcepcioCamping {
+        throw new UnsupportedOperationException("Aquest mètode està implementat a la classe Camping");
+    }
+
     @Override
     public void inicialitzaDadesCamping() {
         new Camping("");
     }
+
+
+
+
+
 
     public ArrayList<Reserva> getLlistaReserves() {
         return llistaReserves;  // Retorna la llista de reserves
