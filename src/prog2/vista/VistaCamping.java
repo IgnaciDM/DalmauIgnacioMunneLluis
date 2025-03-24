@@ -76,8 +76,6 @@ public class VistaCamping {
                     gestioMenuSecundari(sc);
                     break;
                 case AfegirIncidencia:
-
-                    //afegirIncidencia(int num, String tipus, String idAllotjament, String data)
                     try {
                         System.out.println("Introdueix la idIncidencia, el tipus, idAllotjament,la data");
                         camping.afegirIncidencia(sc.nextInt(), sc.next(), sc.next(), sc.next());
@@ -86,6 +84,8 @@ public class VistaCamping {
                     }
                     break;
                 case EliminarIncidencia:
+                    System.out.println("Introdueix l'id de la Incidencia a eliminar");
+                    camping.eliminarIncidencia(sc.nextInt());
                     break;
                 case AccessibilitatCotxe:
                     break;

@@ -6,20 +6,24 @@ import java.util.ArrayList;
 
 public class LlistaIncidencies implements InLlistaIncidencies{
     private ArrayList<Incidencia> llistaincidencias;
-    /**
-     * Aquest mètode crea una incidència amb la informació passada com a paràmetres
-     * (número d'identificador, tipus, l'allotjament on s'ha produït i la data) i l'afegeix a la llista.
-     * A més, s'ha de comprovar que aquest allotjament no té ja una incidència si ja té una incidència s'ha de llançar una excepció.
-     * Una vegada creada la incidència s'ha de tancar (no operatiu) l'allotjament corresponent.
-     * @param num Número d'identificació de la incidència.
-     * @param tipus Aquest String permet crear el enum TipusIncidencia
-     * @param allotjament Allotjament on es produeix la incidència
-     * @param data Data quan es produeix la incidència.
-     * @throws ExcepcioCamping Per comprovar i avisar si l'allotjament ja té una incidència o si el tipus d’incidència que es vol afegir no existeix.
-     */
-    public void afegirIncidencia(int num,  String tipus, Allotjament allotjament, String data) throws ExcepcioCamping{
-        llistaincidencias.add(new Incidencia(num, tipus, allotjament, data));
+    private LlistaAllotjaments llistaAllotjaments;//Implementem la clase llista Alltjaments
+
+    public LlistaIncidencies() {//CONSTRUCTOR
+        this.llistaincidencias = new ArrayList<>();
+        this.llistaAllotjaments = llistaAllotjaments;
     }
+
+    public void afegirIncidencia(int num, String tipus, Allotjament allotjament, String data) throws ExcepcioCamping {
+        if (!llistaAllotjaments.contains(allotjament)) {//Comprobacio de que dins de la llista d'aAllotjaments estigui el allotjament al cual volem ferli una incidencia
+            throw new ExcepcioCamping("No existeix l'allotjament seleccionat.");
+        }else{
+            Incidencia incidencia = new Incidencia(num, tipus, allotjament, data);
+            llistaincidencias.add(incidencia);
+            System.out.println("Incidencia agregada correctament");
+        }
+    }
+
+
     /**
      * Aquest mètode elimina una incidència de la llista i actualitza l'estat de l'allotjament mitjançant el mètode obrirAllotjament de la classe Allotjament.
      * @param in Objecte de tipus Incidència

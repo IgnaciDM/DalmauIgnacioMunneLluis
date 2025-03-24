@@ -66,12 +66,11 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
-
-        for(int i = 0; i < llistaAllotjaments.size(); i++){
-            if (llistaAllotjaments.get(i).getId().equals(idAllotjament)) {
-                llistaIncidencies.afegirIncidencia(num, tipus, this.getAllotjament(idAllotjament), data);
-                llistaAccessos.actualitzaEstatAccessos();
-            }
+        try{
+            llistaIncidencies.afegirIncidencia(num, tipus, this.getAllotjament(idAllotjament), data);
+            llistaAccessos.actualitzaEstatAccessos();
+        }catch(Exception e){
+            throw new ExcepcioCamping(e.getMessage());
         }
     }
     public Allotjament getAllotjament(String id) throws ExcepcioCamping {
