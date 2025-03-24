@@ -136,13 +136,13 @@ public class VistaCamping {
             // Fem les accions necessàries
             switch(opcio) {
                 case Allotjaments:
-                    //camping.getLlistaAllotjaments().llistarAllotjaments("Tots");
+                    camping.llistarAllotjaments("Tots");
                     break;
                 case AllotjamentsOperatius:
-                    //camping.getLlistaAllotjaments().llistarAllotjaments("Operatiu");
+                    camping.llistarAllotjaments("Operatiu");
                     break;
                 case AllotjamentsNoOperatius:
-                    //camping.getLlistaAllotjaments().llistarAllotjaments("NoOperatiu");
+                    camping.llistarAllotjaments("NoOperatiu");
                     break;
                 case AccessosOberts:
                     camping.llistarAccessos("Obert");
