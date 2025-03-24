@@ -2,10 +2,13 @@ package prog2.vista;
 
 import prog2.model.*;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class VistaCamping {
     private final String nomCamping;
+    private Camping camping;
+
     private enum OpcionsMenu {
         Llistes,
         AfegirIncidencia,
@@ -43,11 +46,14 @@ public class VistaCamping {
             "Llistar la informació dels accessos oberts",
             "Llistar la informació dels accessos tancats",
             "Llistar la informació de les incidències actuals",
+
     };
 
 
     public VistaCamping(String nomCamping) {
         this.nomCamping = nomCamping;
+        this.camping = new Camping(nomCamping);
+
     }
 
     public void gestioCamping() throws ExcepcioCamping {
@@ -60,6 +66,7 @@ public class VistaCamping {
 
         OpcionsMenu op = null;
 
+
         do {
             menu.mostrarMenu();//MOstrem el menu
             op = menu.getOpcio(sc);
@@ -68,14 +75,14 @@ public class VistaCamping {
                     gestioMenuSecundari(sc);
                     break;
                 case AfegirIncidencia:
-                    /*
+
                     //afegirIncidencia(int num, String tipus, String idAllotjament, String data)
                     try {
-                        Camping.afegirIncidencia("num", "tipus", "allotjament", "data");
+                        System.out.println("Introdueix la idIncidencia, el tipus, idAllotjament,la data");
+                        camping.afegirIncidencia(sc.nextInt(), sc.next(), sc.next(), sc.next());
                     } catch (ExcepcioCamping e) {
-                        System.out.println("Error: No s'ha trobat l'allotjament amb ID " + "allotjament");
+                        System.out.println("Error: No s'ha trobat l'allotjament");
                     }
-                    */
                     break;
                 case EliminarIncidencia:
                     break;
@@ -84,11 +91,26 @@ public class VistaCamping {
                 case AccessosAsfaltats:
                     break;
                 case GuardarCamping:
+                    System.out.println("Introdueix el nom del fitxer:");
+                    String nomFitxer = sc.nextLine();
+                    camping.guardar(nomFitxer);
                     break;
                 case RecuperarCamping:
+                    System.out.println("Introdueix el nom del fitxer:");
+                    nomFitxer = sc.nextLine();
+                    Camping campingCarregat = Camping.carregar(nomFitxer);
+                    if (campingCarregat != null) {
+                        camping = campingCarregat; // Reemplaza la instancia actual
+                        System.out.println("Dades carregades correctament: " + camping);
+                    } else{
+                        System.out.println("No s'ha carregat correctament el fitxer");
+                    }
                     break;
                 case Sortir:
+                    System.out.println("Fins aviat!");
                     break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + op);
             }
         } while (op != OpcionsMenu.Sortir);
     }
@@ -128,10 +150,13 @@ public class VistaCamping {
                     LlistaAccessos.llistarAccessos(false);
                     break;
                 case IncidenciesActuals:
-                    LlistaIncidencies.llistarIncidencies();
+                    try {
+                        camping.llistarIncidencies();
+                    } catch (ExcepcioCamping e) {
+                        System.out.println("Error: No s'ha trobat l'allotjament amb ID " + "allotjament");
+                    }
                     break;
                 case SortirLlistat:
-                    System.out.println("Fins aviat!");
                     break;
             }
 

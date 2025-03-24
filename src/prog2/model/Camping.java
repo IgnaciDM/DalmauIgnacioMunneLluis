@@ -1,6 +1,8 @@
 package prog2.model;
 import prog2.vista.ExcepcioCamping;
 import prog2.vista.ExcepcioReserva;
+
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -46,6 +48,7 @@ public class Camping implements InCamping {
 
     @Override
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
+
         return "";
     }
 
@@ -61,6 +64,11 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
+
+        System.out.println("este"+num);
+        System.out.println("este"+tipus);
+        System.out.println("este"+idAllotjament);
+        System.out.println("este"+data);
         for(int i = 0; i < llistaAllotjaments.size(); i++){
             if (llistaAllotjaments.get(i).getId().equals(idAllotjament)) {
                 llistaincidencias.afegirIncidencia(num,tipus,LlistaAllotjaments.getAllotjament(idAllotjament),data);
@@ -228,5 +236,25 @@ public class Camping implements InCamping {
             }
         }
         return estadaMesCurta;
+    }
+
+    // Método para guardar el objeto Camping en un archivo
+    public void guardar(String nomFitxer) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(nomFitxer))) {
+            out.writeObject(this);
+            System.out.println("Dades guardades correctament en " + nomFitxer);
+        } catch (IOException e) {
+            System.err.println("Error en guardar les dades: " + e.getMessage());
+        }
+    }
+
+    // Método para cargar un objeto Camping desde un archivo
+    public static Camping carregar(String nomFitxer) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(nomFitxer))) {
+            return (Camping) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error en carregar les dades: " + e.getMessage());
+            return null;
+        }
     }
 }
