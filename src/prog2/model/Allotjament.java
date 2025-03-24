@@ -100,13 +100,16 @@ public abstract class Allotjament implements InAllotjament {
      * @param in Objecte de tipus Incidencia.
      */
     public void tancarAllotjament(Incidencia in) {
+        setEstat(false);
+        setIluminacio(in.getIluminacioAllotjament());
     }
 
     /**
      * Modifica l'estat de l'allotjament a Operatiu i la il·luminació al 100%
      */
-    public void obrirAllotjament(){
-
+    public void obrirAllotjament() {
+        setEstat(true);
+        setIluminacio("100%");
     }
 }
 

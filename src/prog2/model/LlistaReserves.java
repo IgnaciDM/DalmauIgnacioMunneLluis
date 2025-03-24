@@ -48,6 +48,9 @@ public class LlistaReserves implements InLlistaReserves {
     // S'instància una llista de tipus Reserva per emmagatzemar totes les reserves realitzades.
     private List<Reserva> reserves;
 
+    public List<Reserva> getReserves() {
+        return reserves;
+    }
     // Constructor de la classe LlistaReserves. Inicialitza la llista de reserves com un ArrayList buit.
     public LlistaReserves() {
         this.reserves = new ArrayList<>();
