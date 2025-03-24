@@ -139,35 +139,35 @@ public class VistaCamping {
                     try{
                         camping.llistarAllotjaments("Tots");
                     }catch(ExcepcioCamping e) {
-                        System.out.println("Error: "+e);
+                        System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case AllotjamentsOperatius:
                     try{
                         camping.llistarAllotjaments("Operatiu");
                     }catch(ExcepcioCamping e) {
-                        System.out.println("Error: "+e);
+                        System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case AllotjamentsNoOperatius:
                     try{
                         camping.llistarAllotjaments("NoOperatiu");
                     }catch(ExcepcioCamping e) {
-                        System.out.println("Error: "+e);
+                        System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case AccessosOberts:
                     try{
                         camping.llistarAccessos("Obert");
                     }catch(ExcepcioCamping e) {
-                        System.out.println("Error: "+e);
+                        System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case AccessosTancats:
                     try{
                         camping.llistarAccessos("Tancat");
                     }catch(ExcepcioCamping e) {
-                        System.out.println("Error: "+e);
+                        System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case IncidenciesActuals:
