@@ -60,6 +60,7 @@ public class VistaCamping {
         menu.setDescripcions(descMenuPrincipal);
 
         OpcionsMenu op = null;
+        Camping camping = new Camping(nomCamping);
 
         do {
             menu.mostrarMenu();//MOstrem el menu
@@ -69,14 +70,13 @@ public class VistaCamping {
                     gestioMenuSecundari(sc);
                     break;
                 case AfegirIncidencia:
-                    /*
+
                     //afegirIncidencia(int num, String tipus, String idAllotjament, String data)
                     try {
-                        Camping.afegirIncidencia("num", "tipus", "allotjament", "data");
+                        camping.afegirIncidencia(0, "tipus", "allotjament", "data");
                     } catch (ExcepcioCamping e) {
                         System.out.println("Error: No s'ha trobat l'allotjament amb ID " + "allotjament");
                     }
-                    */
                     break;
                 case EliminarIncidencia:
                     break;
@@ -86,7 +86,6 @@ public class VistaCamping {
                 case AccessosAsfaltats:
                     break;
                 case GuardarCamping:
-                    Camping camping = new Camping(nomCamping);
                     System.out.println("Introdueix el nom del fitxer:");
                     String nomFitxer = sc.nextLine();
                     camping.guardar(nomFitxer);
@@ -146,7 +145,8 @@ public class VistaCamping {
                     LlistaAccessos.llistarAccessos(false);
                     break;
                 case IncidenciesActuals:
-                    LlistaIncidencies.llistarIncidencies();
+                    LlistaIncidencies llistarIncidencies= new LlistaIncidencies();
+                    llistarIncidencies.llistarIncidencies();
                     break;
                 case SortirLlistat:
                     break;
