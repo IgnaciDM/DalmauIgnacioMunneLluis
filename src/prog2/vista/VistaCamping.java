@@ -135,13 +135,13 @@ public class VistaCamping {
             // Fem les accions necessàries
             switch(opcio) {
                 case Allotjaments:
-                    LlistaAllotjaments.llistarAllotjaments(true && false);//MODIFICABLE
+                    LlistaAllotjaments.llistarAllotjaments("Operatiu");//MODIFICABLE
                     break;
                 case AllotjamentsOperatius:
-                    LlistaAllotjaments.llistarAllotjaments(true);
+                    LlistaAllotjaments.llistarAllotjaments("Operatiu");
                     break;
                 case AllotjamentsNoOperatius:
-                    LlistaAllotjaments.llistarAllotjaments(false);
+                    LlistaAllotjaments.llistarAllotjaments("NoOperatiu");
                     break;
                 case AccessosOberts:
                     //LlistaAccessos.llistarAccessos(true);

@@ -54,6 +54,7 @@ public class Camping implements InCamping {
 
 
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
+
         return llistaAccessos.llistarAccessos(infoEstat);
     }
 

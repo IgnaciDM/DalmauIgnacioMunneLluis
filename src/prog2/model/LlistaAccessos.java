@@ -4,7 +4,7 @@ import prog2.vista.ExcepcioCamping;
 
 import java.util.ArrayList;
 
-public class LlistaAccessos {
+public class LlistaAccessos implements InLlistaAccessos {
     private ArrayList<Acces> llistaAccessos;
     private ArrayList<AccesAsfalt> llistaAccessosAsfalt;
 
@@ -36,7 +36,7 @@ public class LlistaAccessos {
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
         String llista = "";
         for (int i = 0; i < llistaAccessos.size(); i++) {
-            if (llistaAccessos.get(i).getestat() == estat) {//Eliminat estat.equals(TOTS)
+            if (llistaAccessos.get(i).getestat() == estat) {
                 llista += llistaAccessos.get(i).toString();
             }
         }

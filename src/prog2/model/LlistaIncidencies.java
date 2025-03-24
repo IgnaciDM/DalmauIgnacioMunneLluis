@@ -4,7 +4,7 @@ import prog2.vista.ExcepcioCamping;
 
 import java.util.ArrayList;
 
-public class LlistaIncidencies {
+public class LlistaIncidencies implements InLlistaIncidencies{
     private ArrayList<Incidencia> llistaincidencias;
     /**
      * Aquest mètode crea una incidència amb la informació passada com a paràmetres

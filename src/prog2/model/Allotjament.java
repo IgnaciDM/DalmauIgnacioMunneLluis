@@ -95,5 +95,18 @@ public abstract class Allotjament implements InAllotjament {
     public boolean esOperatiu() {
         return correcteFuncionament();
     }
+    /**
+     * Modifica l'estat de l'allotjament a No Operatiu i la il·luminació depenent de la incidència rebuda com a paràmetre
+     * @param in Objecte de tipus Incidencia.
+     */
+    public void tancarAllotjament(Incidencia in) {
+    }
+
+    /**
+     * Modifica l'estat de l'allotjament a Operatiu i la il·luminació al 100%
+     */
+    public void obrirAllotjament(){
+
+    }
 }
 
