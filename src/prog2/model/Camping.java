@@ -46,28 +46,26 @@ public class Camping implements InCamping {
         return nom;  // Retorna el nom del camping
     }
 
-    @Override
-    public String llistarAllotjaments(String estat) throws ExcepcioCamping {
+
+    public String llistarAllotjaments(boolean estat) throws ExcepcioCamping {
         return LlistaAllotjaments.llistarAllotjaments(estat);
     }
 
-    @Override
-    public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
-        return LlistaAccessos.llistarAccessos(infoEstat);
+
+    public String llistarAccessos(boolean infoEstat) throws ExcepcioCamping {
+        LlistaAccessos llistaAccessos = new LlistaAccessos();
+        return llistaAccessos.llistarAccessos(infoEstat);
     }
 
     @Override
     public String llistarIncidencies() throws ExcepcioCamping {
-        return LlistaIncidencies.llistarIncidencies();
+        LlistaIncidencies llistarIncidencies = new LlistaIncidencies();
+        return llistarIncidencies.llistarIncidencies();
     }
 
     @Override
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
 
-        System.out.println("este"+num);
-        System.out.println("este"+tipus);
-        System.out.println("este"+idAllotjament);
-        System.out.println("este"+data);
         for(int i = 0; i < llistaAllotjaments.size(); i++){
             if (llistaAllotjaments.get(i).getId().equals(idAllotjament)) {
                 llistaincidencias.afegirIncidencia(num,tipus,LlistaAllotjaments.getAllotjament(idAllotjament),data);
@@ -83,13 +81,21 @@ public class Camping implements InCamping {
     }
 
     @Override
-    public int calculaAccessosAccessibles() throws ExcepcioCamping {
-        return llistaAccessos.calculaAccessosAccessibles();
+    public int calculaAccessosAccessibles() {
+        try {
+            return llistaAccessos.calculaAccessosAccessibles();
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public float calculaMetresQuadratsAsfalt() throws ExcepcioCamping {
-        return llistaAccessos.calculaMetresQuadratsAsfalt();
+    public float calculaMetresQuadratsAsfalt() {
+        try {
+            return llistaAccessos.calculaMetresQuadratsAsfalt();
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

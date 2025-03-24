@@ -68,7 +68,7 @@ public class VistaCamping {
 
 
         do {
-            menu.mostrarMenu();//MOstrem el menu
+            menu.mostrarMenu();//Mostrem el menu
             op = menu.getOpcio(sc);
             switch (op) {
                 case Llistes:
@@ -144,10 +144,10 @@ public class VistaCamping {
                     LlistaAllotjaments.llistarAllotjaments(false);
                     break;
                 case AccessosOberts:
-                    LlistaAccessos.llistarAccessos(true);
+                    //LlistaAccessos.llistarAccessos(true);
                     break;
                 case AccessosTancats:
-                    LlistaAccessos.llistarAccessos(false);
+                    //LlistaAccessos.llistarAccessos(false);
                     break;
                 case IncidenciesActuals:
                     try {
