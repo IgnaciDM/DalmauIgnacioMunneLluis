@@ -67,6 +67,9 @@ public class VistaCamping {
 
         OpcionsMenu op = null;
 
+        //INICIALITZEM LES DADES DEL CAMPING
+        camping.inicialitzaDadesCamping();
+
 
         do {
             menu.mostrarMenu();//Mostrem el menu
@@ -137,42 +140,42 @@ public class VistaCamping {
             switch(opcio) {
                 case Allotjaments:
                     try{
-                        camping.llistarAllotjaments("Tots");
+                        System.out.println(camping.llistarAllotjaments("Tots"));
                     }catch(ExcepcioCamping e) {
                         System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case AllotjamentsOperatius:
                     try{
-                        camping.llistarAllotjaments("Operatiu");
+                        System.out.println(camping.llistarAllotjaments("Operatiu"));
                     }catch(ExcepcioCamping e) {
                         System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case AllotjamentsNoOperatius:
                     try{
-                        camping.llistarAllotjaments("NoOperatiu");
+                        System.out.println(camping.llistarAllotjaments("NoOperatiu"));
                     }catch(ExcepcioCamping e) {
                         System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case AccessosOberts:
                     try{
-                        camping.llistarAccessos("Obert");
+                        System.out.println(camping.llistarAccessos("Obert"));
                     }catch(ExcepcioCamping e) {
                         System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case AccessosTancats:
                     try{
-                        camping.llistarAccessos("Tancat");
+                        System.out.println(camping.llistarAccessos("Tancat"));
                     }catch(ExcepcioCamping e) {
                         System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case IncidenciesActuals:
                     try {
-                        camping.llistarIncidencies();
+                        System.out.println(camping.llistarIncidencies());
                     } catch (ExcepcioCamping e) {
                         System.out.println("Error: No s'ha trobat l'allotjament amb ID " + "allotjament");
                     }

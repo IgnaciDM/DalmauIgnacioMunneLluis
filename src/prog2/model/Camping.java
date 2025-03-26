@@ -13,7 +13,8 @@ public class Camping implements InCamping {
     private ArrayList<Reserva> llistaReserves = new ArrayList<>();// Llista de reserves
     private LlistaAccessos llistaAccessos;
     private LlistaIncidencies llistaIncidencies;
-    private LlistaAllotjaments llistarAllotjament;
+    private LlistaAllotjaments llistarAllotjaments;
+
     // Llista d'accessos
 
 
@@ -25,7 +26,7 @@ public class Camping implements InCamping {
         this.llistaReserves = new ArrayList<Reserva>();
         this.llistaAccessos = new LlistaAccessos();
         this.llistaIncidencies = new LlistaIncidencies();
-        this.llistarAllotjament = new LlistaAllotjaments();
+        this.llistarAllotjaments = new LlistaAllotjaments();
     }
 
     // Retorna la temporada en funció de la data proporcionada
@@ -53,7 +54,7 @@ public class Camping implements InCamping {
 
 
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
-        return llistarAllotjament.llistarAllotjaments(estat);
+        return llistarAllotjaments.llistarAllotjaments(estat);
     }
 
 
@@ -216,15 +217,6 @@ public class Camping implements InCamping {
         llistaReserves.add(reserva);
     }
 
-    // Mètode per afegir un accés a la llista
-    public void afegirAcces(Acces acces) throws ExcepcioCamping {
-        // Afegir l'objecte 'acces' a la llista
-        llistaAccessos.afegirAcces(acces);
-        System.out.println("Accés afegit: " + acces);
-    }
-
-
-
     public float calculMidaTotalParceles() {
         float midaTotal = 0;
         // Calcula la mida total de totes les parcel·les
@@ -345,7 +337,7 @@ public class Camping implements InCamping {
 
 
         /* Pistes */
-        llistaAllotjaments.buidar();
+        llistarAllotjaments.buidar();
 
 
         // Afegir parcel·les:
@@ -357,13 +349,13 @@ public class Camping implements InCamping {
         boolean connexioElectrica = true;
 
         Parcela ALL1 = new Parcela(nom, idAllotjament, true, "100%", mida, connexioElectrica);
-        llistaAllotjaments.afegirAllotjament(ALL1);
+        llistarAllotjaments.afegirAllotjament(ALL1);
 
         nom = "Parcel·la Sud";
         idAllotjament = "ALL2";
 
         Parcela ALL2 = new Parcela(nom, idAllotjament, true, "100%", mida, connexioElectrica);
-        llistaAllotjaments.afegirAllotjament(ALL2);
+        llistarAllotjaments.afegirAllotjament(ALL2);
 
         // Afegir bungalows:
         //------------------------------
@@ -379,7 +371,7 @@ public class Camping implements InCamping {
         boolean aireFred = true;
 
         Bungalow ALL3 = new Bungalow(nom, idAllotjament, true, "100%", mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
-        llistaAllotjaments.afegirAllotjament(ALL3);
+        llistarAllotjaments.afegirAllotjament(ALL3);
 
 
         // Afegir bungalows premium:
@@ -397,7 +389,7 @@ public class Camping implements InCamping {
         String codiWifi = "CampingDelMarBP1";
 
         BungalowPremium ALL4 = new BungalowPremium(nom, idAllotjament, true, "100%", mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
-        llistaAllotjaments.afegirAllotjament(ALL4);
+        llistarAllotjaments.afegirAllotjament(ALL4);
 
         // Afegir Glamping:
         //------------------------------
@@ -411,7 +403,7 @@ public class Camping implements InCamping {
         boolean casaMascota = true;
 
         Glamping ALL5 = new Glamping(nom, idAllotjament, true, "100%", mida, habitacions, placesPersones, material, casaMascota);
-        llistaAllotjaments.afegirAllotjament(ALL5);
+        llistarAllotjaments.afegirAllotjament(ALL5);
 
 
         // Afegir Mobil-Home:
@@ -425,7 +417,7 @@ public class Camping implements InCamping {
         boolean terrassaBarbacoa = true;
 
         MobilHome ALL6 = new MobilHome(nom, idAllotjament, true, "100%", mida, habitacions, placesPersones, terrassaBarbacoa);
-        llistaAllotjaments.afegirAllotjament(ALL6);
+        llistarAllotjaments.afegirAllotjament(ALL6);
 
         /* Accés */
         Acc1.afegirAllotjament(ALL1); Acc1.afegirAllotjament(ALL2);

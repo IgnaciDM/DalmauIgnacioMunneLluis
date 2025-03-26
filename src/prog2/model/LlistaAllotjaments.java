@@ -1,7 +1,6 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class LlistaAllotjaments implements InLlistaAllotjaments {
@@ -12,10 +11,6 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         this.llistaAllotjament = new ArrayList<>();
     }
 
-
-
-
-
     /**
      * Afegeix un allotjament rebut per paràmetre a la llista d'allotjaments.
      */
@@ -23,12 +18,11 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         llistaAllotjament.add(allotjament);
     }
 
-
     /**
      * Buida la llista d'allotjaments.
      */
     public void buidar() {
-        llistaAllotjament.clear();
+        llistaAllotjament = new ArrayList<>();
     }
 
     /**
@@ -36,8 +30,14 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
      */
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         StringBuilder llista = new StringBuilder();
+
         for (Allotjament allotjament : llistaAllotjament) {
-            if (estat.equals("Tots") || allotjament.getEstat()==estat.equals("Obert")) {
+            boolean operatiu = allotjament.getEstat(); // Suponiendo que devuelve true si está operativo
+
+            // Filtrar en función del parámetro estat
+            if (estat.equals("Tots") ||
+                    (estat.equals("Operatius") && operatiu) ||
+                    (estat.equals("NoOperatius") && !operatiu)) {
                 llista.append(allotjament.toString()).append("\n");
             }
         }
@@ -46,6 +46,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         }
         return llista.toString();
     }
+
 
     /**
      * Retorna si hi ha algun allotjament operatiu.
