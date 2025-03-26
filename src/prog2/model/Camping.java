@@ -14,6 +14,8 @@ public class Camping implements InCamping {
     private LlistaAccessos llistaAccessos;
     private LlistaIncidencies llistaIncidencies;
     private LlistaAllotjaments llistarAllotjament;
+    // Llista d'accessos
+
 
     // Constructor que inicialitza el camping amb el seu nom
     public Camping(String nom) {
@@ -116,16 +118,6 @@ public class Camping implements InCamping {
         throw new UnsupportedOperationException("Aquest mètode està implementat a la classe Camping");
     }
 
-    @Override
-    public void inicialitzaDadesCamping() {
-        new Camping("");
-    }
-
-
-
-
-
-
     public ArrayList<Reserva> getLlistaReserves() {
         return llistaReserves;  // Retorna la llista de reserves
     }
@@ -221,6 +213,14 @@ public class Camping implements InCamping {
         llistaReserves.add(reserva);
     }
 
+    // Mètode per afegir un accés a la llista
+    public void afegirAcces(Acces acces) throws ExcepcioCamping {
+        // Afegir l'objecte 'acces' a la llista
+        llistaAccessos.afegirAcces(acces);
+        System.out.println("Accés afegit: " + acces);
+    }
+
+
 
     public float calculMidaTotalParceles() {
         float midaTotal = 0;
@@ -280,4 +280,77 @@ public class Camping implements InCamping {
             return null;
         }
     }
+
+
+    public void inicialitzaDadesCamping() {
+        try (BufferedReader br = new BufferedReader(new FileReader("inicialitzaDadesCamping.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts[0].equals("Acces")) {
+                    // Parsejant Accessos
+                    String tipus = parts[1].trim();
+                    String id = parts[2].trim();
+                    boolean asfaltat = Boolean.parseBoolean(parts[3].trim());
+                    int distancia = Integer.parseInt(parts[4].trim());
+
+                    Acces acces = null;
+
+                    // Crear el tipus d'accés depenent de les propietats
+                    if (tipus.equals("CamiAsfaltat")) {
+                        // Si és un camí asfaltat, afegim els metres quadrats d'asfalt
+                        float asfalt = Float.parseFloat(parts[5].trim());
+                        acces = new CamiAsfalt(id, asfaltat, asfalt);
+                    } else if (tipus.equals("CarreteraAsfaltada")) {
+                        // Si és una carretera asfaltada, afegim el pes màxim dels vehicles
+                        float asfalt = Float.parseFloat(parts[5].trim());
+                        float pesMaxim = Float.parseFloat(parts[6].trim());
+                        acces = new CarreteraAsfalt(id, asfaltat, asfalt, pesMaxim);
+                    } else if (tipus.equals("CamiTerra")) {
+                        // Si és un camí de terra, afegim la longitud
+                        float longitud = Float.parseFloat(parts[5].trim());
+                        acces = new CamiTerra(id, asfaltat, longitud);
+                    } else if (tipus.equals("CarreteraTerra")) {
+                        // Si és una carretera de terra, afegim la longitud i amplada
+                        float longitud = Float.parseFloat(parts[5].trim());
+                        float amplada = Float.parseFloat(parts[6].trim());
+                        acces = new CarreteraTerra(id, asfaltat, longitud, amplada);
+                    }
+
+                    // Afegir l'accés a la llista
+                    if (acces != null) {
+                        llistaAccessos.afegirAcces(acces);
+                    }
+
+                } else if (parts[0].equals("Allotjament")) {
+                    // Parsejant Allotjaments
+                    String tipusAllotjament = parts[1].trim();
+                    String idAllotjament = parts[2].trim();
+                    if (tipusAllotjament.equals("Parcela")) {
+                        // Parcel·la
+                        float metres = Float.parseFloat(parts[3].trim());
+                        boolean connexioElectrica = Boolean.parseBoolean(parts[4].trim());
+                        boolean estat = Boolean.parseBoolean(parts[5].trim());
+                        String iluminacio = parts[6].trim();
+                        afegirParcela(tipusAllotjament, idAllotjament, metres, connexioElectrica, estat, iluminacio);
+                    } else if (tipusAllotjament.equals("Bungalow")) {
+                        // Bungalow
+                        String mida = parts[3].trim();
+                        int habitacions = Integer.parseInt(parts[4].trim());
+                        int placesPersones = Integer.parseInt(parts[5].trim());
+                        int placesParquing = Integer.parseInt(parts[6].trim());
+                        boolean terrassa = Boolean.parseBoolean(parts[7].trim());
+                        boolean tv = Boolean.parseBoolean(parts[8].trim());
+                        boolean aireFred = Boolean.parseBoolean(parts[9].trim());
+                        boolean estat = Boolean.parseBoolean(parts[10].trim());
+                        String iluminacio = parts[11].trim();
+                        afegirBungalow(tipusAllotjament, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, estat, iluminacio);
+                    }
+                }
+            }
+        } catch (IOException | ExcepcioCamping e) {
+            System.out.println("Error llegint el fitxer d'entrada: " + e.getMessage());
+        }
+    }
+
 }

@@ -2,13 +2,19 @@ package prog2.model;
 
 import java.util.ArrayList;
 
-public class CamiAsfalt extends AccesAsfalt{
+public class CamiAsfalt extends Acces {
+    private float asfalt; // Metres quadrats d'asfalt
 
-    public CamiAsfalt(String nom, boolean accesibilitat, boolean estat,ArrayList<Allotjament> acces_a_Allotjaments, int mcuadrats) {
-        super(nom, accesibilitat, estat, acces_a_Allotjaments, mcuadrats);
+    public CamiAsfalt(String nom, boolean estat, float asfalt) {
+        super(nom, estat);
+        this.asfalt = asfalt;
     }
 
-    public boolean isAccessibilitat() {
-        return false;
+    public float getAsfalt() {
+        return asfalt;
+    }
+
+    public void setAsfalt(float asfalt) {
+        this.asfalt = asfalt;
     }
 }
