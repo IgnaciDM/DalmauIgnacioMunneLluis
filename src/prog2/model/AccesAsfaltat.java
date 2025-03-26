@@ -2,7 +2,7 @@ package prog2.model;
 
 import java.util.ArrayList;
 
-public class AccesAsfalt {
+public class AccesAsfaltat {
     private String nom;
     private boolean accesibilitat;
     private boolean estat;
@@ -10,7 +10,7 @@ public class AccesAsfalt {
     private float mcuadrats;  // Superfície asfaltada en metres quadrats
 
     // Constructor de la classe AccesAsfalt
-    public AccesAsfalt(String nom, boolean accesibilitat, boolean estat, ArrayList<Allotjament> accesAAllotjaments, float mcuadrats) {
+    public AccesAsfaltat(String nom, boolean accesibilitat, boolean estat, ArrayList<Allotjament> accesAAllotjaments, float mcuadrats) {
         this.nom = nom;
         this.accesibilitat = accesibilitat;
         this.estat = estat;

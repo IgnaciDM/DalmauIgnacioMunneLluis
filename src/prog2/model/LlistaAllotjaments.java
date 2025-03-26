@@ -12,15 +12,17 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         this.llistaAllotjament = new ArrayList<>();
     }
 
+
+
+
+
     /**
      * Afegeix un allotjament rebut per paràmetre a la llista d'allotjaments.
      */
-    public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
-        if (allotjament == null) {
-            throw new ExcepcioCamping("L'allotjament no pot ser null.");
-        }
+    public void afegirAllotjament(Allotjament allotjament) {
         llistaAllotjament.add(allotjament);
     }
+
 
     /**
      * Buida la llista d'allotjaments.

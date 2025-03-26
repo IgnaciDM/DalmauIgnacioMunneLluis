@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class LlistaAccessos implements InLlistaAccessos {
     private ArrayList<Acces> llistaAccessos;
-    private ArrayList<AccesAsfalt> llistaAccessosAsfalt;
+    private ArrayList<AccesAsfaltat> llistaAccessosAsfalt;
 
     /**
      * Afegeix un accés rebut per paràmetre a la llista d'accessos.
@@ -91,7 +91,7 @@ public class LlistaAccessos implements InLlistaAccessos {
      */
     public float calculaMetresQuadratsAsfalt() throws ExcepcioCamping {
         float num = 0;
-        for (AccesAsfalt acces : llistaAccessosAsfalt) {
+        for (AccesAsfaltat acces : llistaAccessosAsfalt) {
             num += acces.getMcuadrats();
         }
         return num;
