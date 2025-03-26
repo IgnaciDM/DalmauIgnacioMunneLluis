@@ -2,12 +2,12 @@ package prog2.model;
 
 public class Casa extends Allotjament {
     // Atributos de la clase Casa
-    private String mida;
+    private float mida;
     private int habitacions;
     private int placesPersones;
 
     // Constructor para inicializar los atributos
-    public Casa(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, boolean estat, String iluminacio) {
+    public Casa(String nom, String idAllotjament, float mida, int habitacions, int placesPersones, boolean estat, String iluminacio) {
         super(nom, idAllotjament,7,4, estat, iluminacio);
         this.mida = mida;
         this.habitacions = habitacions;
@@ -16,11 +16,11 @@ public class Casa extends Allotjament {
 
     // Getters y setters
 
-    public String getMida() {
+    public float getMida() {
         return mida;
     }
 
-    public void setMida(String mida) {
+    public void setMida(float mida) {
         this.mida = mida;
     }
 

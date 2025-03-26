@@ -9,8 +9,8 @@ public class MobilHome extends Casa {
 
     // Constructor que inicialitza els atributs de la classe MobilHome.
     // Es crida el constructor de la classe pare Allotjament per establir alguns valors per defecte (nom, idAllotjament, 5, 3).
-    public MobilHome(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa, boolean estat, String iluminacio) {
-        super(nom, idAllotjament, mida, habitacions, placesPersones, estat, iluminacio);  // Crida al constructor de la classe pare (Allotjament).
+    public MobilHome(String nom, String idAllotjament,boolean estat, String iluminacio,float mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
+        super(nom, idAllotjament, mida, habitacions, placesPersones, estat, iluminacio);  //nom, idAllotjament, true, "100%", mida, habitacions, placesPersones, terrassaBarbacoa
         this.terrassaBarbacoa = terrassaBarbacoa;
     }
 
