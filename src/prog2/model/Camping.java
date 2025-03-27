@@ -100,11 +100,6 @@ public class Camping implements InCamping {
         }
     }
 
-    @Override
-    public void save(String camiDesti) throws ExcepcioCamping {
-
-    }
-
     static Camping load(String camiOrigen) throws ExcepcioCamping {
         throw new UnsupportedOperationException("Aquest mètode està implementat a la classe Camping");
     }
@@ -248,10 +243,17 @@ public class Camping implements InCamping {
 
     // Método para guardar el objeto Camping en un archivo
 
-    public void save(String camiDesti) throws ExcepcioCamping; {
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(camiDesti));
-        out.writeObject(this);
-        System.out.println("Dades del càmping guardades correctament en: " + camiDesti);
+    public void save(String camiDesti) throws ExcepcioCamping {
+        if (camiDesti == null || camiDesti.trim().isEmpty()) {
+            throw new ExcepcioCamping("El camí de destinació no pot estar buit.");
+        }
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(camiDesti))) {
+            out.writeObject(this);
+            System.out.println("Dades del càmping guardades correctament en: " + camiDesti);
+        } catch (IOException e) {
+            throw new ExcepcioCamping("Error en guardar les dades: " + e.getMessage());
+        }
     }
 
 

@@ -103,7 +103,7 @@ public class VistaCamping {
                 case GuardarCamping:
                     System.out.println("Introdueix el nom del fitxer:");
                     String nomFitxer = sc.nextLine();
-                    camping.guardar(nomFitxer);
+                    camping.save(nomFitxer);
                     break;
                 case RecuperarCamping:
                     System.out.println("Introdueix el nom del fitxer:");
