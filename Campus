@@ -1,0 +1,24 @@
+Nom del Camping: Green
+Clients:
+Allotjaments:
+ID: ALL1, Nom: Parcel·la Nord
+ID: ALL2, Nom: Parcel·la Sud
+ID: ALL3, Nom: Bungalow Nord
+ID: ALL4, Nom: Bungallow Sud
+ID: ALL5, Nom: Glamping Nord
+ID: ALL6, Nom: Mobil-Home Sud
+Reserves:
+Accessos:
+Nom: A1, Tipus: CamiAsfaltat
+Nom: A2, Tipus: CarreteraAsfaltada
+Nom: A3, Tipus: CamiTerra
+Nom: A4, Tipus: CarreteraTerra
+Nom: A5, Tipus: CamiAsfaltat
+Nom: A6, Tipus: CarreteraAsfaltada
+Nom: A7, Tipus: CamiAsfaltat
+Nom: A8, Tipus: CarreteraAsfaltada
+Nom: A9, Tipus: CamiTerra
+Nom: A10, Tipus: CarreteraTerra
+Nom: A11, Tipus: CamiTerra
+Nom: A12, Tipus: CarreteraTerra
+Incidències:
