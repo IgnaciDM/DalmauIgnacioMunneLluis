@@ -15,6 +15,8 @@ public class AccesTerra extends Acces {
         this.longitud = longitud;  // Inicialitza la longitud del camí de terra
     }
 
+
+
     // Getter per a la longitud
     public float getLongitud() {
         return longitud;

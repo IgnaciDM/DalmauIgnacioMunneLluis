@@ -7,17 +7,18 @@ public class CamiAsfaltat extends AccesAsfaltat {// Metres quadrats d'asfalt
     private boolean accesibilitat;
     private boolean estat;
     private ArrayList<Allotjament> allotjaments;
-    private float mcuadrats;
+    private float asfalt;
 
-    public CamiAsfaltat(String nom, boolean estat, boolean accesibilitat, ArrayList<Allotjament> allotjaments, float mcuadrats) {
-        super(nom, estat, accesibilitat, allotjaments, mcuadrats);
+    public CamiAsfaltat(String nom, boolean estat,float asfalt) {
+        super(nom, estat, accesibilitat, allotjaments, asfalt);
     }
 
+
     public float getAsfalt() {
-        return mcuadrats;
+        return asfalt;
     }
 
     public void setAsfalt(float mcuadrats) {
-        this.mcuadrats = mcuadrats;
+        this.asfalt = asfalt;
     }
 }

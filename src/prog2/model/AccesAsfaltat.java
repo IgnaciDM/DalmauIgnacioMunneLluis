@@ -2,7 +2,7 @@ package prog2.model;
 
 import java.util.ArrayList;
 
-public class AccesAsfaltat {
+public class AccesAsfaltat extends Acces {
     private String nom;
     private boolean accesibilitat;
     private boolean estat;
@@ -10,7 +10,8 @@ public class AccesAsfaltat {
     private float mcuadrats;  // Superfície asfaltada en metres quadrats
 
     // Constructor de la classe AccesAsfalt
-    public AccesAsfaltat(String nom, boolean estat, boolean accesibilitat, ArrayList<Allotjament> allotjaments, float mcuadrats) {
+    public AccesAsfaltat(String nom, boolean estat, boolean accesibilitat, ArrayList<Allotjament> accesAAllotjaments, float mcuadrats) {
+        super(nom, accesibilitat, estat, accesAAllotjaments);  // Crida al constructor de la classe base Acces
         this.nom = nom;
         this.accesibilitat = accesibilitat;
         this.estat = estat;
