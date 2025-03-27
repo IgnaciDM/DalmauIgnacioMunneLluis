@@ -103,12 +103,12 @@ public class VistaCamping {
                 case GuardarCamping:
                     System.out.println("Introdueix el nom del fitxer:");
                     String nomFitxer = sc.nextLine();
-                    camping.guardar(nomFitxer);
+                    camping.save(nomFitxer);
                     break;
                 case RecuperarCamping:
                     System.out.println("Introdueix el nom del fitxer:");
                     nomFitxer = sc.nextLine();
-                    Camping campingCarregat = Camping.carregar(nomFitxer);
+                    Camping campingCarregat = Camping.load(nomFitxer);
                     if (campingCarregat != null) {
                         camping = campingCarregat; // Reemplaza la instancia actual
                         System.out.println("Dades carregades correctament: " + camping);
