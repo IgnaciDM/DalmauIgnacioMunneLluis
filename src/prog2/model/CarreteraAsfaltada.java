@@ -1,23 +1,14 @@
+// Classe CarreteraAsfaltada
 package prog2.model;
 
 import java.util.ArrayList;
 
 public class CarreteraAsfaltada extends AccesAsfaltat {
-    private float asfalt; // Metres quadrats d'asfalt
-    private float pesMaxim; // Pes màxim permès
+    private float pesMaxim;
 
-    public CarreteraAsfaltada(String nom, boolean estat, float asfalt, float pesMaxim) {
-        super(nom, estat);
-        this.asfalt = asfalt;
+    public CarreteraAsfaltada(String nom, boolean estat,  float mcuadrats, float pesMaxim) {
+        super(nom, estat, true, new ArrayList<>(), mcuadrats);
         this.pesMaxim = pesMaxim;
-    }
-
-    public float getAsfalt() {
-        return asfalt;
-    }
-
-    public void setAsfalt(float asfalt) {
-        this.asfalt = asfalt;
     }
 
     public float getPesMaxim() {
@@ -26,5 +17,10 @@ public class CarreteraAsfaltada extends AccesAsfaltat {
 
     public void setPesMaxim(float pesMaxim) {
         this.pesMaxim = pesMaxim;
+    }
+
+    @Override
+    public boolean isAccessibilitat() {
+        return super.isAccessibilitat();
     }
 }

@@ -56,12 +56,4 @@ public class Acces {
     public void setAllotjaments(ArrayList<Allotjament> allotjaments) {
         this.allotjaments = allotjaments;
     }
-
-    public boolean getAccesibilitat() {
-        return false; // ⚠️ Este método parece incompleto, revisa si necesitas implementarlo correctamente.
-    }
-
-    public Allotjament[] getacces_a_Allotjaments() {
-        return null;
-    }
 }
