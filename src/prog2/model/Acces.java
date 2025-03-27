@@ -1,8 +1,9 @@
 package prog2.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Acces {
+public class Acces implements InAcces, Serializable {
     private String nom;
     private boolean estat; // Si l'accés està obert o tancat
     private boolean accessibilitat;

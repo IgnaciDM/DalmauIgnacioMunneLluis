@@ -2,6 +2,7 @@ package prog2.vista;
 
 import prog2.model.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -103,7 +104,11 @@ public class VistaCamping {
                 case GuardarCamping:
                     System.out.println("Introdueix el nom del fitxer:");
                     String nomFitxer = sc.nextLine();
-                    camping.save(nomFitxer);
+                    try {
+                        camping.save(nomFitxer);
+                    } catch (ExcepcioCamping e) {
+                        throw new RuntimeException(e);
+                    }
                     break;
                 case RecuperarCamping:
                     System.out.println("Introdueix el nom del fitxer:");
