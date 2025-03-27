@@ -10,7 +10,7 @@ public class CamiAsfaltat extends AccesAsfaltat {// Metres quadrats d'asfalt
     private float asfalt;
 
     public CamiAsfaltat(String nom, boolean estat,float asfalt) {
-        super(nom, estat, accesibilitat, allotjaments, asfalt);
+        super(nom, estat, asfalt);
     }
 
 
