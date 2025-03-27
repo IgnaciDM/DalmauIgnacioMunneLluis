@@ -14,13 +14,9 @@ public class LlistaIncidencies implements InLlistaIncidencies{
     }
 
     public void afegirIncidencia(int num, String tipus, Allotjament allotjament, String data) throws ExcepcioCamping {
-        if (!llistaAllotjaments.contains(allotjament)) {//Comprobacio de que dins de la llista d'aAllotjaments estigui el allotjament al cual volem ferli una incidencia
-            throw new ExcepcioCamping("No existeix l'allotjament seleccionat.");
-        }else{
-            Incidencia incidencia = new Incidencia(num, tipus, allotjament, data);
-            llistaincidencias.add(incidencia);
-            System.out.println("Incidencia agregada correctament");
-        }
+        Incidencia incidencia = new Incidencia(num, tipus, allotjament, data);
+        llistaincidencias.add(incidencia);
+        System.out.println("Incidencia agregada correctament");
     }
 
 

@@ -11,6 +11,9 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         this.llistaAllotjament = new ArrayList<>();
     }
 
+    public ArrayList<Allotjament> getLlistaAllotjament() {
+        return llistaAllotjament;
+    }
     /**
      * Afegeix un allotjament rebut per paràmetre a la llista d'allotjaments.
      */
@@ -71,7 +74,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
      */
     public Allotjament getAllotjament(String id) throws ExcepcioCamping {
         for (Allotjament allotjament : llistaAllotjament) {
-            if (allotjament.getNom().equalsIgnoreCase(id)) {
+            if (allotjament.getId().equalsIgnoreCase(id)) {
                 return allotjament;
             }
         }

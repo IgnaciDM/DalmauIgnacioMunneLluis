@@ -81,7 +81,11 @@ public class VistaCamping {
                 case AfegirIncidencia:
                     try {
                         System.out.println("Introdueix la idIncidencia, el tipus, idAllotjament,la data");
-                        camping.afegirIncidencia(sc.nextInt(), sc.next(), sc.next(), sc.next());
+                        int num = sc.nextInt();
+                        String tipus = sc.next();
+                        String idAllotjament = sc.next();
+                        String data = sc.next();
+                        camping.afegirIncidencia(num, tipus, idAllotjament, data);
                     } catch (ExcepcioCamping e) {
                         System.out.println("Error: No s'ha trobat l'allotjament");
                     }

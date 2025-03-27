@@ -6,7 +6,7 @@ import java.util.List;
 public class Acces {
     private String nom;
     private boolean estat; // Si l'accés està obert o tancat
-    private List<Allotjament> allotjaments; // Llista d'allotjaments accessibles des d'aquest accés
+    private ArrayList<Allotjament> allotjaments; // Llista d'allotjaments accessibles des d'aquest accés
 
     public Acces(String nom, boolean estat) {
         this.nom = nom;
@@ -14,13 +14,10 @@ public class Acces {
         this.allotjaments = new ArrayList<>();
     }
 
-    public Acces(String nom, boolean estat, List<Allotjament> allotjaments) {
+    public Acces(String nom, boolean estat, ArrayList<Allotjament> allotjaments) {
         this.nom = nom;
         this.estat = estat;
         this.allotjaments = allotjaments;
-    }
-
-    public Acces(String nom, boolean accesibilitat, boolean estat, ArrayList<Allotjament> accesAAllotjaments) {
     }
 
     public void afegirAllotjament(Allotjament allotjament) {
@@ -44,11 +41,11 @@ public class Acces {
         this.estat = estat;
     }
 
-    public List<Allotjament> getAccesAAllotjaments() {
+    public ArrayList<Allotjament> getAccesAAllotjaments() {
         return allotjaments;
     }
 
-    public void setAllotjaments(List<Allotjament> allotjaments) {
+    public void setAllotjaments(ArrayList<Allotjament> allotjaments) {
         this.allotjaments = allotjaments;
     }
 

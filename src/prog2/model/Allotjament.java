@@ -19,6 +19,9 @@ public abstract class Allotjament implements InAllotjament {
         this.iluminacio = iluminacio;
     }
 
+    public Allotjament getAllotjament(String id) {
+        return this;
+    }
     @Override
     public String getNom() {
         return nom;  // Retorna el nom de l'allotjament
