@@ -6,18 +6,19 @@ public class Acces {
     private String nom;
     private boolean estat; // Si l'accés està obert o tancat
     private boolean accessibilitat;
-    private ArrayList<Allotjament> allotjaments; // Llista d'allotjaments accessibles des d'aquest accés
+    private ArrayList<Allotjament> allotjaments; // Llista d'allotjaments accessibles
 
     public Acces(String nom, boolean accesibilitat, float longitud) {
         this.nom = nom;
-        this.estat = estat;
-        this.accessibilitat = accessibilitat;
-        this.allotjaments = allotjaments;
+        this.estat = true;  // Inicialitza estat a true per defecte (es pot modificar si cal)
+        this.accessibilitat = accesibilitat;
+        this.allotjaments = new ArrayList<>();  // INICIALITZEM LA LLISTA!!!
     }
 
-
     public void afegirAllotjament(Allotjament allotjament) {
-        this.allotjaments.add(allotjament);
+        if (allotjament != null) {
+            this.allotjaments.add(allotjament);
+        }
     }
 
     public void tancarAcces() {
@@ -29,7 +30,7 @@ public class Acces {
     }
 
     public boolean isAccessibilitat() {
-      return accessibilitat;
+        return accessibilitat;
     }
 
     // Getters i setters
@@ -54,6 +55,8 @@ public class Acces {
     }
 
     public void setAllotjaments(ArrayList<Allotjament> allotjaments) {
-        this.allotjaments = allotjaments;
+        if (allotjaments != null) {
+            this.allotjaments = allotjaments;
+        }
     }
 }
