@@ -2,7 +2,7 @@ package prog2.model;
 
 import java.util.ArrayList;
 
-public class CarreteraTerra extends Acces {
+public class CarreteraTerra extends AccesTerra {
     private float longitud; // Longitud en metres
     private float amplada; // Amplada de la carretera
 

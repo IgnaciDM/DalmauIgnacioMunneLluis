@@ -6,15 +6,15 @@ public class AccesAsfaltat {
     private String nom;
     private boolean accesibilitat;
     private boolean estat;
-    private ArrayList<Allotjament> accesAAllotjaments;
+    private ArrayList<Allotjament> allotjaments;
     private float mcuadrats;  // Superfície asfaltada en metres quadrats
 
     // Constructor de la classe AccesAsfalt
-    public AccesAsfaltat(String nom, boolean accesibilitat, boolean estat, ArrayList<Allotjament> accesAAllotjaments, float mcuadrats) {
+    public AccesAsfaltat(String nom, boolean estat, boolean accesibilitat, ArrayList<Allotjament> allotjaments, float mcuadrats) {
         this.nom = nom;
         this.accesibilitat = accesibilitat;
         this.estat = estat;
-        this.accesAAllotjaments = accesAAllotjaments;
+        this.allotjaments = allotjaments;
         this.mcuadrats = mcuadrats;
     }
 
@@ -47,11 +47,11 @@ public class AccesAsfaltat {
 
     // Getter i Setter per a llistat de allotjaments
     public ArrayList<Allotjament> getAccesAAllotjaments() {
-        return accesAAllotjaments;
+        return allotjaments;
     }
 
     public void setAccesAAllotjaments(ArrayList<Allotjament> accesAAllotjaments) {
-        this.accesAAllotjaments = accesAAllotjaments;
+        this.allotjaments = accesAAllotjaments;
     }
 
     // Getter i Setter per a la superfície asfaltada
@@ -71,7 +71,7 @@ public class AccesAsfaltat {
                 ", accesibilitat=" + accesibilitat +
                 ", estat=" + estat +
                 ", mcuadrats=" + mcuadrats +
-                ", allotjaments=" + accesAAllotjaments.size() +
+                ", allotjaments=" + allotjaments.size() +
                 '}';
     }
 }

@@ -2,7 +2,7 @@ package prog2.model;
 
 import java.util.ArrayList;
 
-public class CarreteraAsfaltada extends Acces {
+public class CarreteraAsfaltada extends AccesAsfaltat {
     private float asfalt; // Metres quadrats d'asfalt
     private float pesMaxim; // Pes màxim permès
 

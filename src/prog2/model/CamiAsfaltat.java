@@ -1,18 +1,23 @@
 package prog2.model;
 
-public class CamiAsfaltat extends Acces {
-    private float asfalt; // Metres quadrats d'asfalt
+import java.util.ArrayList;
 
-    public CamiAsfaltat(String nom, boolean estat, float asfalt) {
-        super(nom, estat);
-        this.asfalt = asfalt;
+public class CamiAsfaltat extends AccesAsfaltat {// Metres quadrats d'asfalt
+    private String nom;
+    private boolean accesibilitat;
+    private boolean estat;
+    private ArrayList<Allotjament> allotjaments;
+    private float mcuadrats;
+
+    public CamiAsfaltat(String nom, boolean estat, boolean accesibilitat, ArrayList<Allotjament> allotjaments, float mcuadrats) {
+        super(nom, estat, accesibilitat, allotjaments, mcuadrats);
     }
 
     public float getAsfalt() {
-        return asfalt;
+        return mcuadrats;
     }
 
-    public void setAsfalt(float asfalt) {
-        this.asfalt = asfalt;
+    public void setAsfalt(float mcuadrats) {
+        this.mcuadrats = mcuadrats;
     }
 }
