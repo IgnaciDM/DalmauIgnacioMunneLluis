@@ -11,7 +11,7 @@ public class AccesAsfaltat extends Acces {
 
     // Constructor de la classe AccesAsfalt
     public AccesAsfaltat(String nom, boolean estat, boolean accesibilitat, ArrayList<Allotjament> accesAAllotjaments, float mcuadrats) {
-        super(nom, accesibilitat, estat, accesAAllotjaments);  // Crida al constructor de la classe base Acces
+        super(nom, accesibilitat, mcuadrats);  // Crida al constructor de la classe base Acces
         this.nom = nom;
         this.accesibilitat = accesibilitat;
         this.estat = estat;

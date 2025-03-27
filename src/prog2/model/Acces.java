@@ -1,7 +1,6 @@
 package prog2.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Acces {
     private String nom;
@@ -9,12 +8,13 @@ public class Acces {
     private boolean accessibilitat;
     private ArrayList<Allotjament> allotjaments; // Llista d'allotjaments accessibles des d'aquest accés
 
-    public Acces(String nom, boolean estat, boolean accessibilitat, ArrayList<Allotjament> allotjaments) {
+    public Acces(String nom, boolean accesibilitat, float longitud) {
         this.nom = nom;
         this.estat = estat;
         this.accessibilitat = accessibilitat;
         this.allotjaments = allotjaments;
     }
+
 
     public void afegirAllotjament(Allotjament allotjament) {
         this.allotjaments.add(allotjament);

@@ -10,8 +10,8 @@ public class AccesTerra extends Acces {
     private float longitud;  // Longitud del camí de terra en metres
 
     // Constructor de la classe AccesTerra
-    public AccesTerra(String nom, boolean accesibilitat, boolean estat, ArrayList<Allotjament> accesAAllotjaments, float longitud) {
-        super(nom, accesibilitat, estat, accesAAllotjaments);  // Crida al constructor de la classe base Acces
+    public AccesTerra(String nom, boolean accesibilitat, float longitud) {
+        super(nom, accesibilitat,longitud);  // Crida al constructor de la classe base Acces
         this.longitud = longitud;  // Inicialitza la longitud del camí de terra
     }
 
