@@ -77,7 +77,7 @@ public class LlistaAccessos implements InLlistaAccessos {
     public int calculaAccessosAccessibles() throws ExcepcioCamping {
         int num = 0;
         for (int i = 0; i < llistaAccessos.size(); i++) {
-            if (llistaAccessos.get(i).getEstat() == true) {
+            if (llistaAccessos.get(i).getAccesibilitat() == true) {
                 num++;
             }
         }
