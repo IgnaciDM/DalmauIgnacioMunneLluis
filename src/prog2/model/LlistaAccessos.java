@@ -8,6 +8,11 @@ public class LlistaAccessos implements InLlistaAccessos {
     private ArrayList<Acces> llistaAccessos;
     private ArrayList<AccesAsfaltat> llistaAccessosAsfalt;
 
+    public LlistaAccessos() {
+        this.llistaAccessos = new ArrayList<>();
+        this.llistaAccessosAsfalt = new ArrayList<>();
+    }
+
     /**
      * Afegeix un accés rebut per paràmetre a la llista d'accessos.
      *
@@ -15,6 +20,8 @@ public class LlistaAccessos implements InLlistaAccessos {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
+        System.out.println("agregar");
+        System.out.println(acc);
         llistaAccessos.add(acc);
     }
 
@@ -34,16 +41,19 @@ public class LlistaAccessos implements InLlistaAccessos {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode llança una excepció en cas que no hi hagi accessos en l'estat passat com a parametre.
      */
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
-        String llista = "";
-        for (int i = 0; i < llistaAccessos.size(); i++) {
-            if (llistaAccessos.get(i).getEstat() == estat) {
-                llista += llistaAccessos.get(i).toString();
+        StringBuilder llista = new StringBuilder();
+
+        for (Acces acces : llistaAccessos) {
+            if (acces.getEstat() == estat) {
+                llista.append(acces.toString()).append("\n"); // Agregamos un salto de línea para mayor claridad
             }
         }
+
         if (llista.length() == 0) {
-            throw new ExcepcioCamping("No hi ha cap acces amb aquest estat");
+            throw new ExcepcioCamping("No hi ha cap accés amb aquest estat.");
         }
-        return llista;
+
+        return llista.toString();
     }
 
     /**

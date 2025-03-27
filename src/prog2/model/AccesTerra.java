@@ -30,6 +30,11 @@ public class AccesTerra extends Acces {
     // Mètode toString per representar la informació de l'accés terra
     @Override
     public String toString() {
-        return super.toString() + ", longitud=" + longitud + " metres";
+        return "AccesTerra{" +
+                "nom='" + nom + '\'' +
+                ", accesibilitat=" + accesibilitat +
+                ", estat=" + estat +
+                ", longitud=" + longitud +
+                '}';
     }
 }

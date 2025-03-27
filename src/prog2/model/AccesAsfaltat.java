@@ -17,6 +17,8 @@ public class AccesAsfaltat extends Acces {
         this.estat = estat;
         this.allotjaments = allotjaments;
         this.mcuadrats = mcuadrats;
+        // Si la lista pasada es null, inicializamos una vacía
+        this.allotjaments = (accesAAllotjaments != null) ? accesAAllotjaments : new ArrayList<>();
     }
 
     // Getter i Setter per a la superfície asfaltada
