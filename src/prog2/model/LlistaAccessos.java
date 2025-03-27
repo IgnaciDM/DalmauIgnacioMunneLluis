@@ -42,7 +42,6 @@ public class LlistaAccessos implements InLlistaAccessos {
         StringBuilder llista = new StringBuilder();
 
         for (Acces acces : llistaAccessos) {
-            System.out.println(acces.getEstat());
             if (acces.getEstat() == estat) {
                 llista.append(acces.toString()).append("\n"); // Agregamos un salto de línea para mayor claridad
             }
