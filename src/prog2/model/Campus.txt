@@ -6,7 +6,7 @@ A3, CamiTerra, 100
 A4, CarreteraTerra, 200, 3
 
 Allotjaments:
--------------
+------------
 ALL1, Parcel·la Nord, 64, true, 100%, true
 ALL2, Parcel·la Sud, 64, true, 100%, true
 ALL3, Bungalow Nord, 22, 2, 4, 1, true, true, true
