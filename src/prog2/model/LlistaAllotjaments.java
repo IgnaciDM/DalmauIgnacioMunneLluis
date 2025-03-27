@@ -35,9 +35,8 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
             boolean operatiu = allotjament.getEstat(); // Suponiendo que devuelve true si está operativo
 
             // Filtrar en función del parámetro estat
-            if (estat.equals("Tots") ||
-                    (estat.equals("Operatius") && operatiu) ||
-                    (estat.equals("NoOperatius") && !operatiu)) {
+            if (estat.equals("Tots") || (estat.equals("Operatiu") && operatiu==true) || (estat.equals("NoOperatiu") && operatiu==false)) {
+                System.out.println("se filtran los estados:"+operatiu);
                 llista.append(allotjament.toString()).append("\n");
             }
         }
