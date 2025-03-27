@@ -95,8 +95,10 @@ public class VistaCamping {
                     camping.eliminarIncidencia(sc.nextInt());
                     break;
                 case AccessibilitatCotxe:
+                    System.out.println("El numero d'accesssos accessibles amb cotxe es: " + camping.calculaAccessosAccessibles());
                     break;
                 case AccessosAsfaltats:
+                    System.out.println("El numero total de metres quadrats d'asfalt són: " + camping.calculaAccessosAccessibles());
                     break;
                 case GuardarCamping:
                     System.out.println("Introdueix el nom del fitxer:");
