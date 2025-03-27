@@ -248,29 +248,10 @@ public class Camping implements InCamping {
 
     // Método para guardar el objeto Camping en un archivo
 
-    public void guardar(String nomFitxer) {
-        if (nomFitxer == null || nomFitxer.trim().isEmpty()) {
-            System.err.println("Error: El nom del fitxer no pot estar buit.");
-            return;
-        }
-
-        File fitxer = new File(nomFitxer);
-        if (fitxer.exists()) {
-            System.out.println("El fitxer ja existeix. Vols sobreescriure'l? (s/n)");
-            Scanner sc = new Scanner(System.in);
-            String resposta = sc.nextLine();
-            if (!resposta.equalsIgnoreCase("s")) {
-                System.out.println("Operació cancel·lada.");
-                return;
-            }
-        }
-
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fitxer))) {
-            out.writeObject(this);
-            System.out.println("Dades guardades correctament en " + nomFitxer);
-        } catch (IOException e) {
-            System.err.println("Error en guardar les dades: " + e.getMessage());
-        }
+    public void save(String camiDesti) throws ExcepcioCamping; {
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(camiDesti));
+        out.writeObject(this);
+        System.out.println("Dades del càmping guardades correctament en: " + camiDesti);
     }
 
 
