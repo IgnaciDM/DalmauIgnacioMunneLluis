@@ -20,8 +20,6 @@ public class LlistaAccessos implements InLlistaAccessos {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
-        System.out.println("agregar");
-        System.out.println(acc);
         llistaAccessos.add(acc);
     }
 
@@ -44,6 +42,7 @@ public class LlistaAccessos implements InLlistaAccessos {
         StringBuilder llista = new StringBuilder();
 
         for (Acces acces : llistaAccessos) {
+            System.out.println(acces.getEstat());
             if (acces.getEstat() == estat) {
                 llista.append(acces.toString()).append("\n"); // Agregamos un salto de línea para mayor claridad
             }

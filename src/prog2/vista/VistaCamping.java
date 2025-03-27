@@ -167,14 +167,14 @@ public class VistaCamping {
                     break;
                 case AccessosOberts:
                     try{
-                        System.out.println(camping.llistarAccessos("Obert"));
+                        System.out.println(camping.llistarAccessos("Oberts"));
                     }catch(ExcepcioCamping e) {
                         System.out.println("Error: "+e.getMessage());
                     }
                     break;
                 case AccessosTancats:
                     try{
-                        System.out.println(camping.llistarAccessos("Tancat"));
+                        System.out.println(camping.llistarAccessos("Tancats"));
                     }catch(ExcepcioCamping e) {
                         System.out.println("Error: "+e.getMessage());
                     }
