@@ -52,7 +52,8 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaBaixa = estadaMinimaBAIXA_;
     }
 
-    public boolean getEstat() {return estat;  // Retorna l'estat de l'allotjament
+    public boolean getEstat() {
+        return estat;  // Retorna l'estat de l'allotjament
     }
 
     public void setEstat(boolean estat) {
