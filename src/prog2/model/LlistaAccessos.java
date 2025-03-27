@@ -105,4 +105,7 @@ public class LlistaAccessos implements InLlistaAccessos {
         return num;
     }
 
+    public Acces[] getLlistaAccessos() {
+        return llistaAccessos.toArray(new Acces[0]);
+    }
 }

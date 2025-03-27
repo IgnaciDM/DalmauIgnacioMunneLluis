@@ -238,11 +238,57 @@ public class Camping implements InCamping {
 
     // Método para guardar el objeto Camping en un archivo
     public void save(String camiDesti) throws ExcepcioCamping{
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(camiDesti))) {
-            out.writeObject(this);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(camiDesti))) {
+            // Guardar el nombre del camping
+            writer.write("Nom del Camping: " + nom);
+            writer.newLine();
+
+            // Guardar la lista de clients
+            writer.write("Clients:");
+            writer.newLine();
+            for (Client client : llistaClients) {
+                writer.write("Nom: " + client.getNom() + ", DNI: " + client.getDni());
+                writer.newLine();
+            }
+
+            // Guardar la lista de allotjaments
+            writer.write("Allotjaments:");
+            writer.newLine();
+            for (Allotjament allotjament : llistaAllotjaments.getLlistaAllotjament()) {
+                writer.write("ID: " + allotjament.getId() + ", Nom: " + allotjament.getNom());
+                writer.newLine();
+            }
+
+            // Guardar la lista de reserves
+            writer.write("Reserves:");
+            writer.newLine();
+            for (Reserva reserva : llistaReserves) {
+                writer.write("ID Allotjament: " + reserva.getAllotjament().getId() +
+                        ", Client: " + reserva.getClient().getNom() +
+                        ", Data Entrada: " + reserva.getDataEntrada() +
+                        ", Data Sortida: " + reserva.getDataSortida());
+                writer.newLine();
+            }
+
+            // Guardar la lista de accessos
+            writer.write("Accessos:");
+            writer.newLine();
+            for (Acces acces : llistaAccessos.getLlistaAccessos()) {
+                writer.write("Nom: " + acces.getNom() + ", Tipus: " + acces.getClass().getSimpleName());
+                writer.newLine();
+            }
+
+            // Guardar las incidències
+            writer.write("Incidències:");
+            writer.newLine();
+            for (Incidencia incidencia : llistaIncidencies.getLlistaIncidencies()) {
+                writer.write("Num: " + incidencia.getidIncidencia() + ", Tipus: " + incidencia.getTipus());
+                writer.newLine();
+            }
+
             System.out.println("Dades guardades correctament en " + camiDesti);
         } catch (IOException e) {
-            System.err.println("Error en guardar les dades: " + e.getMessage());
+            throw new ExcepcioCamping("Error al guardar les dades: " + e.getMessage());
         }
     }
 

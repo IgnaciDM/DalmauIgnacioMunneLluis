@@ -61,4 +61,8 @@ public class LlistaIncidencies implements InLlistaIncidencies{
         }
         throw new ExcepcioCamping("No hi ha cap allotjament amb aquest estat");
     }
+
+    public Incidencia[] getLlistaIncidencies() {
+        return llistaincidencias.toArray(new Incidencia[0]);// o new Incidencia[llistaincidencias.size()
+    }
 }

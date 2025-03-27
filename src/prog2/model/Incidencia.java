@@ -60,6 +60,7 @@ public class Incidencia {
         this.data = data;
     }
 
+
     public static enum TipusIncidencia {Reparacio, Neteja, Tancament}
 
     public String getIluminacioAllotjament() {
