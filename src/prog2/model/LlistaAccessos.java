@@ -40,7 +40,7 @@ public class LlistaAccessos implements InLlistaAccessos {
                 llista += llistaAccessos.get(i).toString();
             }
         }
-        if (llista.equals("")) {
+        if (llista.length() == 0) {
             throw new ExcepcioCamping("No hi ha cap acces amb aquest estat");
         }
         return llista;

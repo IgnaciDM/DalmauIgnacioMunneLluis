@@ -422,8 +422,6 @@ public class Camping implements InCamping {
         Acc11.afegirAllotjament(ALL6);
         Acc12.afegirAllotjament(ALL6);
 
-        System.out.println("YO ESTUBE AQUI");
-
     }
 
 }
