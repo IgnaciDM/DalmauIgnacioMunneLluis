@@ -2,13 +2,19 @@ package prog2.model;
 
 import java.util.ArrayList;
 
-public class CamiTerra extends AccesTerra{
+public class CamiTerra extends Acces {
+    private float longitud; // Longitud en metres
 
-    public CamiTerra(String nom, boolean accesibilitat, boolean estat,ArrayList<Allotjament> acces_a_Allotjaments, int longitud) {
-        super(nom, accesibilitat, estat, acces_a_Allotjaments, longitud);
+    public CamiTerra(String nom, boolean estat, float longitud) {
+        super(nom, estat);
+        this.longitud = longitud;
     }
 
-    public boolean isAccessibilitat() {
-        return false;
+    public float getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(float longitud) {
+        this.longitud = longitud;
     }
 }

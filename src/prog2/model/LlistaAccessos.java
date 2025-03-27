@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class LlistaAccessos implements InLlistaAccessos {
     private ArrayList<Acces> llistaAccessos;
-    private ArrayList<AccesAsfalt> llistaAccessosAsfalt;
+    private ArrayList<AccesAsfaltat> llistaAccessosAsfalt;
 
     /**
      * Afegeix un accés rebut per paràmetre a la llista d'accessos.
@@ -36,7 +36,7 @@ public class LlistaAccessos implements InLlistaAccessos {
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
         String llista = "";
         for (int i = 0; i < llistaAccessos.size(); i++) {
-            if (llistaAccessos.get(i).getestat() == estat) {
+            if (llistaAccessos.get(i).getEstat() == estat) {
                 llista += llistaAccessos.get(i).toString();
             }
         }
@@ -52,19 +52,21 @@ public class LlistaAccessos implements InLlistaAccessos {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public void actualitzaEstatAccessos() throws ExcepcioCamping {
-        for (int i = 0; i < llistaAccessos.size(); i++) {
+        for (Acces acces : llistaAccessos) {
             boolean operatiu = false;
-            for (int j = i + 1; j < llistaAccessos.get(i).getacces_a_Allotjaments().size(); j++) {
-                if (llistaAccessos.get(i).getacces_a_Allotjaments().get(j).esOperatiu() == true) {
-                    llistaAccessos.get(i).setestat(true);
+            for (Allotjament allotjament : acces.getacces_a_Allotjaments()) {
+                if (allotjament.esOperatiu()) {
+                    acces.setEstat(true);
                     operatiu = true;
+                    break;  // Salimos en cuanto encontramos un alojamiento operativo
                 }
             }
             if (!operatiu) {
-                llistaAccessos.get(i).setestat(false);
+                acces.setEstat(false);
             }
         }
     }
+
 
     /**
      * Itera sobre la llista d'accessos i retorna el número d'accessos amb accessibilitat.
@@ -75,7 +77,7 @@ public class LlistaAccessos implements InLlistaAccessos {
     public int calculaAccessosAccessibles() throws ExcepcioCamping {
         int num = 0;
         for (int i = 0; i < llistaAccessos.size(); i++) {
-            if (llistaAccessos.get(i).getaccesibilitat() == true) {
+            if (llistaAccessos.get(i).getAccesibilitat() == true) {
                 num++;
             }
         }
@@ -88,10 +90,11 @@ public class LlistaAccessos implements InLlistaAccessos {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public float calculaMetresQuadratsAsfalt() throws ExcepcioCamping {
-        int num = 0;
-        for (int i = 0; i < llistaAccessosAsfalt.size(); i++) {
-            num += llistaAccessosAsfalt.get(i).getmcuadrats();
+        float num = 0;
+        for (AccesAsfaltat acces : llistaAccessosAsfalt) {
+            num += acces.getMcuadrats();
         }
         return num;
     }
+
 }

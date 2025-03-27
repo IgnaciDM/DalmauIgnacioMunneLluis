@@ -1,20 +1,33 @@
 package prog2.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public abstract class Acces implements InAcces {
+public class Acces {
     private String nom;
-    private boolean accesibilitat;
-    private boolean estat;
-    private ArrayList<Allotjament> acces_a_Allotjaments;
+    private boolean estat; // Si l'accés està obert o tancat
+    private List<Allotjament> allotjaments; // Llista d'allotjaments accessibles des d'aquest accés
 
-    public Acces(String nom, boolean accesibilitat, boolean estat, ArrayList<Allotjament> acces_a_Allotjaments) {
+    public Acces(String nom, boolean estat) {
         this.nom = nom;
-        this.accesibilitat = accesibilitat;
         this.estat = estat;
-        this.acces_a_Allotjaments = acces_a_Allotjaments;
+        this.allotjaments = new ArrayList<>();
     }
 
+    public Acces(String nom, boolean estat, List<Allotjament> allotjaments) {
+        this.nom = nom;
+        this.estat = estat;
+        this.allotjaments = allotjaments;
+    }
+
+    public Acces(String nom, boolean accesibilitat, boolean estat, ArrayList<Allotjament> accesAAllotjaments) {
+    }
+
+    public void afegirAllotjament(Allotjament allotjament) {
+        this.allotjaments.add(allotjament);
+    }
+
+    // Getters i setters
     public String getNom() {
         return nom;
     }
@@ -23,54 +36,27 @@ public abstract class Acces implements InAcces {
         this.nom = nom;
     }
 
-    public boolean getaccesibilitat() {
-        return accesibilitat;
+    public boolean getEstat() {
+        return estat;
     }
 
-    public void setAccesibilitat(boolean accesibilitat) {
-        this.accesibilitat = accesibilitat;
-    }
-
-    public boolean getestat() {return estat;
-    }
-
-    public void setestat(boolean estat) {
+    public void setEstat(boolean estat) {
         this.estat = estat;
     }
 
-    public ArrayList<Allotjament> getacces_a_Allotjaments() {
-        return acces_a_Allotjaments;
+    public List<Allotjament> getAccesAAllotjaments() {
+        return allotjaments;
     }
 
-    public void setacces_a_Allotjaments(ArrayList<Allotjament> acces_a_Allotjaments) {
-        this.acces_a_Allotjaments = acces_a_Allotjaments;
+    public void setAllotjaments(List<Allotjament> allotjaments) {
+        this.allotjaments = allotjaments;
     }
 
-    public void afegirAllotjament(Allotjament allotjament) {
+    public boolean getAccesibilitat() {
+        return false; // ⚠️ Este método parece incompleto, revisa si necesitas implementarlo correctamente.
     }
 
-    public String toString() {
-        return "Nom=" + nom + ", accesibilitat=" + accesibilitat + ", estat= " + estat + ", acces als Allotjaments= " + acces_a_Allotjaments + ".";
-    }
-    /**
-     * Canvia l'estat de l'accés a tancat
-     */
-    public void tancarAcces() {
-    }
-
-    /**
-     * Canvia l'estat de l'accés a obert
-     */
-    public void obrirAcces() {
-    }
-
-
-    /**
-     * Retorna si l'accés permet accessibilitat amb cotxe o no.
-     * @return
-     */
-    public boolean isAccessibilitat() {
-        return accesibilitat;
+    public Allotjament[] getacces_a_Allotjaments() {
+        return null;
     }
 }
-

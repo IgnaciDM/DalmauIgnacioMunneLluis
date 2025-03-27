@@ -8,9 +8,9 @@ public class BungalowPremium extends Bungalow {
     private String codiWifi;
 
     // Constructor per inicialitzar els atributs del Bungalow Premium
-    public BungalowPremium(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi, boolean estat, String iluminacio) {
+    public BungalowPremium(String nom, String idAllotjament,boolean estat, String iluminacio, float mida,int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
         // Crida al constructor de la classe pare amb valors fixos per defecte
-        super(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, estat, iluminacio);
+        super(nom, idAllotjament, estat,iluminacio,mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
         this.serveisExtra = serveisExtra;
         this.codiWifi = codiWifi;
     }

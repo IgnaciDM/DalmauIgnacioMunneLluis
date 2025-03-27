@@ -6,13 +6,17 @@ public class Parcela extends Allotjament {
     // Atributs específics de la classe Parcela.
     private float metres;
     private boolean connexioElectrica;
+    private boolean estat;
+    private String iluminacio;
 
     // Constructor per inicialitzar els atributs de la classe Parcela.
     // Crida al constructor de la classe pare (Allotjament) per establir alguns valors predeterminats (4 i 2).
-    public Parcela(String nom, String idAllotjament, float metres, boolean connexioElectrica, boolean estat, String iluminacio) {
-        super(nom, idAllotjament, 4, 2, estat, iluminacio);
+    public Parcela(String nom, String idAllotjament, boolean estat,String iluminacio, float metres, boolean connexioElectrica) {
+        super(nom, idAllotjament, 4, 2, estat, iluminacio);//nom, idAllotjament, true, "100%", mida, connexioElectrica
         this.metres = metres;
         this.connexioElectrica = connexioElectrica;
+        this.estat = estat;
+        this.iluminacio = iluminacio;
     }
 
     // Mètodes getters i setters per accedir i modificar els atributs de la classe Parcela.
@@ -35,7 +39,7 @@ public class Parcela extends Allotjament {
 
     // Mètode que retorna si la parcel·la és operativa o no. En aquest cas, depèn de si té connexió elèctrica.
     public boolean esOperatiu() {
-        return connexioElectrica;  // Retorna si la parcel·la té connexió elèctrica.
+        return estat;  // Retorna si la parcel·la esta operativa.
     }
 
     // Mètode toString que retorna una representació textual de l'objecte Parcela.
