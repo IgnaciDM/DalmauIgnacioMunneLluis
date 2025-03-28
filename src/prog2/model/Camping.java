@@ -85,10 +85,8 @@ public class Camping implements InCamping,Serializable {
             }
             llistaIncidencies.afegirIncidencia(num, tipus, allotjament, data);
             Incidencia in = new Incidencia(num, tipus, allotjament, data);
-            System.out.println("Incidència creada: " + in);
             allotjament.tancarAllotjament(in);
             llistaAccessos.actualitzaEstatAccessos();
-            System.out.println("Hola");
         }catch(Exception e){
             throw new ExcepcioCamping(e.getMessage());
         }
@@ -96,10 +94,14 @@ public class Camping implements InCamping,Serializable {
 
     @Override
     public void eliminarIncidencia(int num) throws ExcepcioCamping {
-        llistaIncidencies.eliminarIncidencia(llistaIncidencies.getIncidencia(num));
-        Incidencia in = llistaIncidencies.getIncidencia(num);
-        in.getAllotjament().obrirAllotjament();
-        llistaAccessos.actualitzaEstatAccessos();
+        try {
+            Incidencia in = llistaIncidencies.getIncidencia(num);
+            llistaIncidencies.eliminarIncidencia(in);
+            in.getAllotjament().obrirAllotjament();
+            llistaAccessos.actualitzaEstatAccessos();
+        } catch(Exception e){
+            throw new ExcepcioCamping(e.getMessage());
+        }
     }
 
     @Override

@@ -26,6 +26,7 @@ public class LlistaIncidencies implements InLlistaIncidencies,Serializable {
      */
     public void eliminarIncidencia(Incidencia in) throws ExcepcioCamping{
         llistaincidencias.remove(in);
+        System.out.println("Incidència eliminada");
     }
 
     /**

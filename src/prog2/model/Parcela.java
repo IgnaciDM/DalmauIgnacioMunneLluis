@@ -1,5 +1,7 @@
 package prog2.model;
 
+import prog2.vista.ExcepcioCamping;
+
 // La classe Parcela és una subclasse d'Allotjament que representa un tipus d'allotjament específic anomenat Parcela.
 public class Parcela extends Allotjament {
 
@@ -72,6 +74,7 @@ public class Parcela extends Allotjament {
     public void obrirAllotjament() {
         setEstat(true);
         setIluminacio("100%");
+        System.out.println("Allotjament obert");
     }
 }
 
