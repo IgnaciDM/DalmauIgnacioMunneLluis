@@ -112,7 +112,6 @@ public abstract class Allotjament implements InAllotjament, Serializable {
         } else {
             System.out.println("Avís: Il·luminació no especificada.");
         }
-        System.out.println("Allotjament tancat");
     }
 
     /**

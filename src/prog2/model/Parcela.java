@@ -67,14 +67,12 @@ public class Parcela extends Allotjament {
         } else {
             System.out.println("Avís: Il·luminació no especificada.");
         }
-        System.out.println("Allotjament tancat");
     }
 
     @Override
     public void obrirAllotjament() {
         setEstat(true);
         setIluminacio("100%");
-        System.out.println("Allotjament obert");
     }
 }
 

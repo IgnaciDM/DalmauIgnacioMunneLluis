@@ -41,7 +41,6 @@ public class BungalowPremium extends Bungalow {
         } else {
             System.out.println("Avís: Il·luminació no especificada.");
         }
-        System.out.println("Allotjament tancat");
     }
 
     public void obrirAllotjament() {

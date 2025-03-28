@@ -15,7 +15,6 @@ public class LlistaIncidencies implements InLlistaIncidencies,Serializable {
     public void afegirIncidencia(int num, String tipus, Allotjament allotjament, String data) throws ExcepcioCamping {
         Incidencia incidencia = new Incidencia(num, tipus, allotjament, data);
         llistaincidencias.add(incidencia);
-        System.out.println("Incidencia agregada correctament");
     }
 
 
@@ -26,7 +25,6 @@ public class LlistaIncidencies implements InLlistaIncidencies,Serializable {
      */
     public void eliminarIncidencia(Incidencia in) throws ExcepcioCamping{
         llistaincidencias.remove(in);
-        System.out.println("Incidència eliminada");
     }
 
     /**

@@ -38,7 +38,6 @@ public class MobilHome extends Casa {
         } else {
             System.out.println("Avís: Il·luminació no especificada.");
         }
-        System.out.println("Allotjament tancat");
     }
 
     public void obrirAllotjament() {
