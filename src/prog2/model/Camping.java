@@ -8,6 +8,8 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.List;
+
 public class Camping implements InCamping,Serializable {
     private String nom;  // Nom del camping
     private LlistaAllotjaments llistaAllotjaments;  // Llista d'allotjaments disponibles
@@ -272,7 +274,9 @@ public class Camping implements InCamping,Serializable {
         // Escribir los detalles en el archivo .txt
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fitxerText, true))) {
             // Escribir el nombre del Camping
-            writer.write("Nom del Camping: " + nom);
+            writer.write("Nom del Camping:");
+            writer.newLine();
+            writer.write(nom);
             writer.newLine();
 
             // Guardar la lista de clients
@@ -299,8 +303,6 @@ public class Camping implements InCamping,Serializable {
                         ", Data Sortida: " + reserva.getDataSortida());
                 writer.newLine();
             }
-
-
 
             // Guardar la lista de accessos usando llistarAccessos
             writer.write("Accessos:");
@@ -330,21 +332,37 @@ public class Camping implements InCamping,Serializable {
 
 
 
-    // Método para cargar un objeto Camping desde un archivo
     public static Camping load(String camiOrigen) throws ExcepcioCamping {
-        File fitxer = new File(camiOrigen);
-        if (!fitxer.exists()) {
-            throw new ExcepcioCamping("El fitxer " + camiOrigen + " no existeix.");
+        Camping camping = null;
+        // completar el codi
+        FileInputStream fin = null;
+        ObjectInputStream ois = null;
+        try {
+            fin = new FileInputStream(camiOrigen+".txt");
+            ois = new ObjectInputStream(fin);
+            camping = (Camping) ois.readObject();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ExcepcioCamping("No s'ha trobat la classecamping al ficher.");
+        } finally {
+            try {
+                if (fin != null)
+                    fin.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                if (ois != null)
+                    ois.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
-        try (FileInputStream fin = new FileInputStream(fitxer);
-             ObjectInputStream ois = new ObjectInputStream(fin)) {
-
-            return (Camping) ois.readObject();
-
-        } catch (IOException | ClassNotFoundException e) {
-            throw new ExcepcioCamping("Error al carregar el camping: " + e.getMessage());
-        }
+        return camping;
     }
 
     @Override

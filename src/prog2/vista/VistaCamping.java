@@ -113,13 +113,8 @@ public class VistaCamping {
                 case RecuperarCamping:
                     System.out.println("Introdueix el nom del fitxer:");
                     nomFitxer = sc.nextLine();
-                    Camping campingCarregat = Camping.load(nomFitxer);
-                    if (campingCarregat != null) {
-                        camping = campingCarregat; // Reemplaza la instancia actual
-                        System.out.println("Dades carregades correctament: " + camping);
-                    } else{
-                        System.out.println("No s'ha carregat correctament el fitxer");
-                    }
+                    camping=Camping.load(nomFitxer);
+
                     break;
                 case Sortir:
                     System.out.println("Fins aviat!");
