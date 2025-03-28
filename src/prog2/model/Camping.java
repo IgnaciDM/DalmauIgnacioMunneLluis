@@ -71,7 +71,7 @@ public class Camping implements InCamping,Serializable {
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
         try{
             llistaIncidencies.afegirIncidencia(num, tipus, llistaAllotjaments.getAllotjament(idAllotjament), data);
-            //llistaAccessos.actualitzaEstatAccessos();
+            llistaAccessos.actualitzaEstatAccessos();
         }catch(Exception e){
             throw new ExcepcioCamping(e.getMessage());
         }

@@ -76,7 +76,6 @@ public class LlistaAccessos implements InLlistaAccessos,Serializable {
         }
     }
 
-
     /**
      * Itera sobre la llista d'accessos i retorna el número d'accessos amb accessibilitat.
      *
