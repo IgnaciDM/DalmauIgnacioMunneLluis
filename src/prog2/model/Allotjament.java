@@ -81,7 +81,7 @@ public abstract class Allotjament implements InAllotjament, Serializable {
 
     // Sempre retorna true, indicant que l'allotjament funciona correctament
     public boolean correcteFuncionament() {
-        return true;
+        return estat;
     }
 
     // Retorna una descripció llegible de l'allotjament
@@ -105,8 +105,14 @@ public abstract class Allotjament implements InAllotjament, Serializable {
      * @param in Objecte de tipus Incidencia.
      */
     public void tancarAllotjament(Incidencia in) {
+        System.out.println("hola");
         setEstat(false);
-        setIluminacio(in.getIluminacioAllotjament());
+        if (in.getIluminacioAllotjament() != null) {
+            setIluminacio(in.getIluminacioAllotjament());
+        } else {
+            System.out.println("Avís: Il·luminació no especificada.");
+        }
+
     }
 
     /**

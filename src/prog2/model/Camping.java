@@ -72,8 +72,21 @@ public class Camping implements InCamping,Serializable {
     @Override
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
         try{
-            llistaIncidencies.afegirIncidencia(num, tipus, llistaAllotjaments.getAllotjament(idAllotjament), data);
+            Allotjament allotjament = llistaAllotjaments.getAllotjament(idAllotjament);
+            if (idAllotjament == null || idAllotjament.isEmpty()) {
+                throw new ExcepcioCamping("L'id de l'allotjament no pot estar buit.");
+            }
+            if (tipus == null || tipus.isEmpty()) {
+                throw new ExcepcioCamping("El tipus d'incidència no pot estar buit.");
+            }
+            if (data == null || data.isEmpty()) {
+                throw new ExcepcioCamping("La data no pot estar buida.");
+            }
+            llistaIncidencies.afegirIncidencia(num, tipus, allotjament, data);
+            Incidencia in = new Incidencia(num, tipus, allotjament, data);
+            allotjament.tancarAllotjament(in);
             llistaAccessos.actualitzaEstatAccessos();
+            System.out.println("Hola");
         }catch(Exception e){
             throw new ExcepcioCamping(e.getMessage());
         }
@@ -82,7 +95,9 @@ public class Camping implements InCamping,Serializable {
     @Override
     public void eliminarIncidencia(int num) throws ExcepcioCamping {
         llistaIncidencies.eliminarIncidencia(llistaIncidencies.getIncidencia(num));
-        //llistaAccessos.actualitzaEstatAccessos();
+        Incidencia in = llistaIncidencies.getIncidencia(num);
+        in.getAllotjament().obrirAllotjament();
+        llistaAccessos.actualitzaEstatAccessos();
     }
 
     @Override

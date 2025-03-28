@@ -7,11 +7,9 @@ import java.util.ArrayList;
 
 public class LlistaIncidencies implements InLlistaIncidencies,Serializable {
     private ArrayList<Incidencia> llistaincidencias;
-    private LlistaAllotjaments llistaAllotjaments;//Implementem la clase llista Alltjaments
 
     public LlistaIncidencies() {//CONSTRUCTOR
         this.llistaincidencias = new ArrayList<>();
-        this.llistaAllotjaments = llistaAllotjaments;
     }
 
     public void afegirIncidencia(int num, String tipus, Allotjament allotjament, String data) throws ExcepcioCamping {
