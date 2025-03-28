@@ -240,7 +240,7 @@ public class Camping implements InCamping,Serializable {
 
 
     public void save(String camiDesti) throws ExcepcioCamping {
-        File fitxer = new File(camiDesti);
+        File fitxer = new File(camiDesti+".txt");
 
         // Guardar el objeto serializado
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fitxer))) {
