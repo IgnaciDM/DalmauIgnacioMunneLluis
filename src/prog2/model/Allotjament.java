@@ -1,8 +1,9 @@
 package prog2.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Allotjament implements InAllotjament {
+public abstract class Allotjament implements InAllotjament, Serializable {
     private String nom;
     private String id;
     private long estadaMinimaAlta;

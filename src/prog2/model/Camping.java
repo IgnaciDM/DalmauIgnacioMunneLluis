@@ -1,13 +1,14 @@
 package prog2.model;
-import java.util.Scanner;
 import prog2.vista.ExcepcioCamping;
 import prog2.vista.ExcepcioReserva;
-
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-public class Camping implements InCamping {
+import java.io.Serializable;
+public class Camping implements InCamping,Serializable {
     private String nom;  // Nom del camping
     private LlistaAllotjaments llistaAllotjaments;  // Llista d'allotjaments disponibles
     private ArrayList<Client> llistaClients;  // Llista de clients registrats
@@ -98,10 +99,6 @@ public class Camping implements InCamping {
         } catch (ExcepcioCamping e) {
             throw new RuntimeException(e);
         }
-    }
-
-    static Camping load(String camiOrigen) throws ExcepcioCamping {
-        throw new UnsupportedOperationException("Aquest mètode està implementat a la classe Camping");
     }
 
     public ArrayList<Reserva> getLlistaReserves() {
@@ -241,29 +238,112 @@ public class Camping implements InCamping {
         return estadaMesCurta;
     }
 
-    // Método para guardar el objeto Camping en un archivo
 
     public void save(String camiDesti) throws ExcepcioCamping {
-        if (camiDesti == null || camiDesti.trim().isEmpty()) {
-            throw new ExcepcioCamping("El camí de destinació no pot estar buit.");
+        File fitxer = new File(camiDesti);
+
+        // Guardar el objeto serializado
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fitxer))) {
+            oos.writeObject(this);
+            System.out.println("Camping guardado correctamente en " + camiDesti);
+        } catch (IOException e) {
+            throw new ExcepcioCamping("Error al guardar el camping: " + e.getMessage());
         }
 
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(camiDesti))) {
-            out.writeObject(this);
-            System.out.println("Dades del càmping guardades correctament en: " + camiDesti);
+        // Ruta para guardar el archivo .txt en el directorio "prog2/model"
+        File fitxerText = new File("src/prog2/model/" + camiDesti + ".txt");
+
+        // Verificar si el archivo .txt ya existe
+        if (fitxerText.exists()) {
+            System.out.println("Archivo de texto encontrado: " + fitxerText.getName());
+        } else {
+            // Si no existe, creamos el archivo
+            try {
+                if (fitxerText.createNewFile()) {
+                    System.out.println("Archivo de texto creado: " + fitxerText.getName());
+                } else {
+                    System.out.println("Error al crear el archivo de texto.");
+                }
+            } catch (IOException e) {
+                throw new ExcepcioCamping("Error al crear el archivo de texto: " + e.getMessage());
+            }
+        }
+
+        // Escribir los detalles en el archivo .txt
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fitxerText, true))) {
+            // Escribir el nombre del Camping
+            writer.write("Nom del Camping: " + nom);
+            writer.newLine();
+
+            // Guardar la lista de clients
+            writer.write("Clients:");
+            writer.newLine();
+            for (Client client : llistaClients) {
+                writer.write("Nom: " + client.getNom() + ", DNI: " + client.getDni());
+                writer.newLine();
+            }
+
+            // Guardar la lista de allotjaments usando llistarAllotjaments
+            writer.write("Allotjaments:");
+            writer.newLine();
+            writer.write(llistarAllotjaments("Tots")); // Usamos el mismo método que en el menú
+            writer.newLine();
+
+            // Guardar la lista de reserves
+            writer.write("Reserves:");
+            writer.newLine();
+            for (Reserva reserva : llistaReserves) {
+                writer.write("ID Allotjament: " + reserva.getAllotjament().getId() +
+                        ", Client: " + reserva.getClient().getNom() +
+                        ", Data Entrada: " + reserva.getDataEntrada() +
+                        ", Data Sortida: " + reserva.getDataSortida());
+                writer.newLine();
+            }
+
+
+
+            // Guardar la lista de accessos usando llistarAccessos
+            writer.write("Accessos:");
+            writer.newLine();
+            writer.write(llistarAccessos("Oberts")); // Usamos el mismo método del menú
+            writer.newLine();
+
+
+            /*
+
+            // Guardar las incidències usando llistarIncidencies
+            writer.write("Incidències:");
+            writer.newLine();
+            writer.write(llistarIncidencies()); // Usamos el mismo método del menú
+            writer.newLine();
+            */
+
+            System.out.println("Dades guardades correctament en " + fitxerText.getName());
         } catch (IOException e) {
-            throw new ExcepcioCamping("Error en guardar les dades: " + e.getMessage());
+            throw new ExcepcioCamping("Error al escribir en el archivo de texto: " + e.getMessage());
         }
     }
 
 
+
+
+
+
+
     // Método para cargar un objeto Camping desde un archivo
-    public static Camping carregar(String nomFitxer) {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(nomFitxer))) {
-            return (Camping) in.readObject();
+    public static Camping load(String camiOrigen) throws ExcepcioCamping {
+        File fitxer = new File(camiOrigen);
+        if (!fitxer.exists()) {
+            throw new ExcepcioCamping("El fitxer " + camiOrigen + " no existeix.");
+        }
+
+        try (FileInputStream fin = new FileInputStream(fitxer);
+             ObjectInputStream ois = new ObjectInputStream(fin)) {
+
+            return (Camping) ois.readObject();
+
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Error en carregar les dades: " + e.getMessage());
-            return null;
+            throw new ExcepcioCamping("Error al carregar el camping: " + e.getMessage());
         }
     }
 

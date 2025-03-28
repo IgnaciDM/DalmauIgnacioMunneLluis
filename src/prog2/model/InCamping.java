@@ -2,6 +2,8 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.io.IOException;
+
 /**
  * Interfície que defineix les operacions bàsiques per gestionar un càmping.
  */
@@ -70,7 +72,7 @@ public interface InCamping {
      * @param camiDesti Ruta del fitxer de destinació.
      * @throws ExcepcioCamping
      */
-    void save(String camiDesti) throws ExcepcioCamping;
+    void save(String camiDesti) throws ExcepcioCamping, IOException;
 
     /**
      * Carrega l'estat d'un càmping des d'un fitxer.

@@ -2,9 +2,10 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LlistaAccessos implements InLlistaAccessos {
+public class LlistaAccessos implements InLlistaAccessos,Serializable {
     private ArrayList<Acces> llistaAccessos;
     private ArrayList<AccesAsfaltat> llistaAccessosAsfalt;
 
@@ -105,4 +106,7 @@ public class LlistaAccessos implements InLlistaAccessos {
         return num;
     }
 
+    public Acces[] getLlistaAccessos() {
+        return llistaAccessos.toArray(new Acces[0]);
+    }
 }

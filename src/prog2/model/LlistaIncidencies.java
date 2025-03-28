@@ -2,9 +2,10 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LlistaIncidencies implements InLlistaIncidencies{
+public class LlistaIncidencies implements InLlistaIncidencies,Serializable {
     private ArrayList<Incidencia> llistaincidencias;
     private LlistaAllotjaments llistaAllotjaments;//Implementem la clase llista Alltjaments
 
@@ -60,5 +61,9 @@ public class LlistaIncidencies implements InLlistaIncidencies{
             }
         }
         throw new ExcepcioCamping("No hi ha cap allotjament amb aquest estat");
+    }
+
+    public Incidencia[] getLlistaIncidencies() {
+        return llistaincidencias.toArray(new Incidencia[0]);// o new Incidencia[llistaincidencias.size()
     }
 }
