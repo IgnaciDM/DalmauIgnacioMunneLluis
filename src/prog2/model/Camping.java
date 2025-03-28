@@ -73,6 +73,7 @@ public class Camping implements InCamping,Serializable {
     public void afegirIncidencia(int num, String tipus, String idAllotjament, String data) throws ExcepcioCamping {
         try{
             Allotjament allotjament = llistaAllotjaments.getAllotjament(idAllotjament);
+            System.out.println("Allotjament obtingut: " + allotjament);
             if (idAllotjament == null || idAllotjament.isEmpty()) {
                 throw new ExcepcioCamping("L'id de l'allotjament no pot estar buit.");
             }
@@ -84,6 +85,7 @@ public class Camping implements InCamping,Serializable {
             }
             llistaIncidencies.afegirIncidencia(num, tipus, allotjament, data);
             Incidencia in = new Incidencia(num, tipus, allotjament, data);
+            System.out.println("Incidència creada: " + in);
             allotjament.tancarAllotjament(in);
             llistaAccessos.actualitzaEstatAccessos();
             System.out.println("Hola");

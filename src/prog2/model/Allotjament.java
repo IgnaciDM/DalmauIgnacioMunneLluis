@@ -104,20 +104,21 @@ public abstract class Allotjament implements InAllotjament, Serializable {
      * Modifica l'estat de l'allotjament a No Operatiu i la il·luminació depenent de la incidència rebuda com a paràmetre
      * @param in Objecte de tipus Incidencia.
      */
+    @Override
     public void tancarAllotjament(Incidencia in) {
-        System.out.println("hola");
         setEstat(false);
         if (in.getIluminacioAllotjament() != null) {
             setIluminacio(in.getIluminacioAllotjament());
         } else {
             System.out.println("Avís: Il·luminació no especificada.");
         }
-
+        System.out.println("Allotjament tancat");
     }
 
     /**
      * Modifica l'estat de l'allotjament a Operatiu i la il·luminació al 100%
      */
+    @Override
     public void obrirAllotjament() {
         setEstat(true);
         setIluminacio("100%");

@@ -34,6 +34,21 @@ public class BungalowPremium extends Bungalow {
         return super.esOperatiu() && codiWifi.length() >= 8 && codiWifi.length() <= 16;
     }
 
+    public void tancarAllotjament(Incidencia in) {
+        setEstat(false);
+        if (in.getIluminacioAllotjament() != null) {
+            setIluminacio(in.getIluminacioAllotjament());
+        } else {
+            System.out.println("Avís: Il·luminació no especificada.");
+        }
+        System.out.println("Allotjament tancat");
+    }
+
+    public void obrirAllotjament() {
+        setEstat(true);
+        setIluminacio("100%");
+    }
+
     // Mètode toString per representar l'objecte en format text
     @Override
     public String toString() {

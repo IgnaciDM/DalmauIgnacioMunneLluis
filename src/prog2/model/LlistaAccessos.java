@@ -74,6 +74,7 @@ public class LlistaAccessos implements InLlistaAccessos,Serializable {
                 acces.setEstat(false);
             }
         }
+        System.out.println("accessos actualitzats correctament");
     }
 
     /**

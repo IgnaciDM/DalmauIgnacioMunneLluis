@@ -59,12 +59,19 @@ public class Parcela extends Allotjament {
 
     @Override
     public void tancarAllotjament(Incidencia in) {
-
+        setEstat(false);;
+        if (in.getIluminacioAllotjament() != null) {
+            setIluminacio(in.getIluminacioAllotjament());
+        } else {
+            System.out.println("Avís: Il·luminació no especificada.");
+        }
+        System.out.println("Allotjament tancat");
     }
 
     @Override
     public void obrirAllotjament() {
-
+        setEstat(true);
+        setIluminacio("100%");
     }
 }
 

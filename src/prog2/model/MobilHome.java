@@ -31,6 +31,21 @@ public class MobilHome extends Casa {
         return terrassaBarbacoa;  // Retorna si el MobilHome té terrassa amb barbacoa.
     }
 
+    public void tancarAllotjament(Incidencia in) {
+        setEstat(false);
+        if (in.getIluminacioAllotjament() != null) {
+            setIluminacio(in.getIluminacioAllotjament());
+        } else {
+            System.out.println("Avís: Il·luminació no especificada.");
+        }
+        System.out.println("Allotjament tancat");
+    }
+
+    public void obrirAllotjament() {
+        setEstat(true);
+        setIluminacio("100%");
+    }
+
     // Mètode toString que retorna una representació textual de l'objecte MobilHome per poder imprimir-lo de manera legible.
     @Override
     public String toString() {

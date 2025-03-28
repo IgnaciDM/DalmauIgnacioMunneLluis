@@ -32,6 +32,21 @@ public class Glamping extends Casa {
         return casamascota;
     }
 
+    public void tancarAllotjament(Incidencia in) {
+        setEstat(false);
+        if (in.getIluminacioAllotjament() != null) {
+            setIluminacio(in.getIluminacioAllotjament());
+        } else {
+            System.out.println("Avís: Il·luminació no especificada.");
+        }
+        System.out.println("Allotjament tancat");
+    }
+
+    public void obrirAllotjament() {
+        setEstat(true);
+        setIluminacio("100%");
+    }
+
     @Override
     public String toString() {
         return super.toString().replace("]", "") + ", material=" + material + ", casamascota=" + casamascota + "]";
