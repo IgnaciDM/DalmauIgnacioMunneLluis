@@ -44,7 +44,7 @@ public class Casa extends Allotjament {
     @Override
     public String toString() {
         return super.toString()  + ", mida=" + mida + ", habitacions="
-                + habitacions + ", placesPersones=" + placesPersones + "]";
+                + habitacions + ", placesPersones=" + placesPersones;
     }
 
     @Override

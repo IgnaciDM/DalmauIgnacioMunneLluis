@@ -48,7 +48,7 @@ public class MobilHome extends Casa {
     // Mètode toString que retorna una representació textual de l'objecte MobilHome per poder imprimir-lo de manera legible.
     @Override
     public String toString() {
-        return super.toString().replace("]", "") + ", terrassaBarbacoa=" + terrassaBarbacoa + "]";
+        return super.toString() + ", terrassaBarbacoa=" + terrassaBarbacoa + "]";
     }
 
 }
