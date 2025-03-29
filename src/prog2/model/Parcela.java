@@ -74,5 +74,7 @@ public class Parcela extends Allotjament {
         setEstat(true);
         setIluminacio("100%");
     }
+
+
 }
 

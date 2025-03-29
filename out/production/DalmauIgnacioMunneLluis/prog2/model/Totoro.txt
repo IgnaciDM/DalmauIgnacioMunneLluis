@@ -24,3 +24,29 @@ AccesTerra{nom='null', accesibilitat=false, estat=false, longitud=400.0}
 AccesTerra{nom='null', accesibilitat=false, estat=false, longitud=80.0}
 AccesTerra{nom='null', accesibilitat=false, estat=false, longitud=800.0}
 
+Nom del Camping:
+Green
+Clients:
+Allotjaments:
+Nom=Parcel·la Nord, Id=ALL1, estada mínima en temp ALTA: 4, estada mínima en temp BAIXA: 2.
+Nom=Parcel·la Sud, Id=ALL2, estada mínima en temp ALTA: 4, estada mínima en temp BAIXA: 2.
+Nom=Bungalow Nord, Id=ALL3, estada mínima en temp ALTA: 7, estada mínima en temp BAIXA: 4., mida=22.0, habitacions=2, placesPersones=4], placesParquing=1, terrassa=true, tv=true, aireFred=true]
+Nom=Bungallow Sud, Id=ALL4, estada mínima en temp ALTA: 7, estada mínima en temp BAIXA: 4., mida=27.0, habitacions=2, placesPersones=6], placesParquing=1, terrassa=true, tv=true, aireFred=true]true, codiWifi=CampingDelMarBP1]
+Nom=Glamping Nord, Id=ALL5, estada mínima en temp ALTA: 7, estada mínima en temp BAIXA: 4., mida=20.0, habitacions=1, placesPersones=2, material=Tela, casamascota=true]
+Nom=Mobil-Home Sud, Id=ALL6, estada mínima en temp ALTA: 7, estada mínima en temp BAIXA: 4., mida=20.0, habitacions=2, placesPersones=4, terrassaBarbacoa=true]
+
+Reserves:
+Accessos:
+AccesAsfalt{nom='A1', accesibilitat=true, estat=true, mcuadrats=200.0, allotjaments=0}
+AccesAsfalt{nom='A2', accesibilitat=true, estat=true, mcuadrats=800.0, allotjaments=0}
+AccesTerra{nom='null', accesibilitat=false, estat=false, longitud=100.0}
+AccesTerra{nom='null', accesibilitat=false, estat=false, longitud=200.0}
+AccesAsfalt{nom='A5', accesibilitat=true, estat=true, mcuadrats=350.0, allotjaments=0}
+AccesAsfalt{nom='A6', accesibilitat=true, estat=true, mcuadrats=800.0, allotjaments=0}
+AccesAsfalt{nom='A7', accesibilitat=true, estat=true, mcuadrats=100.0, allotjaments=0}
+AccesAsfalt{nom='A8', accesibilitat=true, estat=true, mcuadrats=800.0, allotjaments=0}
+AccesTerra{nom='null', accesibilitat=false, estat=false, longitud=50.0}
+AccesTerra{nom='null', accesibilitat=false, estat=false, longitud=400.0}
+AccesTerra{nom='null', accesibilitat=false, estat=false, longitud=80.0}
+AccesTerra{nom='null', accesibilitat=false, estat=false, longitud=800.0}
+

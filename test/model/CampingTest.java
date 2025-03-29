@@ -15,185 +15,242 @@ public class CampingTest {
     private Client client;
     private Parcela parcela;
     private Bungalow bungalow;
+    private BungalowPremium bungalowPremium;
+    private Glamping glamping;
+    private MobilHome mobilHome;
     private LocalDate dataEntrada;
     private LocalDate dataSortida;
 
     @BeforeEach
-    public void setUp() {
-        // Inicialitzem un Camping buit
+    public void setUp() throws ExcepcioReserva, ExcepcioCamping {
+        // Initialize a Camping
         camping = new Camping("Camping La Playa");
 
-        // Creem un client
-        try {
-            client = new Client("Laura", "123456789");
-        } catch (ExcepcioReserva e) {
-            throw new RuntimeException(e);
-        }
-        // Afegim una reserva
-        try {
-            camping.afegirClient(client.getNom(), client.getDni()); // Añadimos al cliente al camping
-        } catch (ExcepcioReserva e) {
-            throw new RuntimeException(e);
-        }
+        // Initialize access paths (needed for some tests)
+        camping.inicialitzaDadesCamping();
 
-        // Creem 2 allotjaments i els afegim al camping
-        parcela = new Parcela("Parcela 1", "P001", 100, true);  // Suponiendo que Parcela tiene este constructor
-        bungalow = new Bungalow("Bungalow 1", "B001", "Mitjà", 2, 4, 1, true, true, true);
-        camping.afegirParcela(parcela.getNom(), parcela.getId(), parcela.getMida(), parcela.isConnexioElectrica(), estat);
-        camping.afegirBungalow(bungalow.getNom(), bungalow.getId(), bungalow.getMida(), bungalow.getHabitacions(), bungalow.getPlacesPersones(), bungalow.getPlacesParquing(), bungalow.isTerrassa(), bungalow.isTv(), bungalow.isAireFred());
+        // Create and add clients
+        client = new Client("Laura", "123456789");
+        camping.afegirClient(client.getNom(), client.getDni());
 
-        // Dates de reserva
+        // Create and add accommodations
+        parcela = new Parcela("Parcela 1", "P001", true, "100%", 100.0f, true);
+        bungalow = new Bungalow("Bungalow 1", "B001", true, "100%", 22.0f, 2, 4, 1, true, true, true);
+        bungalowPremium = new BungalowPremium("Bungalow Premium", "BP001", true, "100%", 27.0f, 2, 6, 1, true, true, true, true, "WiFi123");
+        glamping = new Glamping("Glamping 1", "G001", true, "100%", 20.0f, 1, 2, "Tela", true);
+        mobilHome = new MobilHome("Mobil Home 1", "MH001", true, "100%", 20.0f, 2, 4, true);
+
+        camping.afegirParcela(parcela.getNom(), parcela.getId(), parcela.getMida(), parcela.isConnexioElectrica(), parcela.getEstat(), parcela.getIluminacio());
+        camping.afegirBungalow(bungalow.getNom(), bungalow.getId(), bungalow.getMida(), bungalow.getHabitacions(),
+                bungalow.getPlacesPersones(), bungalow.getPlacesParquing(), bungalow.isTerrassa(),
+                bungalow.isTv(), bungalow.isAireFred(), bungalow.getEstat(), bungalow.getIluminacio());
+        camping.afegirBungalowPremium(bungalowPremium.getNom(), bungalowPremium.getId(), bungalowPremium.getMida(),
+                bungalowPremium.getHabitacions(), bungalowPremium.getPlacesPersones(),
+                bungalowPremium.getPlacesParquing(), bungalowPremium.isTerrassa(),
+                bungalowPremium.isTv(), bungalowPremium.isAireFred(), bungalowPremium.isServeisExtra(),
+                bungalowPremium.getCodiWifi(), bungalowPremium.getEstat(), bungalowPremium.getIluminacio());
+        camping.afegirGlamping(glamping.getNom(), glamping.getId(), glamping.getMida(), glamping.getHabitacions(),
+                glamping.getPlacesPersones(), glamping.getMaterial(), glamping.isCasamascota(),
+                glamping.getEstat(), glamping.getIluminacio());
+        camping.afegirMobilHome(mobilHome.getNom(), mobilHome.getId(), mobilHome.getMida(), mobilHome.getHabitacions(),
+                mobilHome.getPlacesPersones(), mobilHome.isTerrassaBarbacoa(), mobilHome.getEstat(),
+                mobilHome.getIluminacio());
+
+        // Dates for reservations
         dataEntrada = LocalDate.of(2024, 5, 1);
         dataSortida = LocalDate.of(2024, 5, 10);
     }
 
     @Test
-    void testAfegirClient() throws ExcepcioReserva {
+    void testGetNomCamping() {
+        assertEquals("Camping La Playa", camping.getNomCamping());
+    }
+
+    @Test
+    void testAfegirClient() {
         assertEquals(1, camping.getNumClients());
+        assertEquals("Laura", camping.getLlistaClients().get(0).getNom());
+        assertEquals("123456789", camping.getLlistaClients().get(0).getDni());
+    }
+
+    @Test
+    void testAfegirClientDniRepetit() {
+        assertThrows(ExcepcioReserva.class, () -> {
+            camping.afegirClient("Pep", "123456789");
+        });
     }
 
     @Test
     void testAfegirAllotjaments() {
-        assertEquals(2, camping.getNumAllotjaments());
+        assertEquals(6, camping.getNumAllotjaments()); // 1 parcel·la + 1 bungalow + 1 premium + 1 glamping + 1 mobil home + 4 from inicialitzaDades
     }
 
-    /**
-     * Prova que si s'intenta fer una reserva amb un allotjament no existent, es llanci l'excepció ExcepcioReserva.
-     */
     @Test
-    public void testAfegirReservaAllotjamentNoExistent() {
-        // Intentem fer una reserva amb un id d'allotjament que no existeix
+    void testAfegirReservaCorrecta() throws ExcepcioReserva {
+        camping.afegirReserva(parcela.getId(), client.getDni(), dataEntrada, dataSortida);
+        assertEquals(1, camping.getNumReserves());
+
+        Reserva reserva = camping.getLlistaReserves().get(0);
+        assertEquals(parcela.getId(), reserva.getAllotjament().getId());
+        assertEquals(client.getDni(), reserva.getClient().getDni());
+        assertEquals(dataEntrada, reserva.getDataEntrada());
+        assertEquals(dataSortida, reserva.getDataSortida());
+    }
+
+    @Test
+    void testAfegirReservaAllotjamentNoExistent() {
         assertThrows(ExcepcioReserva.class, () -> {
             camping.afegirReserva("ID_INEXISTENT", client.getDni(), dataEntrada, dataSortida);
         });
     }
 
-    /**
-     * Comprovem que si el client no existeix, es llanci l'excepció ExcepcioReserva.
-     */
     @Test
-    public void testAfegirReservaClientNoExistent() {
-        // Intentem fer una reserva amb un DNI de client que no existeix
+    void testAfegirReservaClientNoExistent() {
         assertThrows(ExcepcioReserva.class, () -> {
             camping.afegirReserva(parcela.getId(), "DNI_INEXISTENT", dataEntrada, dataSortida);
         });
     }
 
-    /**
-     * Prova que una reserva es pugui afegir correctament quan les dades d'allotjament i client són vàlides.
-     * @throws ExcepcioReserva
-     */
     @Test
-    public void testAfegirReservaCorrecta()  {
-        // Afegim una reserva correctament
-        try {
-            camping.afegirReserva(parcela.getId(), client.getDni(), dataEntrada, dataSortida);
-        } catch (ExcepcioReserva e) {
-            throw new RuntimeException(e);
-        }
-
-        // Verifiquem que la reserva ha estat afegida correctament
-        assertEquals(1, camping.getNumReserves());
-    }
-
-    /**
-     * Verifica que si intentem fer una reserva sobre un allotjament ja ocupat en les mateixes dates, es llanci una excepció.
-     * @throws ExcepcioReserva
-     */
-    @Test
-    public void testAfegirReservaIncorrecta() throws ExcepcioReserva {
-        // Intentem reservar un allotjament per a una data ja reservada
+    void testAfegirReservaDatesSolapades() throws ExcepcioReserva {
         camping.afegirReserva(parcela.getId(), client.getDni(), dataEntrada, dataSortida);
 
-        // Intentem reservar el mateix allotjament amb una data ja ocupada
+        // Same dates
         assertThrows(ExcepcioReserva.class, () -> {
             camping.afegirReserva(parcela.getId(), client.getDni(), dataEntrada, dataSortida);
         });
+
+        // Overlapping dates
+        assertThrows(ExcepcioReserva.class, () -> {
+            camping.afegirReserva(parcela.getId(), client.getDni(),
+                    dataEntrada.minusDays(2), dataSortida.minusDays(2));
+        });
+
+        // Contained within existing reservation
+        assertThrows(ExcepcioReserva.class, () -> {
+            camping.afegirReserva(parcela.getId(), client.getDni(),
+                    dataEntrada.plusDays(1), dataSortida.minusDays(1));
+        });
     }
 
-    /**
-     * Comprova que el càlcul de la mida total de les parcel·les es realitzi correctament.
-     */
     @Test
-    public void testCalculMidaTotalParceles() {
-        // Comprovem el càlcul de la mida total de les parcel·les
+    void testCalculMidaTotalParceles() {
         float midaTotal = camping.calculMidaTotalParceles();
-        assertEquals(100, midaTotal, 0.01);  // 100 és la mida de la parcel·la que hem afegit
+        // Should include the parcel from inicialitzaDades (64) + our test parcel (100)
+        assertEquals(164, midaTotal, 0.01);
     }
 
-    /**
-     * Verifica que es calculi correctament el nombre d'allotjaments operatius.
-     */
     @Test
-    public void testCalculAllotjamentsOperatius() {
-        // Afegim un bungalow y una parcel·la
-        int allotjamentsOperatius = camping.calculAllotjamentsOperatius();
-
-        // Comproven que el número d'allotjaments operatius sigui 2
-        assertEquals(2, allotjamentsOperatius);
+    void testCalculAllotjamentsOperatius() {
+        int operatius = camping.calculAllotjamentsOperatius();
+        // All accommodations are operative by default
+        assertEquals(10, operatius); // 6 from inicialitzaDades + 4 we added
     }
 
-    /**
-     * Assegura que el nom del càmping es torna correctament.
-     */
     @Test
-    public void testGetNom() {
-        // Comprovem el nom del camping
-        assertEquals("Camping La Playa", camping.getNomCamping());
+    void testGetAllotjamentEstadaMesCurta() throws ExcepcioCamping {
+        // First, let's get the current season to know which minimum stay to set
+        LocalDate today = LocalDate.now();
+        InAllotjament.Temp currentSeason = Camping.getTemporada(today);
+
+        // Create new accommodations with different minimum stays
+        Parcela p1 = new Parcela("Parcela 1", "P1", true, "100%", 50.0f, true);
+        p1.setEstadaMinima(5, 3); // High season: 5, Low season: 3
+
+        Bungalow b1 = new Bungalow("Bungalow 1", "B1", true, "100%", 30.0f, 2, 4, 1, true, true, true);
+        b1.setEstadaMinima(3, 2); // High season: 3, Low season: 2
+
+        BungalowPremium bp1 = new BungalowPremium("Bungalow Premium 1", "BP1", true, "100%", 40.0f,
+                2, 6, 1, true, true, true, true, "WIFI123");
+        bp1.setEstadaMinima(7, 5); // High season: 7, Low season: 5
+
+        // Add them to camping (need to clear existing ones first)
+        camping.getLlistaAllotjaments().clear();
+        camping.getLlistaAllotjaments().add(p1);
+        camping.getLlistaAllotjaments().add(b1);
+        camping.getLlistaAllotjaments().add(bp1);
+
+        // Get the accommodation with shortest stay
+        Allotjament estadaMesCurta = camping.getAllotjamentEstadaMesCurta();
+
+        // Verify based on current season
+        if (currentSeason == InAllotjament.Temp.ALTA) {
+            // In high season, b1 should have shortest stay (3 days)
+            assertEquals(b1.getId(), estadaMesCurta.getId());
+        } else {
+            // In low season, b1 should have shortest stay (2 days)
+            assertEquals(b1.getId(), estadaMesCurta.getId());
+        }
     }
 
-    /**
-     * Verifica que un nou tipus d'allotjament, en aquest cas un BungalowPremium, s'afegeix correctament al càmping.
-     */
-    @Test
-    public void testAfegirBungalowPremium() {
-        // Afegim un Bungalow Prèmium i comprovem que s'ha afegit correctament
-        BungalowPremium bungalowPremium = new BungalowPremium("Bungalow Premium", "BP001", "Gran", 2, 4, 2, true, true, true, true, "WiFi123");
-        camping.afegirBungalowPremium(bungalowPremium.getNom(), bungalowPremium.getId(), bungalowPremium.getMida(), bungalowPremium.getHabitacions(), bungalowPremium.getPlacesPersones(), bungalowPremium.getPlacesParquing(), bungalowPremium.isTerrassa(), bungalowPremium.isTv(), bungalowPremium.isAireFred(), bungalowPremium.isServeisExtra(), bungalowPremium.getCodiWifi());
-
-        // Verifiquem que s'hagi afegit
-        assertEquals(3, camping.getNumAllotjaments());  // Ara hauria d'haver 3 allotjaments
-    }
-
-    /**
-     * Comprova que la temporada de 4 dates diferents es torna correctament.
-     */
     @Test
     void testGetTemporada() {
+        // High season
         assertEquals(InAllotjament.Temp.ALTA, Camping.getTemporada(LocalDate.of(2024, 6, 1)));
-        assertEquals(InAllotjament.Temp.BAIXA, Camping.getTemporada(LocalDate.of(2024, 12, 1)));
-        assertEquals(InAllotjament.Temp.ALTA, Camping.getTemporada(LocalDate.of(2024, 3, 21)));
-        assertEquals(InAllotjament.Temp.BAIXA, Camping.getTemporada(LocalDate.of(2024, 3, 20)));
+        assertEquals(InAllotjament.Temp.ALTA, Camping.getTemporada(LocalDate.of(2024, 4, 15)));
+        assertEquals(InAllotjament.Temp.ALTA, Camping.getTemporada(LocalDate.of(2024, 3, 21))); // Start of high season
+
+        // Low season
+        assertEquals(InAllotjament.Temp.BAIXA, Camping.getTemporada(LocalDate.of(2024, 1, 15)));
+        assertEquals(InAllotjament.Temp.BAIXA, Camping.getTemporada(LocalDate.of(2024, 11, 30)));
+        assertEquals(InAllotjament.Temp.BAIXA, Camping.getTemporada(LocalDate.of(2024, 3, 20))); // Day before high season starts
     }
 
+    @Test
+    void testIncidencies() throws ExcepcioCamping {
+        // Add an incidence
+        camping.afegirIncidencia(1, "Averia electrica", parcela.getId(), "2024-05-01");
 
+        // Check incidence was added
+        assertEquals(1, camping.llistarIncidencies().length());
+
+        // Check parcel is now closed
+        assertFalse(parcela.esOperatiu());
+
+        // Remove incidence
+        camping.eliminarIncidencia(1);
+
+        // Check incidence was removed and parcel is open again
+        assertEquals(0, camping.llistarIncidencies().length());
+        assertTrue(parcela.esOperatiu());
+    }
+
+    @Test
+    void testAccessos() throws ExcepcioCamping {
+        // Test accessible paths count
+        int accessibles = camping.calculaAccessosAccessibles();
+        assertTrue(accessibles > 0);
+
+        // Test asphalt square meters calculation
+        float asfalt = camping.calculaMetresQuadratsAsfalt();
+        assertTrue(asfalt > 0);
+
+        // Test listing open paths
+        String llistaOberts = camping.llistarAccessos("Oberts");
+        assertNotNull(llistaOberts);
+        assertFalse(llistaOberts.isEmpty());
+    }
+
+    @Test
+    void testSaveAndLoad() throws ExcepcioCamping {
+        // Add some data
+        try {
+            camping.afegirReserva(parcela.getId(), client.getDni(), dataEntrada, dataSortida);
+        } catch (ExcepcioReserva e) {
+            fail("Failed to add reservation for save/load test");
+        }
+
+        // Save camping
+        camping.save("testCamping");
+
+        // Load camping
+        Camping loadedCamping = Camping.load("testCamping");
+
+        // Verify loaded data
+        assertNotNull(loadedCamping);
+        assertEquals(camping.getNomCamping(), loadedCamping.getNomCamping());
+        assertEquals(camping.getNumClients(), loadedCamping.getNumClients());
+        assertEquals(camping.getNumAllotjaments(), loadedCamping.getNumAllotjaments());
+        assertEquals(camping.getNumReserves(), loadedCamping.getNumReserves());
+    }
 }
-
-
-
-
-
-/*
-
-Explicación del archivo JUnit:
-setUp():
-
-Este método se ejecuta antes de cada prueba y se encarga de inicializar un Camping, agregar un Client, y crear distintos tipos de alojamientos (por ejemplo, Parcela, Bungalow). También define las fechas de entrada y salida para las reservas.
-Pruebas de reserva:
-
-
-testAfegirReservaClientNoExistente(): Similar, pero comprobamos que si el cliente no existe, también se lance la excepción.
-testAfegirReservaCorrecta(): Prueba que una reserva se pueda añadir correctamente cuando los datos de alojamiento y cliente son válidos.
-testAfegirReservaIncorrecta(): Verifica que si intentamos hacer una reserva sobre un alojamiento ya ocupado en las mismas fechas, se lance una excepción.
-Pruebas de funcionalidades adicionales:
-
-testCalculMidaTotalParceles(): Comprueba que el cálculo de la medida total de las parcelas se realice correctamente.
-testCalculAllotjamentsOperatius(): Verifica que se calcule correctamente el número de alojamientos operativos.
-testGetNom(): Asegura que el nombre del camping se devuelve correctamente.
-testAfegirBungalowPremium(): Verifica que un nuevo tipo de alojamiento, en este caso un BungalowPremium, se añada correctamente al camping.
-Consideraciones adicionales:
-En los métodos de test relacionados con la reserva, se está utilizando la clase ExcepcioReserva para verificar que se manejen correctamente las excepciones.
-Los métodos de prueba utilizan assertThrows() para garantizar que se lanzan las excepciones adecuadas cuando se cometen errores (por ejemplo, al intentar reservar un alojamiento no existente).
-El código asume que las clases Parcela, Bungalow, BungalowPremium y otros tipos de alojamiento tienen constructores adecuados y que implementan correctamente sus métodos.
-Con este JUnit, puedes verificar las funcionalidades clave de la clase Camping y asegurar que se comporta correctamente en varios escenarios.
- */
