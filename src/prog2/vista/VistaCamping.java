@@ -99,7 +99,7 @@ public class VistaCamping {
                     System.out.println("El numero d'accesssos accessibles amb cotxe es: " + camping.calculaAccessosAccessibles());
                     break;
                 case AccessosAsfaltats:
-                    System.out.println("El numero total de metres quadrats d'asfalt són: " + camping.calculaAccessosAccessibles());
+                    System.out.println("El numero total de metres quadrats d'asfalt són: " + camping.calculaMetresQuadratsAsfalt());
                     break;
                 case GuardarCamping:
                     System.out.println("Introdueix el nom del fitxer:");

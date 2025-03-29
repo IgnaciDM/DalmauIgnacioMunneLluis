@@ -29,7 +29,7 @@ public class Glamping extends Casa {
     }
 
     public boolean esOperatiu() {
-        return casamascota;
+        return getEstat();
     }
 
     public void tancarAllotjament(Incidencia in) {

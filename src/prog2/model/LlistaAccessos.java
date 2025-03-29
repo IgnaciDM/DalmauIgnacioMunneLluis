@@ -65,16 +65,15 @@ public class LlistaAccessos implements InLlistaAccessos,Serializable {
             boolean operatiu = false;
             for (Allotjament allotjament : acces.getAccesAAllotjaments()) {
                 if (allotjament.esOperatiu()) {
-                    acces.setEstat(true);
+                    acces.obrirAcces();
                     operatiu = true;
                     break;  // Salimos en cuanto encontramos un alojamiento operativo
                 }
             }
             if (!operatiu) {
-                acces.setEstat(false);
+                acces.tancarAcces();
             }
         }
-        System.out.println("accessos actualitzats correctament");
     }
 
     /**

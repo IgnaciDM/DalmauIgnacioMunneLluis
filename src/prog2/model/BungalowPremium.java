@@ -31,7 +31,7 @@ public class BungalowPremium extends Bungalow {
     // Mètode per determinar si el bungalow és operatiu
     public boolean esOperatiu() {
         // El bungalow es considera operatiu si té aire condicionat i un codi wifi vàlid (entre 8 i 16 caràcters)
-        return super.esOperatiu() && codiWifi.length() >= 8 && codiWifi.length() <= 16;
+        return getEstat();
     }
 
     public void tancarAllotjament(Incidencia in) {

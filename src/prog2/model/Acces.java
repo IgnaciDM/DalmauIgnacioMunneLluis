@@ -24,10 +24,13 @@ public class Acces implements InAcces, Serializable {
 
     public void tancarAcces() {
         this.estat = false;
+        System.out.println("tanquem el acces");
+
     }
 
     public void obrirAcces() {
         this.estat = true;
+        System.out.println("Obrim el acces");
     }
 
     public boolean isAccessibilitat() {
@@ -52,6 +55,8 @@ public class Acces implements InAcces, Serializable {
     }
 
     public ArrayList<Allotjament> getAccesAAllotjaments() {
+        System.out.println("Accedim a allotjaments del acces" + nom);
+        System.out.println(allotjaments);
         return allotjaments;
     }
 
