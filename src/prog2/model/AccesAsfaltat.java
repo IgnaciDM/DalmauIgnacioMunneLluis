@@ -27,15 +27,4 @@ public class AccesAsfaltat extends Acces {
     public void setMcuadrats(float mcuadrats) {
         this.mcuadrats = mcuadrats;
     }
-
-    // Mètode toString per mostrar la informació de l'accés asfaltat
-    @Override
-    public String toString() {
-        return "AccesAsfalt{" +
-                "nom='" + nom + '\'' +
-                ", accesibilitat=" + isAccessibilitat() +
-                ", mcuadrats=" + mcuadrats +
-                ", allotjaments=" + allotjaments.size() +
-                '}';
-    }
 }

@@ -28,15 +28,4 @@ public class AccesTerra extends Acces {
     public void setLongitud(float longitud) {
         this.longitud = longitud;
     }
-
-    // Mètode toString per representar la informació de l'accés terra
-    @Override
-    public String toString() {
-        return "AccesTerra{" +
-                "nom='" + nom + '\'' +
-                ", accesibilitat=" + isAccessibilitat() +
-                ", longitud=" + longitud +
-                ", allotjaments=" + allotjaments.size() +
-                '}';
-    }
 }

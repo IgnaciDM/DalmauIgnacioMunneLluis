@@ -56,6 +56,14 @@ public class Acces implements InAcces, Serializable {
         return allotjaments;
     }
 
+    public StringBuilder getAccesAAIdllotjaments() {
+        StringBuilder llista = new StringBuilder();
+        for (Allotjament allotjament : allotjaments) {
+            llista.append(allotjament.getId()).append(" ");
+        }
+        return llista;
+    }
+
     public void setAllotjaments(ArrayList<Allotjament> allotjaments) {
         if (allotjaments != null) {
             this.allotjaments = allotjaments;
