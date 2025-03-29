@@ -50,4 +50,12 @@ public class Glamping extends Casa {
     public String toString() {
         return super.toString().replace("]", "") + ", material=" + material + ", casamascota=" + casamascota + "]";
     }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public boolean isCasamascota() {
+        return casamascota;
+    }
 }
