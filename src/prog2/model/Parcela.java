@@ -46,7 +46,7 @@ public class Parcela extends Allotjament {
     // Aquest mètode imprimeix el nom, identificador i les estades mínimes en diferents temporades.
     @Override
     public String toString() {
-        return super.toString() + "]";  // Retorna una cadena amb informació detallada.
+        return super.toString() +", Mida: "+metres+ ", Conexio Electrica: "+connexioElectrica+"]";  // Retorna una cadena amb informació detallada.
     }
 
     // Mètode correcteFuncionament que retorna un valor booleà per indicar si la parcel·la funciona correctament.
