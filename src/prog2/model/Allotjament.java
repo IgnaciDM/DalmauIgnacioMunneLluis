@@ -87,7 +87,7 @@ public abstract class Allotjament implements InAllotjament, Serializable {
     // Retorna una descripció llegible de l'allotjament
     @Override
     public String toString() {
-        return "Nom=" + nom + ", Id=" + id + ", Estat=" + estat + ", estada mínima en temp ALTA: " + estadaMinimaAlta + ", estada mínima en temp BAIXA: " + estadaMinimaBaixa + ", iluminacio:"+iluminacio;
+        return "[Nom=" + nom + ", Id=" + id + ", estada mínima en temp ALTA: " + estadaMinimaAlta + ", estada mínima en temp BAIXA: " + estadaMinimaBaixa;
     }
 
     // Determina la temporada (ALTA o BAIXA) segons el mes actual

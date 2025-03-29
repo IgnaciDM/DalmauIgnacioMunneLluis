@@ -48,7 +48,7 @@ public class Glamping extends Casa {
 
     @Override
     public String toString() {
-        return super.toString().replace("]", "") + ", material=" + material + ", casamascota=" + casamascota + "]";
+        return super.toString() + ", material=" + material + ", casamascota=" + casamascota + "]";
     }
 
     public String getMaterial() {

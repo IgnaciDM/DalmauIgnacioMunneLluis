@@ -34,14 +34,14 @@ public class LlistaIncidencies implements InLlistaIncidencies,Serializable {
      * @throws ExcepcioCamping
      */
     public String llistarIncidencies() throws ExcepcioCamping{
-        String llista = "";
-        for (int i = 0; i < llistaincidencias.size(); i++) {
-            llista += llistaincidencias.get(i).toString();
+        StringBuilder llista = new StringBuilder();
+        for (Incidencia in : llistaincidencias) {
+            llista.append(in.toString()).append("\n");
         }
-        if (llista.equals("")) {
+        if (llista.length() == 0) {
             throw new ExcepcioCamping("No hi ha cap incidencia");
         }
-        return llista;
+        return llista.toString();
     }
 
     /**

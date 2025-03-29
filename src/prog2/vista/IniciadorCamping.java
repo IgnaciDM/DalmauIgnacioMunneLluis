@@ -12,7 +12,6 @@ public class IniciadorCamping {
         public static void main(String[] args) throws ExcepcioCamping {
         // Definim el nom del càmping
         String nomCamping = "Green";
-
         // Creem un objecte de la vista i li passem el nom del càmping
         VistaCamping vistaCamping = new VistaCamping(nomCamping);
      
