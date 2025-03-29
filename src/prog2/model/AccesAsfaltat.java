@@ -22,11 +22,11 @@ public class AccesAsfaltat extends Acces {
     }
 
     // Getter i Setter per a la superfície asfaltada
-    public float getMcuadrats() {
+    public float getMquadrats() {
         return mcuadrats;
     }
 
-    public void setMcuadrats(float mcuadrats) {
+    public void setMquadrats(float mcuadrats) {
         this.mcuadrats = mcuadrats;
     }
 
@@ -41,4 +41,5 @@ public class AccesAsfaltat extends Acces {
                 ", allotjaments=" + allotjaments.size() +
                 '}';
     }
+
 }

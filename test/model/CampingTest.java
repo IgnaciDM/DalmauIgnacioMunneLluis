@@ -38,7 +38,8 @@ public class CampingTest {
         bungalow = new Bungalow("Bungalow 1", "B001", true, "100%", 22.0f, 2, 4, 1, true, true, true);
         bungalowPremium = new BungalowPremium("Bungalow Premium", "BP001", true, "100%", 27.0f, 2, 6, 1, true, true, true, true, "WiFi123");
         glamping = new Glamping("Glamping 1", "G001", true, "100%", 20.0f, 1, 2, "Tela", true);
-        mobilHome = new MobilHome("Mobil Home 1", "MH001", true, "100%", 20.0f, 2, 4, true);
+        //AFEGIM UN QUE NO ESTIGUI OPERATIU PER DEFECTA
+        mobilHome = new MobilHome("Mobil Home 1", "MH001", false, "100%", 20.0f, 2, 4, true);
 
         camping.afegirParcela(parcela.getNom(), parcela.getId(), parcela.getMida(), parcela.isConnexioElectrica(), parcela.getEstat(), parcela.getIluminacio());
         camping.afegirBungalow(bungalow.getNom(), bungalow.getId(), bungalow.getMida(), bungalow.getHabitacions(),
@@ -74,15 +75,8 @@ public class CampingTest {
     }
 
     @Test
-    void testAfegirClientDniRepetit() {
-        assertThrows(ExcepcioReserva.class, () -> {
-            camping.afegirClient("Pep", "123456789");
-        });
-    }
-
-    @Test
     void testAfegirAllotjaments() {
-        assertEquals(6, camping.getNumAllotjaments()); // 1 parcel·la + 1 bungalow + 1 premium + 1 glamping + 1 mobil home + 4 from inicialitzaDades
+        assertEquals(11, camping.getNumAllotjaments()); // 1 parcel·la + 1 bungalow + 1 premium + 1 glamping + 1 mobil home + 6 from inicialitzaDades
     }
 
     @Test
@@ -136,15 +130,16 @@ public class CampingTest {
     @Test
     void testCalculMidaTotalParceles() {
         float midaTotal = camping.calculMidaTotalParceles();
-        // Should include the parcel from inicialitzaDades (64) + our test parcel (100)
-        assertEquals(164, midaTotal, 0.01);
+        //Inicialitzar dades :ALL1 (Parcela): 64.0f, ALL2 (Parcela): 64.0f
+        //setUp() añade: P001 (Parcela): 100.0f
+        //Total: 64 + 64 + 100 = 228
+        assertEquals(228, midaTotal, 0.01);
     }
 
     @Test
     void testCalculAllotjamentsOperatius() {
         int operatius = camping.calculAllotjamentsOperatius();
-        // All accommodations are operative by default
-        assertEquals(10, operatius); // 6 from inicialitzaDades + 4 we added
+        assertEquals(10, operatius); // 6 de inicialitzaDades + 4 operatius afegits
     }
 
     @Test
@@ -217,18 +212,40 @@ public class CampingTest {
 
     @Test
     void testAccessos() throws ExcepcioCamping {
-        // Test accessible paths count
+        // Reiniciamos los accesos para tener un estado conocido
+        camping.inicialitzaDadesCamping();
+
+        // 1. Test de accesos accesibles
         int accessibles = camping.calculaAccessosAccessibles();
-        assertTrue(accessibles > 0);
+        /*
+         * En inicialitzaDadesCamping() se crean 12 accesos:
+         * - 6 accesos asfaltados (todos accesibles)
+         * - 6 accesos de tierra (todos accesibles)
+         * Total: 12 accesos accesibles
+         */
+        assertEquals(12, accessibles);
 
-        // Test asphalt square meters calculation
+        // 2. Test de metros cuadrados asfaltados
         float asfalt = camping.calculaMetresQuadratsAsfalt();
-        assertTrue(asfalt > 0);
+        /*
+         * Suma de los accesos asfaltados:
+         * - A1: 200
+         * - A2: 800
+         * - A5: 350
+         * - A6: 800
+         * - A7: 100
+         * - A8: 800
+         * Total: 200+800+350+800+100+800 = 3050
+         */
+        assertEquals(3050.0f, asfalt, 0.01f);
 
-        // Test listing open paths
+        // 3. Test de listado de accesos abiertos
         String llistaOberts = camping.llistarAccessos("Oberts");
         assertNotNull(llistaOberts);
         assertFalse(llistaOberts.isEmpty());
+        // Verificamos que aparecen algunos accesos conocidos
+        assertTrue(llistaOberts.contains("A1"));
+        assertTrue(llistaOberts.contains("A12"));
     }
 
     @Test

@@ -123,7 +123,7 @@ public class LlistaAccessosTest {
 
     @Test
     void testCalculaMetresQuadratsAsfalt() throws ExcepcioCamping {
-        float expectedAsphalt = accesAsfaltat1.getMcuadrats() + accesAsfaltat2.getMcuadrats();
+        float expectedAsphalt = accesAsfaltat1.getMquadrats() + accesAsfaltat2.getMquadrats();
         float actualAsphalt = llistaAccessos.calculaMetresQuadratsAsfalt();
         assertEquals(expectedAsphalt, actualAsphalt, 0.001f);
     }

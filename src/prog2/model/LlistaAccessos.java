@@ -8,10 +8,12 @@ import java.util.ArrayList;
 public class LlistaAccessos implements InLlistaAccessos,Serializable {
     private ArrayList<Acces> llistaAccessos;
     private ArrayList<AccesAsfaltat> llistaAccessosAsfalt;
+    private ArrayList<AccesTerra> llistaAccessosTerra;
 
     public LlistaAccessos() {
         this.llistaAccessos = new ArrayList<>();
         this.llistaAccessosAsfalt = new ArrayList<>();
+        this.llistaAccessosTerra = new ArrayList<>();
     }
 
     /**
@@ -21,7 +23,22 @@ public class LlistaAccessos implements InLlistaAccessos,Serializable {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
-        llistaAccessos.add(acc);
+        if (!llistaAccessos.contains(acc)) {  // Evitar duplicados en la lista general
+            llistaAccessos.add(acc);
+        }
+        if (acc instanceof AccesAsfaltat && !llistaAccessosAsfalt.contains(acc)) {
+            llistaAccessosAsfalt.add((AccesAsfaltat) acc);
+        } else if (acc instanceof AccesTerra && !llistaAccessosTerra.contains(acc)) {
+            llistaAccessosTerra.add((AccesTerra) acc);
+        }
+    }
+
+    public ArrayList<AccesAsfaltat> getLlistaAccessosAsfalt() {
+        return llistaAccessosAsfalt;
+    }
+
+    public ArrayList<AccesTerra> getLlistaAccessosTerra() {
+        return llistaAccessosTerra;
     }
 
     /**
@@ -98,11 +115,15 @@ public class LlistaAccessos implements InLlistaAccessos,Serializable {
      * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
      */
     public float calculaMetresQuadratsAsfalt() throws ExcepcioCamping {
-        float num = 0;
+        float total = 0;
+        System.out.println("Calculating asphalt area for " + llistaAccessosAsfalt.size() + " accesses:");
         for (AccesAsfaltat acces : llistaAccessosAsfalt) {
-            num += acces.getMcuadrats();
+            float area = acces.getMquadrats();
+            System.out.println(" - " + acces.getNom() + ": " + area);
+            total += area;
         }
-        return num;
+        System.out.println("Total: " + total);
+        return total;
     }
 
     public Acces[] getLlistaAccessos() {
