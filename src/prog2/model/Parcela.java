@@ -8,7 +8,6 @@ public class Parcela extends Allotjament {
     // Atributs específics de la classe Parcela.
     private float metres;
     private boolean connexioElectrica;
-    private boolean estat;
     private String iluminacio;
 
     // Constructor per inicialitzar els atributs de la classe Parcela.
@@ -17,7 +16,6 @@ public class Parcela extends Allotjament {
         super(nom, idAllotjament, 4, 2, estat, iluminacio);//nom, idAllotjament, true, "100%", mida, connexioElectrica
         this.metres = metres;
         this.connexioElectrica = connexioElectrica;
-        this.estat = estat;
         this.iluminacio = iluminacio;
     }
 
@@ -41,7 +39,7 @@ public class Parcela extends Allotjament {
 
     // Mètode que retorna si la parcel·la és operativa o no. En aquest cas, depèn de si té connexió elèctrica.
     public boolean esOperatiu() {
-        return estat;  // Retorna si la parcel·la esta operativa.
+        return getEstat();  // Retorna si la parcel·la esta operativa.
     }
 
     // Mètode toString que retorna una representació textual de l'objecte Parcela.
@@ -53,11 +51,7 @@ public class Parcela extends Allotjament {
     }
 
     // Mètode correcteFuncionament que retorna un valor booleà per indicar si la parcel·la funciona correctament.
-    // Només serà operativa si té connexió elèctrica.
-    @Override
-    public boolean correcteFuncionament() {
-        return connexioElectrica;  // Retorna si la parcel·la té connexió elèctrica per considerar-se operativa.
-    }
+    // Només serà operativa si té connexió elèctri
 
     @Override
     public void tancarAllotjament(Incidencia in) {

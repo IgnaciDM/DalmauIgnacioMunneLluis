@@ -28,7 +28,7 @@ public class MobilHome extends Casa {
 
     // Mètode que retorna si el MobilHome és operatiu o no. En aquest cas, depèn de si té terrassa amb barbacoa.
     public boolean esOperatiu() {
-        return terrassaBarbacoa;  // Retorna si el MobilHome té terrassa amb barbacoa.
+        return getEstat();  // Retorna si el MobilHome té terrassa amb barbacoa.
     }
 
     public void tancarAllotjament(Incidencia in) {
