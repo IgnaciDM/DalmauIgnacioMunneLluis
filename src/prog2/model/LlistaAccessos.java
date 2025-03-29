@@ -7,11 +7,9 @@ import java.util.ArrayList;
 
 public class LlistaAccessos implements InLlistaAccessos,Serializable {
     private ArrayList<Acces> llistaAccessos;
-    private ArrayList<AccesAsfaltat> llistaAccessosAsfalt;
 
     public LlistaAccessos() {
         this.llistaAccessos = new ArrayList<>();
-        this.llistaAccessosAsfalt = new ArrayList<>();
     }
 
     /**
@@ -99,8 +97,10 @@ public class LlistaAccessos implements InLlistaAccessos,Serializable {
      */
     public float calculaMetresQuadratsAsfalt() throws ExcepcioCamping {
         float num = 0;
-        for (AccesAsfaltat acces : llistaAccessosAsfalt) {
-            num += acces.getMcuadrats();
+        for (Acces acces : llistaAccessos) {
+            if (acces instanceof AccesAsfaltat) { // Comprova si és de la subclasse
+                num += ((AccesAsfaltat) acces).getMcuadrats(); // Cast per accedir al mètode
+            }
         }
         return num;
     }

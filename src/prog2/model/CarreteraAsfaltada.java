@@ -21,6 +21,10 @@ public class CarreteraAsfaltada extends AccesAsfaltat {
 
     @Override
     public boolean isAccessibilitat() {
-        return super.isAccessibilitat();
+        return true;
+    }
+
+    public float getMcuadrats() {
+        return super.getMcuadrats();
     }
 }

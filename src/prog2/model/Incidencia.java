@@ -77,6 +77,6 @@ public class Incidencia {
 
     public String toString() {
         String TipusIncidencia="";
-        return "Id=" + idIncidencia + ", Allotjament=" + Allotjament + ", Tipus= " + Tipus + ", data= " + data + ", tipus de Incidencia= " + TipusIncidencia + ".";
+        return "Id=" + idIncidencia + ", Allotjament=" + Allotjament.toString() + ", Tipus= " + Tipus + ", data= " + data + ".";
     }
 }

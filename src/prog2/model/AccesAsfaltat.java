@@ -10,15 +10,13 @@ public class AccesAsfaltat extends Acces {
     private float mcuadrats;  // Superfície asfaltada en metres quadrats
 
     // Constructor de la classe AccesAsfalt
-    public AccesAsfaltat(String nom, boolean estat, boolean accesibilitat, ArrayList<Allotjament> accesAAllotjaments, float mcuadrats) {
-        super(nom, accesibilitat, mcuadrats);  // Crida al constructor de la classe base Acces
+    public AccesAsfaltat(String nom, boolean estat, boolean accesibilitat, ArrayList<Allotjament> allotjaments, float mcuadrats) {
+        super(nom, estat, accesibilitat, allotjaments);  // Crida al constructor de la classe base Acces
         this.nom = nom;
         this.accesibilitat = accesibilitat;
         this.estat = estat;
         this.allotjaments = allotjaments;
         this.mcuadrats = mcuadrats;
-        // Si la lista pasada es null, inicializamos una vacía
-        this.allotjaments = (accesAAllotjaments != null) ? accesAAllotjaments : new ArrayList<>();
     }
 
     // Getter i Setter per a la superfície asfaltada
@@ -35,8 +33,7 @@ public class AccesAsfaltat extends Acces {
     public String toString() {
         return "AccesAsfalt{" +
                 "nom='" + nom + '\'' +
-                ", accesibilitat=" + accesibilitat +
-                ", estat=" + estat +
+                ", accesibilitat=" + isAccessibilitat() +
                 ", mcuadrats=" + mcuadrats +
                 ", allotjaments=" + allotjaments.size() +
                 '}';

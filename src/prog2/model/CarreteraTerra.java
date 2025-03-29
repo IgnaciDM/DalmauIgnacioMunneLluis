@@ -6,7 +6,7 @@ public class CarreteraTerra extends AccesTerra {
     private float amplada;
 
     public CarreteraTerra(String nom, boolean estat, float longitud, float amplada) {
-        super(nom, estat, longitud);
+        super(nom, estat, true, new ArrayList<>(), longitud);
         this.amplada = amplada;
     }
 

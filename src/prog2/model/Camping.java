@@ -61,9 +61,7 @@ public class Camping implements InCamping,Serializable {
 
 
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
-        String resultat = llistaAccessos.llistarAccessos("Oberts".equalsIgnoreCase(infoEstat));
-        System.out.println("Resultat: " + resultat);
-        return resultat;//Comproba si es igual a oberts si es aixi envia a LlistaAccesos un true
+        return llistaAccessos.llistarAccessos("Oberts".equalsIgnoreCase(infoEstat));
     }
 
     @Override

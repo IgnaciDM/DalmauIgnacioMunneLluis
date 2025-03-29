@@ -9,7 +9,7 @@ public class Acces implements InAcces, Serializable {
     private boolean accessibilitat;
     private ArrayList<Allotjament> allotjaments; // Llista d'allotjaments accessibles
 
-    public Acces(String nom, boolean accesibilitat, float longitud) {
+    public Acces(String nom, boolean estat, boolean accesibilitat, ArrayList<Allotjament> allotjaments) {
         this.nom = nom;
         this.estat = true;  // Inicialitza estat a true per defecte (es pot modificar si cal)
         this.accessibilitat = accesibilitat;
@@ -24,13 +24,11 @@ public class Acces implements InAcces, Serializable {
 
     public void tancarAcces() {
         this.estat = false;
-        System.out.println("tanquem el acces");
 
     }
 
     public void obrirAcces() {
         this.estat = true;
-        System.out.println("Obrim el acces");
     }
 
     public boolean isAccessibilitat() {
@@ -55,8 +53,6 @@ public class Acces implements InAcces, Serializable {
     }
 
     public ArrayList<Allotjament> getAccesAAllotjaments() {
-        System.out.println("Accedim a allotjaments del acces" + nom);
-        System.out.println(allotjaments);
         return allotjaments;
     }
 
